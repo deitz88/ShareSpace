@@ -61,7 +61,7 @@ export default function ProfilePage({user, handleLogout}){
       </>
     );
   }
-
+ 
     return(
         <>
         <NavBar user={user} handleLogout={handleLogout} handleProfile={handleProfile}/>
@@ -75,7 +75,7 @@ export default function ProfilePage({user, handleLogout}){
             {/* <Link to="/main"><Icon name="setting" floated="right" size='large'></Icon></Link> */}
             </Header>
             {/* <NavBar/> */}
-            <ProfileCard user={profileUser} loggedInUser={user}/>
+            <ProfileCard userRequest={profileUser} loggedInUser={user}/>
             <Card centered className="profileCard">
                 <SectionLabel />
                 <ProfileContent />

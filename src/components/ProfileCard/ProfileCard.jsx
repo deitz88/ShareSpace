@@ -4,22 +4,21 @@ import { Card, Image, Icon, Segment} from 'semantic-ui-react'
 import './ProfileCard.css';
 import NonFriendCard from './NonFriendCard';
 import RequestPendingCard from './RequestPendingCard'
+import friendService from '../../utils/friendService';
 
 
 
-export default function ProfileCard({user, loggedInUser, request}){
-// console.log(user)
-// console.log(loggedInUser)
-// console.log(request)
-function request(user){
- return user
+export default function ProfileCard({userRequest, loggedInUser, request}){
+
+function request(userRequest, loggedInUser){
+    friendService.friendRequest(userRequest, loggedInUser)
 }
 
-if(user._id === loggedInUser._id){
+if(userRequest._id === loggedInUser._id){
     return(
         <Card centered className="profileCard">
         <Card.Group className='headerCard'>
-            <Card fluid header={user.username}/>
+            <Card fluid header={userRequest.username}/>
             <Link to='/update'>
                 <Icon  
                 className='settingIcon' 
@@ -28,7 +27,7 @@ if(user._id === loggedInUser._id){
                     />
             </Link>
         </Card.Group>
-        <Image src={user.photoUrl} wrapped ui={false} />
+        <Image src={userRequest.photoUrl} wrapped ui={false} />
         <Card.Content>
             <Card.Header textAlign="center">
                 <h2 className='bioHeader'>Bio:</h2></Card.Header>
@@ -54,9 +53,9 @@ if(user._id === loggedInUser._id){
         
         <Card centered className="profileCard">
             console.log(request)
-        <NonFriendCard user={user} request={request}/>
+        <NonFriendCard loggedInUser={loggedInUser} userRequest={userRequest} request={request}/>
         {/* <RequestPendingCard user={user}/> */}
-        <Image src={user.photoUrl} wrapped ui={false} />
+        <Image src={userRequest.photoUrl} wrapped ui={false} />
         <Card.Content>
             <Card.Header textAlign="center">
                 <h2 className='bioHeader'>Bio:</h2></Card.Header>

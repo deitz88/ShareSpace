@@ -5,16 +5,18 @@ import './ProfileCard.css';
 
 
 
-export default function NonFriendCard({user, loggedInUser, request}){
-    const clickHandler = () => request(user)
+export default function NonFriendCard({userRequest, loggedInUser, request}){
+
+    const clickHandler = () => request(userRequest, loggedInUser)
+    
     return (
     <Card.Group className='headerCardOther'>
-    <Card fluid textAlign='left' header={user.username}/>
+    <Card fluid textAlign='left' header={userRequest.username}/>
         <div className='iconTextNon'>
             <h5 className='firstRowText'>Add</h5>
             <h5 className='secondRowText'>Friend</h5>
         </div>
-    <Link to={user.username}>
+    <Link to={userRequest.username}>
         <Icon  
         className='settingIcon' 
         name='add user'
