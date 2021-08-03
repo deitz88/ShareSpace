@@ -9,21 +9,35 @@ const s3 = new S3(); // initialize the construcotr
 module.exports = {
   signup,
   login,
-  getProfile
+  profile,
+  sendRequest,
+  friendList
 };
 
-async function getProfile(req, res){
-  console.log(req.params)
+async function profile(req, res){
   try {
     const user = await User.findOne({username: req.params.username})
     if(!user) res.status(404).json({message: 'Parameters not found'})
-
-    // const posts = await Post.find({user: user._id})
-    // res.status(200).json({posts: posts, user: user})
+    res.status(200).json({user: user})
   } catch(err){
     console.log(err)
     res.json({err})
   }
+}
+function friendList(req, res){
+
+}
+
+async function sendRequest(req, res){
+  try {
+    const user = await User.findOne({username: req.params.username})
+    user.friendRequests.push({username: req.user.username, userId: req.user._id}); //mutating a document
+    await user.save()// save it
+    res.status(201).json({data: 'like added'})
+} catch(err){
+   
+    res.json({data: err})
+}
 }
 
 function signup(req, res) {

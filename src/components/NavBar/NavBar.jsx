@@ -1,11 +1,11 @@
 import './NavBar.css';
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect} from 'react'
+import { Link, useParams } from 'react-router-dom'
 import {Segment, Header, Icon, Image } from 'semantic-ui-react'
 
 
-export default function NavBar({user, handleLogout}){
-
+export default function NavBar({user, handleLogout, handleProfile}){
+// console.log(user)
     return (
         <Segment clearing>
             <Header as='h2' floated='right'>
@@ -30,7 +30,7 @@ export default function NavBar({user, handleLogout}){
                 <span class='live_message_badge'>&nbsp;</span>
                 </div>
                 </div> */}
-                <Link to="/profile"><Icon name="user circle outline"></Icon></Link>
+                <Link to={user.username}><Icon name="user circle outline"></Icon></Link>
                 <Link to='' onClick={handleLogout}><span className='logoutText'>Logout</span></Link>
             </Header>
             <Header as='h2' floated='left'>
@@ -38,6 +38,7 @@ export default function NavBar({user, handleLogout}){
             </Header>
         </Segment>
     )
+            
 }
 
 

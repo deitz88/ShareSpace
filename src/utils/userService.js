@@ -22,6 +22,17 @@ function signup(user) {
   // The above could have been written as
   //.then((token) => token.token);
 }
+function getProfile(username){
+  return fetch(BASE_URL + username, {headers: {'Authorization': 'Bearer ' + tokenService.getToken()}})
+    .then(res => {
+    if(res.ok){ 
+      return res.json();
+    } else {
+
+      throw new Error('Bad Credentials')
+    }
+  })
+}
 
 function getUser() {
   return tokenService.getUserFromToken();
@@ -45,10 +56,24 @@ function login(creds) {
   .then(({token}) => tokenService.setToken(token));
 }
 
+function friendRequest(){
+  return fetch(BASE_URL + 'request', {
+		method: 'POST',
+		headers: {
+			'Authorization': 'Bearer ' + tokenService.getToken()
+		}
+	}).then(res => {
+		if(res.ok) return res.json()
+	  new Error('Error liking Post');
+	})
+}
+
 
 export default {
   signup, 
   logout,
   login,
-  getUser
+  getUser,
+  getProfile,
+  friendRequest
 };

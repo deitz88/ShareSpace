@@ -24,11 +24,12 @@ function App() {
   }
 
   function handleLogout(){
+    tokenService.removeToken()
     userService.logout();
     setUser({user: null})
-    tokenService.removeToken()
     history.push('/')
   }
+ 
 
   return (
     <div className="App">
@@ -42,10 +43,6 @@ function App() {
           {userService.getUser() ? 
             <> 
              <Switch>
-            
-             <Route exact path="/profile">
-                <ProfilePage user={user} handleLogout={handleLogout}/>
-            </Route>
             <Route exact path="/update">
                 <UpdateProfile user={user} handleLogout={handleLogout}/>
             </Route>

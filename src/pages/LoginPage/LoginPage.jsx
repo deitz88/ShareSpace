@@ -27,11 +27,12 @@ export default function LoginPage(props){
         try {
           await userService.login(formInput);
           props.handleSignUpOrLogin();
-          history.push("/profile");
+          history.push("/main");
         } catch (err) {
           setError(err.message);
         }
       }
+      
 
     
 
