@@ -1,0 +1,41 @@
+.headerLogo{
+    border-radius: 5px;
+}
+
+.logoutText{
+    font-size: 20px;
+}
+#live_message_badge_main_header{
+    padding:2px 3px;
+    top: 10px;
+    left: 47px; 
+}
+i.icon.bell.outline{
+    color: rgba(139, 60, 128, 0.705);
+}
+.notificationNumber{
+    font-size: 15px;
+    position: absolute;
+    font-weight: bold;
+}
+.notificationNumberContainer{
+    position: relative;
+    left: 10px;
+    bottom: 40px; 
+    margin: auto;
+    padding: auto;
+    color: rgba(202, 2, 2, 0.664)
+}
+.requestNumber{
+    font-size: 15px;
+    position: absolute;
+    font-weight: bold;
+}
+.requestNumberContainer{
+    position: relative;
+    left: 17px;
+    bottom: 39px; 
+    margin: auto;
+    padding: auto;
+    color: rgba(202, 2, 2, 0.664)
+}

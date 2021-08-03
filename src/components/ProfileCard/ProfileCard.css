@@ -1,0 +1,28 @@
+.settingIcon{
+    position: relative;
+    bottom: 45px;
+    left: 380px;
+    color: grey;
+    margin: auto;
+    padding: auto;
+}
+.settingIcon:hover{
+    opacity: .5
+}
+div.ui.cards.headerCard{
+    display: flex;
+    margin: -2.35em -.5em;
+    flex-wrap: wrap;
+}
+.bioHeader{
+    text-align: left;
+}
+.bioText{
+
+}
+.altHeader{
+
+}
+.altText{
+    
+}

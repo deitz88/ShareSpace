@@ -8,8 +8,23 @@ const s3 = new S3(); // initialize the construcotr
 
 module.exports = {
   signup,
-  login
+  login,
+  getProfile
 };
+
+async function getProfile(req, res){
+  console.log(req.params)
+  try {
+    const user = await User.findOne({username: req.params.username})
+    if(!user) res.status(404).json({message: 'Parameters not found'})
+
+    // const posts = await Post.find({user: user._id})
+    // res.status(200).json({posts: posts, user: user})
+  } catch(err){
+    console.log(err)
+    res.json({err})
+  }
+}
 
 function signup(req, res) {
   console.log(req.body, req.file)
