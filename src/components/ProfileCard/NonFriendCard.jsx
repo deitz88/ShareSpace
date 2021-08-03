@@ -5,10 +5,9 @@ import './ProfileCard.css';
 
 
 
-export default function NonFriendCard({userRequest, loggedInUser, request}){
+export default function NonFriendCard({userRequest, request}){
+    const clickHandler = () => request(userRequest)
 
-    const clickHandler = () => request(userRequest, loggedInUser)
-    
     return (
     <Card.Group className='headerCardOther'>
     <Card fluid textAlign='left' header={userRequest.username}/>

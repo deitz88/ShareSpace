@@ -16,6 +16,7 @@ export default function ProfilePage({user, handleLogout}){
     // const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [changeProfile, setChangeProfile] = useState({})
+    const [update, setUpdate] = useState('word')
   
     const { username } = useParams();
 
@@ -25,6 +26,7 @@ export default function ProfilePage({user, handleLogout}){
 
   async function getProfile() {
     try {
+      console.log('this is the username', username)
       const data = await userService.getProfile(username);
       // setLoading(() => false);
       // setPosts(() => [...data.posts]);
@@ -34,21 +36,7 @@ export default function ProfilePage({user, handleLogout}){
       setError("The Profile You Are Looking For Does Not Exist - Please Check Spelling And/Or Casing");
     }
   }
-  // async function request(postId) {
-  //   try {
-  //     const data = await userService.friendRequest(username);
-  //     // console.log(data, " this is from addLike");
-  //     getProfile();
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
 
-  // function getProfile(){
-  //   const userData = userService.retrieveProfile(username)
-  //   console.log(userData, '<------data')
-  //   setProfileUser(() => userData.user);
-  // }
   useEffect(() => {
     getProfile();
   }, []);
@@ -61,10 +49,12 @@ export default function ProfilePage({user, handleLogout}){
       </>
     );
   }
- 
+    const change = (click) => {
+        getProfile();
+    }
     return(
         <>
-        <NavBar user={user} handleLogout={handleLogout} handleProfile={handleProfile}/>
+        <NavBar user={user} handleLogout={handleLogout} handleProfile={handleProfile} change={change} />
         <Grid
             textAlign="center"
             style={{ height: "65vh" }}

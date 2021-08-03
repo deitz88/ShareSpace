@@ -25,6 +25,7 @@ function signup(user) {
 function getProfile(username){
   return fetch(BASE_URL + username, {headers: {'Authorization': 'Bearer ' + tokenService.getToken()}})
     .then(res => {
+      console.log('this is res', res)
     if(res.ok){ 
       return res.json();
     } else {

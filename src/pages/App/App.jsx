@@ -4,8 +4,9 @@ import './App.css';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
-import NavBar from '../../components/NavBar/NavBar';
 import Main from '../Main/Main';
+import Friends from '../Friends/Friends';
+import Requests from '../Requests/Requests';
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
 import userService from '../../utils/userService'
 import tokenService from '../../utils/tokenService';
@@ -52,9 +53,16 @@ function App() {
                 <Route exact path="/">
                     Home PAGE COMPONENT WOULD GO HEREE
                 </Route>
+                <Route exact path="/friends">
+                    <Friends user={user} handleLogout={handleLogout}/>
+                </Route>
+                <Route exact path="/requests">
+                    <Requests user={user} handleLogout={handleLogout}/>
+                </Route>
                 <Route path="/:username">
               <ProfilePage user={user} handleLogout={handleLogout} />
-            </Route>
+                </Route>
+
             </Switch>
             </>
             :

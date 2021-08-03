@@ -15,10 +15,11 @@ module.exports = {
 };
 
 async function profile(req, res){
+  console.log('hitting profile func', req.params)
   try {
     const user = await User.findOne({username: req.params.username})
-    if(!user) res.status(404).json({message: 'Parameters not found'})
-    res.status(200).json({user: user})
+    if(!user) return res.status(404).json({message: 'Parameters not found'})
+    return res.status(200).json({user: user})
   } catch(err){
     console.log(err)
     res.json({err})
@@ -60,6 +61,7 @@ function signup(req, res) {
       const token = createJWT(user); // user is the payload so this is the object in our jwt
       res.json({ token });
     } catch (err) {
+      console.log('catch error', err)
       // Probably a duplicate email
       res.status(400).json(err);
     }

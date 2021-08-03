@@ -33,6 +33,19 @@ i.icon.bell.outline{
 }
 .requestNumberContainer{
     position: relative;
+    left: 14px;
+    bottom: 39px; 
+    margin: auto;
+    padding: auto;
+    color: rgba(202, 2, 2, 0.664)
+}
+.friendNumber{
+    font-size: 15px;
+    position: absolute;
+    font-weight: bold;
+}
+.friendNumberContainer{
+    position: relative;
     left: 17px;
     bottom: 39px; 
     margin: auto;

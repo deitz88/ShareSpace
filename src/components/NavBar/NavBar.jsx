@@ -4,8 +4,9 @@ import { Link, useParams } from 'react-router-dom'
 import {Segment, Header, Icon, Image } from 'semantic-ui-react'
 
 
-export default function NavBar({user, handleLogout, handleProfile}){
-// console.log(user)
+export default function NavBar({user, handleLogout, handleProfile, change}){
+    const click = 'click'
+    const clickHandler = () => change(click)
     return (
         <Segment clearing>
             <Header as='h2' floated='right'>
@@ -13,14 +14,21 @@ export default function NavBar({user, handleLogout, handleProfile}){
                 <Link to="/notifications">
                     <Icon name="bell">
                         <div className='notificationNumberContainer'>
-                        <span className='notificationNumber'>2</span>
+                        <span className='notificationNumber'>7</span>
                         </div>
                     </Icon>
                 </Link>
                 <Link to="/requests">
-                    <Icon name="handshake">
+                    <Icon name="wait">
                         <div className='requestNumberContainer'>
-                        <span className='requestNumber'>7</span>
+                        <span className='requestNumber'>{user.friendRequests.length ? user.friendRequests.length : ''}</span>
+                        </div>
+                    </Icon>
+                </Link>
+                <Link to="/friends">
+                    <Icon name="handshake">
+                        <div className='friendNumberContainer'>
+                        <span className='friendNumber'>{user.friends.length ? user.friends.length : ''}</span>
                         </div>
                     </Icon>
                 </Link>
@@ -30,7 +38,7 @@ export default function NavBar({user, handleLogout, handleProfile}){
                 <span class='live_message_badge'>&nbsp;</span>
                 </div>
                 </div> */}
-                <Link to={user.username}><Icon name="user circle outline"></Icon></Link>
+                <Link to={user.username} onClick={clickHandler}><Icon name="user circle outline"></Icon></Link>
                 <Link to='' onClick={handleLogout}><span className='logoutText'>Logout</span></Link>
             </Header>
             <Header as='h2' floated='left'>

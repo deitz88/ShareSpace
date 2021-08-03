@@ -13,7 +13,7 @@ export default function SignUpPage(props){
     const [formInput, setFormInput] = useState({
         username: '',
         password: '',
-        passwordConfirm: '',
+        confirmPassword: '',
         email: '',
     })
     
@@ -40,7 +40,7 @@ export default function SignUpPage(props){
         try {
             await userService.signup(form);
             props.handleSignUpOrLogin() 
-            history.push('/profile')
+            history.push('/main')
     
         } catch(err){
             console.log(err.message)
@@ -82,10 +82,10 @@ export default function SignUpPage(props){
                       required
                     />
                     <Form.Input     
-                      name="confirmPaassword"
+                      name="confirmPassword"
                       type="password"
                       placeholder="Confirm Password"
-                      value={ formInput.passwordConf}
+                      value={ formInput.confirmPassword}
                       onChange={handleInput}
                       required
                     />

@@ -3,15 +3,6 @@ const bcrypt = require('bcrypt');
 
 const SALT_ROUNDS = 6;
 
-const requestSchema = mongoose.Schema({
-  username: String,
-  userId: { type: mongoose.Schema.Types.ObjectId }
-})
-
-const friendsSchema = mongoose.Schema({
-  username: String,
-  userId: { type: mongoose.Schema.Types.ObjectId }
-})
 
 const userSchema = new mongoose.Schema({
   username: {type: String, required: true, lowercase: true, unique: true},
@@ -19,8 +10,8 @@ const userSchema = new mongoose.Schema({
   password: String,
   photoUrl: String,
   bio: String,
-  friendRequests: [requestSchema],
-  friends: [friendsSchema]
+  friendRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
+  friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
 }, {
   timestamps: true
 });
