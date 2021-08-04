@@ -26,7 +26,6 @@ export default function ProfilePage({user, handleLogout}){
 
   async function getProfile() {
     try {
-      console.log('this is the username', username)
       const data = await userService.getProfile(username);
       // setLoading(() => false);
       // setPosts(() => [...data.posts]);
