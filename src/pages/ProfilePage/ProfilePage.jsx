@@ -3,7 +3,7 @@ import { Router, useHistory } from "react-router-dom"
 import './ProfilePage.css';
 import userService from "../../utils/userService"
 import { useParams, Link } from "react-router-dom";
-import { Image, Grid, Icon, Card, Header } from "semantic-ui-react"
+import { Image, Grid, Icon, Card, Header, Loader } from "semantic-ui-react"
 import NavBar from "../../components/NavBar/NavBar";
 import ProfileContent from "../../components/ProfileContent/ProfileContent";
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
@@ -13,7 +13,7 @@ export default function ProfilePage({user, handleLogout}){
   // console.log(user)
     // const [posts, setPosts] = useState([]);
     const [profileUser, setProfileUser] = useState({});
-    // const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [changeProfile, setChangeProfile] = useState({})
     const [update, setUpdate] = useState('word')
@@ -30,6 +30,7 @@ export default function ProfilePage({user, handleLogout}){
       // setLoading(() => false);
       // setPosts(() => [...data.posts]);
       setProfileUser(() => data.user);
+      setLoading(false)
     } catch (err) {
       console.log(err);
       setError("The Profile You Are Looking For Does Not Exist - Please Check Spelling And/Or Casing");
@@ -39,7 +40,21 @@ export default function ProfilePage({user, handleLogout}){
   useEffect(() => {
     getProfile();
   }, []);
-
+  if (loading) {
+    return (
+      <Grid
+        textAlign="center"
+        style={{ height: "100vh" }}
+        verticalAlign="middle"
+      >
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Loader size="large" active>
+            Loading
+          </Loader>
+        </Grid.Column>
+      </Grid>
+    );
+  }
   if (error) {
     return (
       <>
