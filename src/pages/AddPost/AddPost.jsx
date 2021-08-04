@@ -36,7 +36,6 @@ export default function AddPost({user, handleLogout}) {
 
   return (
       <>
-    <NavBar user={user} handleLogout={handleLogout}/>
     <Grid textAlign="center"  verticalAlign="middle" >
       <Grid.Column style={{ maxWidth: 450 }}>
       <Card centered className="profileCard">

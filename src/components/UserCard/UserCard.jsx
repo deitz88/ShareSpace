@@ -4,7 +4,7 @@ import { Card, Image, Grid, Button, Input } from 'semantic-ui-react'
 import './UserCard.css'
 import friendService from '../../utils/friendService'
 
-export default function UserCard({username, photo, setUser}){
+export default function UserCard({username, photo, setUser, user}){
 // console.log(username)
 
     async function handleDeny(e){

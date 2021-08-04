@@ -3,12 +3,13 @@ import { Link } from "react-router-dom"
 import { Card, Image, Icon, Grid, Loader} from 'semantic-ui-react'
 import './ProfileCard.css';
 import NonFriendCard from './NonFriendCard';
+import FriendProfileCard from './FriendProfileCard';
 import RequestPendingCard from './RequestPendingCard'
 import friendService from '../../utils/friendService';
 
 
 
-export default function ProfileCard({userRequest, loggedInUser, request, setUser}){
+export default function ProfileCard({userRequest, loggedInUser, setUser, setProfileUser}){
     const click = 'click'
     const [loading, setLoading] = useState(true)
     const [profile, setProfile] = useState('')
@@ -18,8 +19,8 @@ export default function ProfileCard({userRequest, loggedInUser, request, setUser
     
     async function request(userRequest){
        const updatedUser = await friendService.friendRequest(userRequest)
-         setLoading(() => false);
-         setUser(updatedUser)  
+        //  setLoading(() => false);
+         setProfileUser(updatedUser)  
     }
     
     // console.log(userRequest.friendRequests.includes(loggedInUser._id))
@@ -40,12 +41,12 @@ export default function ProfileCard({userRequest, loggedInUser, request, setUser
     //     );
     //   }
   
-
+        console.log(userRequest.friends.includes(loggedInUser._id))
 if(userRequest._id === loggedInUser._id){
     return(
         <Card centered className="profileCard">
         <Card.Group className='headerCard'>
-            <Card fluid header={userRequest.username}/> 
+            <Card fluid header={userRequest.username} id='usernameHeader'/> 
             <Link to='/update'>
                 <Icon  
                 className='settingIcon' 
@@ -102,12 +103,15 @@ if(userRequest._id === loggedInUser._id){
         </Card.Content>
     </Card>
     )
-} else if(!userRequest.friendRequests.includes(loggedInUser._id)) {
+} else if (userRequest.friends.includes(loggedInUser._id)){
     return(
         
         <Card centered className="profileCard">
-        <NonFriendCard loggedInUser={loggedInUser} userRequest={userRequest} request={request}/>
-        {/* <RequestPendingCard user={user}/> */}
+        <FriendProfileCard 
+            loggedInUser={loggedInUser} 
+            userRequest={userRequest} 
+            request={request}
+        />
         <Image src={userRequest.photoUrl} wrapped ui={false} />
         <Card.Content>
             <Card.Header textAlign="center">
@@ -129,9 +133,35 @@ if(userRequest._id === loggedInUser._id){
         </Card.Content>
     </Card>
     )
-} else {
+} else if(!userRequest.friendRequests.includes(loggedInUser._id)) {
     return(
-        <h1>in your friends!</h1>
+        
+        <Card centered className="profileCard">
+        <NonFriendCard 
+            loggedInUser={loggedInUser} 
+            userRequest={userRequest} 
+            request={request}
+        />
+        <Image src={userRequest.photoUrl} wrapped ui={false} />
+        <Card.Content>
+            <Card.Header textAlign="center">
+                <h2 className='bioHeader'>Bio:</h2></Card.Header>
+                <Card.Meta>
+                    {/* <span className='date'>Joined in 2015</span> */}
+                </Card.Meta>
+                <Card.Description>
+                    {/* <Segment>
+                        Bio:
+                    </Segment> */}
+                </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+        <a>
+            <Icon name='user' />
+            22 Friends
+        </a>
+        </Card.Content>
+    </Card>
     )
-}
+                }
 }

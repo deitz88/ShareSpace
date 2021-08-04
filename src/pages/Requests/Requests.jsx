@@ -8,7 +8,6 @@ export default function Requests({user, setUser, handleLogout}){
     
     return(
         <>
-        <NavBar user={user} handleLogout={handleLogout}/>
         <Grid
             textAlign="center"
             style={{ height: "45vh" }}
@@ -19,13 +18,14 @@ export default function Requests({user, setUser, handleLogout}){
                 <h1 className='requestsHeader'>Pending Requests</h1>
                 </Card>
         
-            {user.friendRequests.map((user) => {
+            {user.friendRequests.map((request) => {
                 return (
           <UserCard
-            username={user.username}
-            photo={user.photoUrl}
-            key={user._id}
+            username={request.username}
+            photo={request.photoUrl}
+            key={request._id}
             setUser={setUser}
+            user={user}
           />
                 )
             })}

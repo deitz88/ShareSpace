@@ -10,7 +10,7 @@ export default function Friends({user, setUser, handleLogout}){
    
     return(
         <>
-        <NavBar user={user} handleLogout={handleLogout}/>
+       
         <Grid
             textAlign="center"
             style={{ height: "45vh" }}
@@ -21,14 +21,15 @@ export default function Friends({user, setUser, handleLogout}){
                 <h1 className='requestsHeader'>Friends List</h1>
                 </Card>
         
-            {user.friends.map((user) => {
+            {user.friends.map((friend) => {
                 return (
-          <FriendCard
-            username={user.username}
-            photo={user.photoUrl}
-            key={user._id}
-            setUser={setUser}
-          />
+                    <FriendCard
+                        username={friend.username}
+                        photo={friend.photoUrl}
+                        key={friend._id}
+                        setUser={setUser}
+                        user={user}
+                    />
                 )
             })}
             </Grid.Column>

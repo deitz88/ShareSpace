@@ -4,8 +4,7 @@ import { Card, Image, Grid } from 'semantic-ui-react'
 import './FriendCard.css'
 import friendService from '../../utils/friendService'
 
-export default function FriendCard({username, photo, setUser}){
-// console.log(username)
+export default function FriendCard({user, username, photo, setUser}){
 
     async function handleRemove(e){
         e.preventDefault()

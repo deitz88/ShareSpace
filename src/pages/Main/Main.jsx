@@ -6,7 +6,6 @@ import NavBar from '../../components/NavBar/NavBar';
 export default function Main({user, handleLogout}){
     return (
         <>
-        <NavBar user={user} handleLogout={handleLogout}/>
         <h1>feed</h1>
         </>
     )

@@ -11,6 +11,7 @@ import AddPost from '../AddPost/AddPost'
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
 import userService from '../../utils/userService'
 import tokenService from '../../utils/tokenService';
+import NavBar from '../../components/NavBar/NavBar';
 
 
 
@@ -28,13 +29,14 @@ function App() {
   function handleLogout(){
     tokenService.removeToken()
     userService.logout();
-    setUser({user: null})
+    setUser(null)
     history.push('/')
   }
  
 
   return (
     <div className="App">
+       <NavBar user={user} handleLogout={handleLogout}/>
       <Switch>
           <Route exact path="/login">
              <LoginPage handleSignUpOrLogin={handleSignUpOrLogin}/>
@@ -42,30 +44,30 @@ function App() {
           <Route exact path="/signup">
              <SignupPage handleSignUpOrLogin={handleSignUpOrLogin}/>
           </Route>
-          {userService.getUser() ? 
+          {user ? 
             <> 
              <Switch>
             <Route exact path="/update">
-                <UpdateProfile user={user} handleLogout={handleLogout}/>
+              <UpdateProfile user={user} handleLogout={handleLogout}/>
             </Route>
             <Route exact path="/main">
-                <Main user={user} handleLogout={handleLogout}/>
+              <Main user={user} handleLogout={handleLogout}/>
             </Route>
-                <Route exact path="/">
-                    Home PAGE COMPONENT WOULD GO HEREE
-                </Route>
-                <Route exact path="/friends">
-                    <Friends user={user} handleLogout={handleLogout} setUser={setUser}/>
-                </Route>
-                <Route exact path="/requests">
-                    <Requests user={user} handleLogout={handleLogout} setUser={setUser}/>
-                </Route>
-                <Route exact path="/addpost">
-                    <AddPost user={user} handleLogout={handleLogout} setUser={setUser}/>
-                </Route>
-                <Route path="/:username">
-              <ProfilePage user={user} handleLogout={handleLogout} setUser={setUser}/>
-                </Route>
+              <Route exact path="/">
+                  Home PAGE COMPONENT WOULD GO HEREE
+              </Route>
+              <Route exact path="/friends">
+                <Friends user={user} handleLogout={handleLogout} setUser={setUser}/>
+              </Route>
+              <Route exact path="/requests">
+                <Requests user={user} handleLogout={handleLogout} setUser={setUser}/>
+              </Route>
+              <Route exact path="/addpost">
+                <AddPost user={user} handleLogout={handleLogout} setUser={setUser}/>
+              </Route>
+              <Route path="/:username">
+                <ProfilePage user={user} handleLogout={handleLogout} setUser={setUser}/>
+              </Route>
 
             </Switch>
             </>

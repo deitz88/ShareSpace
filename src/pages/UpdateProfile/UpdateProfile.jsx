@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Grid, Header, Image, Form, Segment, Button, Label } from "semantic-ui-react"
+import { Grid, Header, Image, Form, Segment, Button, Label, Card } from "semantic-ui-react"
 import userService from '../../utils/userService';
 import { useHistory } from 'react-router-dom';
 import './UpdateProfile.css';
@@ -12,10 +12,8 @@ export default function UpdateProfile({user}){
     const [error, setError ] = useState('')
     const [fileUpload, setFileUpload] = useState('')
     const [formInput, setFormInput] = useState({
-        username: '',
-        password: '',
-        confirmPassword: '',
-        email: '',
+        username: `${user.username}`,
+        bio:''
     })
     
     function handleInput(e){
@@ -31,17 +29,19 @@ export default function UpdateProfile({user}){
 
     async function handleSubmit(e){
         e.preventDefault();
-        // const form = new FormData();
-        // form.append('photo', fileUpload);
+        const form = new FormData();
+        form.append('photo', fileUpload);
 
-        // for (let key in formInput){
-        //     form.append(key, formInput[key])
-        // }
+        for (let key in formInput){
+            form.append(key, formInput[key])
+        }
+        for (var pair of form.entries()) {
+            console.log(pair[0]+ ', ' + pair[1]); 
+          }
         
         // try {
-        //     await userService.signup(form);
-        //     handleSignUpOrLogin() 
-        //     history.push('/main')
+        //     await userService.update(form);
+        //     history.push(`${user.username}`)
     
         // } catch(err){
         //     console.log(err.message)
@@ -60,26 +60,42 @@ export default function UpdateProfile({user}){
               </Header>            
                 <Form autoComplete="off"  onSubmit={handleSubmit} >
                 <Segment stacked className="signupForm"> 
-                    <Label floated='left' attatched='top'>Username:</Label>              
-                    <Form.Input                    
+                    <Label>Username:</Label>  
+                    <br /><br />
+                    
+                    <Form.Input
+                      type='textarea'                    
                       name="username"
-                      placeholder="username"
-                      value={user.username}
+                      placeholder={user.username}
                       onChange={handleInput}
                       required
                     />
                     
                     
-                    
-                    <Form.Field className="signupForm"> 
+                    <Label>Bio:</Label>  
+                    <br /><br />
+                    <Form.Field className="signupForm">
+                       
                         <Form.TextArea
                           type="textarea"
                           name="bio"
+                          placeholder={user.bio}
+                          onChange={handleInput}
+                          required
+                        />
+                    </Form.Field>
+                    <Label>Profile Photo:</Label>  
+                    <br />
+                    <Card raised centered image={user.photoUrl} />     
+                    <Form.Field className="signupForm"> 
+                        <Form.Input
+                          type="file"
+                          name="photo"
+                          placeholder='tes'
                           placeholder="upload image"
                           onChange={handleFileUpload}
-                          required
-                        />      
-                    </Form.Field>
+                        />  
+                        </Form.Field> 
                     <Button
                       type="submit"
                       className="btn"

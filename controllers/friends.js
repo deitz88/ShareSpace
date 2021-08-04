@@ -15,8 +15,6 @@ async function sendRequest(req, res){
     const addFriend = req.user._id
     await requestedUser.friendRequests.push(addFriend)
     requestedUser.save()
-    const newFriend = requestedUser.friendRequests[0].populate()
-    console.log(newFriend)
     // const token = createJWT(user);
     // res.json({token}); 
     res.status(200).json(requestedUser);
@@ -51,7 +49,9 @@ async function sendRequest(req, res){
         let index2 = await removedUser.friends.indexOf(user._id);
         console.log(index2, 'user id in removed Uder friends array')
         user.friends.splice(index, 1);
+        removeUser.friends.spice(index2, 1)
         user.save();
+        removeUser.save()
         return res.status(200).json(user);
       } catch {}
         
