@@ -7,6 +7,7 @@ import ProfilePage from '../ProfilePage/ProfilePage';
 import Main from '../Main/Main';
 import Friends from '../Friends/Friends';
 import Requests from '../Requests/Requests';
+import AddPost from '../AddPost/AddPost'
 import UpdateProfile from '../UpdateProfile/UpdateProfile';
 import userService from '../../utils/userService'
 import tokenService from '../../utils/tokenService';
@@ -54,13 +55,16 @@ function App() {
                     Home PAGE COMPONENT WOULD GO HEREE
                 </Route>
                 <Route exact path="/friends">
-                    <Friends user={user} handleLogout={handleLogout}/>
+                    <Friends user={user} handleLogout={handleLogout} setUser={setUser}/>
                 </Route>
                 <Route exact path="/requests">
-                    <Requests user={user} handleLogout={handleLogout}/>
+                    <Requests user={user} handleLogout={handleLogout} setUser={setUser}/>
+                </Route>
+                <Route exact path="/addpost">
+                    <AddPost user={user} handleLogout={handleLogout} setUser={setUser}/>
                 </Route>
                 <Route path="/:username">
-              <ProfilePage user={user} handleLogout={handleLogout} />
+              <ProfilePage user={user} handleLogout={handleLogout} setUser={setUser}/>
                 </Route>
 
             </Switch>

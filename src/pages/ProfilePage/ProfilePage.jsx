@@ -9,7 +9,7 @@ import ProfileContent from "../../components/ProfileContent/ProfileContent";
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import SectionLabel from '../../components/SectionLabel/SectionLabel'
 
-export default function ProfilePage({user, handleLogout}){
+export default function ProfilePage({user, handleLogout, setUser}){
   // console.log(user)
     // const [posts, setPosts] = useState([]);
     const [profileUser, setProfileUser] = useState({});
@@ -27,7 +27,6 @@ export default function ProfilePage({user, handleLogout}){
   async function getProfile() {
     try {
       const data = await userService.getProfile(username);
-      // setLoading(() => false);
       // setPosts(() => [...data.posts]);
       setProfileUser(() => data.user);
       setLoading(false)
@@ -44,7 +43,7 @@ export default function ProfilePage({user, handleLogout}){
     return (
       <Grid
         textAlign="center"
-        style={{ height: "100vh" }}
+        style={{ height: "65vh" }}
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
@@ -55,20 +54,18 @@ export default function ProfilePage({user, handleLogout}){
       </Grid>
     );
   }
-  if (error) {
-    return (
-      <>
-        {/* <NavBar user={user}/> */}
-        <h1>{error}</h1>
-      </>
-    );
-  }
-    const change = (click) => {
-        getProfile();
-    }
+  // if (error) {
+  //   return (
+  //     <>
+  //       {/* <NavBar user={user}/> */}
+  //       <h1>{error}</h1>
+  //     </>
+  //   );
+  // }
+  
     return(
         <>
-        <NavBar user={user} handleLogout={handleLogout} handleProfile={handleProfile} change={change} />
+        <NavBar user={user} handleLogout={handleLogout} handleProfile={handleProfile} />
         <Grid
             textAlign="center"
             style={{ height: "65vh" }}
@@ -79,7 +76,7 @@ export default function ProfilePage({user, handleLogout}){
             {/* <Link to="/main"><Icon name="setting" floated="right" size='large'></Icon></Link> */}
             </Header>
             {/* <NavBar/> */}
-            <ProfileCard userRequest={profileUser} loggedInUser={user}/>
+            <ProfileCard userRequest={profileUser} loggedInUser={user} setUser={setUser}/>
             <Card centered className="profileCard">
                 <SectionLabel />
                 <ProfileContent />

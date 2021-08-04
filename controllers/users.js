@@ -75,7 +75,8 @@ function signup(req, res) {
 
 async function login(req, res) {
   try {
-    const user = await User.findOne({email: req.body.email});
+    const user = await User.findOne({email: req.body.email}).populate('friends friendRequests');
+    
     console.log(user, ' this user in login')
     if (!user) return res.status(401).json({err: 'bad credentials'});
     // had to update the password from req.body.pw, to req.body password

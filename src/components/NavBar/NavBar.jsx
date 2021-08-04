@@ -4,9 +4,8 @@ import { Link, useParams } from 'react-router-dom'
 import {Segment, Header, Icon, Image } from 'semantic-ui-react'
 
 
-export default function NavBar({user, handleLogout, handleProfile, change}){
-    const click = 'click'
-    const clickHandler = () => change(click)
+export default function NavBar({user, handleLogout, handleProfile}){
+ 
     return (
         <Segment clearing>
             <Header as='h2' floated='right'>
@@ -33,6 +32,7 @@ export default function NavBar({user, handleLogout, handleProfile, change}){
                     </Icon>
                 </Link>
                 <Link to={user.username} ><Icon name="user circle outline"></Icon></Link>
+                <Link to='/addpost' ><Icon name="plus square outline"></Icon></Link>
                 <Link to='' onClick={handleLogout}><span className='logoutText'>Logout</span></Link>
             </Header>
             <Header as='h2' floated='left'>
@@ -42,7 +42,6 @@ export default function NavBar({user, handleLogout, handleProfile, change}){
     )
             
 }
-
 
 
 

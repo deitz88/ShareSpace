@@ -8,7 +8,7 @@ import friendService from '../../utils/friendService';
 
 
 
-export default function ProfileCard({userRequest, loggedInUser, request, change}){
+export default function ProfileCard({userRequest, loggedInUser, request, setUser}){
     const click = 'click'
     const [loading, setLoading] = useState(true)
     const [profile, setProfile] = useState('')
@@ -16,10 +16,10 @@ export default function ProfileCard({userRequest, loggedInUser, request, change}
         return click
     }
     
-    function request(userRequest){
-         friendService.friendRequest(userRequest)
+    async function request(userRequest){
+       const updatedUser = await friendService.friendRequest(userRequest)
          setLoading(() => false);
-       
+         setUser(updatedUser)  
     }
     
     // console.log(userRequest.friendRequests.includes(loggedInUser._id))

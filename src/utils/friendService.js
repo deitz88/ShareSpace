@@ -14,36 +14,10 @@ function friendRequest(userRequest){
           if(res.ok) return res.json()
           console.log(res.body)
         new Error('Error adding friend');
-      })
-  }
-  function getRequests(userRequest){
-    // console.log(BASE_URL + 'requests')
-    return fetch(BASE_URL + 'requests', {
-          method: 'GET',
-          headers: {
-              'Authorization': 'Bearer ' + tokenService.getToken()
-          },
-      }).then(res => {
-          if(res.ok) return res.json()
-          console.log(res.body)
-        new Error('Error getting requests');
-      })
-  }
-  function getFriends(userRequest){
-    return fetch(BASE_URL + 'friends', {
-          method: 'GET',
-          headers: {
-              'Authorization': 'Bearer ' + tokenService.getToken()
-          },
-      }).then(res => {
-          if(res.ok) return res.json()
-          console.log(res.body)
-        new Error('Error getting requests');
-      })
+      }).then(data => data)
   }
 
   function denyRequest(username){
-   //getting username here
     return fetch(BASE_URL + `deny/${username}`, {
         method: 'GET',
         headers: {
@@ -51,13 +25,11 @@ function friendRequest(userRequest){
         },
     }).then(res => {
         if(res.ok) return res.json()
-        console.log(res.body)
       new Error('Error denying request');
-    })
+    }).then(data => data)
 }
 
 function approveRequest(username){
-    //getting username here
      return fetch(BASE_URL + `approve/${username}`, {
          method: 'GET',
          headers: {
@@ -65,16 +37,26 @@ function approveRequest(username){
          },
      }).then(res => {
          if(res.ok) return res.json()
-         console.log(res.body)
        new Error('Error accepting friend');
-     })
+     }).then(data => data)
  }
+
+ function removeFriend(username){
+    return fetch(BASE_URL + `remove/${username}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + tokenService.getToken()
+        },
+    }).then(res => {
+        if(res.ok) return res.json()
+      new Error('Error removing friend');
+    }).then(data => data)
+}
 
 
 export default {
-    friendRequest,
-    getRequests, 
+    friendRequest, 
     denyRequest,
     approveRequest,
-    getFriends
+    removeFriend
 };

@@ -1,29 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Image, Grid, Button, Input } from 'semantic-ui-react'
-import './UserCard.css'
+import { Card, Image, Grid } from 'semantic-ui-react'
+import './FriendCard.css'
 import friendService from '../../utils/friendService'
 
-export default function UserCard({username, photo, setUser}){
+export default function FriendCard({username, photo, setUser}){
 // console.log(username)
 
-    async function handleDeny(e){
+    async function handleRemove(e){
         e.preventDefault()
-        const updatedUser = await friendService.denyRequest(username)
+        const updatedUser = await friendService.removeFriend(username)
         setUser(updatedUser)
     }
 
-    async function handleAccept(e){
-        e.preventDefault()
-        const updatedUser = await friendService.approveRequest(username)
-        setUser(updatedUser)
-    }
 
     return(
         <>
         <br></br>
         <br></br>
     <Card.Group className='headerCard'>
+    &nbsp; &nbsp; &nbsp;
     <Card.Content text='test'>{username}
                 <Card.Header centered textAlign="center">
                 </Card.Header>
@@ -49,27 +45,18 @@ export default function UserCard({username, photo, setUser}){
             <br /><br />
             <div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp; &nbsp; &nbsp;
-            <input
-            type="button"
-            value='Accept'
-            className="btn"
-            id="acceptButton"
-            onClick={handleAccept}
-           >
-            </input>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;
-            
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <input
             type="button"
-            value='Deny'
+            value='Unfriend'
             className="btn"
             id="denyButton"
             // floated='right'
             // textAlign='right'
-            onClick={handleDeny}>
+            onClick={handleRemove}>
             </input>
             </div>
         </Grid.Row>
