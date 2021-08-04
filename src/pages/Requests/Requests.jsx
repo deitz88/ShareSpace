@@ -3,19 +3,22 @@ import { Link, useHistory } from 'react-router-dom'
 import SectionLabel from '../../components/SectionLabel/SectionLabel'
 import NavBar from '../../components/NavBar/NavBar'
 import UserCard from '../../components/UserCard/UserCard'
-import { Card, Grid, Header } from 'semantic-ui-react'
+import { Card, Grid, Header, Loader } from 'semantic-ui-react'
 import friendService from '../../utils/friendService'
+import './Requests.css'
 
 export default function Requests({user}){
     const [requests, setRequests] = useState('')
     const [error, setError] = useState('')
-    let profileInfo =[]
+    const [requestArray, setRequestArray]=useState([])
+    const [loading, setLoading] = useState(true);
     async function getRequests() {
         try {
           const data = await friendService.getRequests();
-          // setLoading(() => false);
+          console.log(data)
           // setPosts(() => [...data.posts]);
-            profileInfo.push(data)
+          setRequestArray(data)
+          setLoading(() => false);
         } catch (err) {
           console.log(err);
           setError("error pulling requests");
@@ -31,28 +34,40 @@ export default function Requests({user}){
         getRequests();
       }, []);
 
-      console.log(profileInfo, '<-----------------')
+      if (loading) {
+        return (
+          <Grid
+            textAlign="center"
+            style={{ height: "100vh" }}
+            verticalAlign="middle"
+          >
+            <Grid.Column style={{ maxWidth: 450 }}>
+              <Loader size="large" active>
+                Loading
+              </Loader>
+            </Grid.Column>
+          </Grid>
+        );
+      }
+      console.log(requestArray[0].newObj.username, '<-----------------')
 
     return(
         <>
         <NavBar user={user} change={change}/>
         <Grid
             textAlign="center"
-            style={{ height: "15vh" }}
+            style={{ height: "45vh" }}
             verticalAlign="middle"
             >
             <Grid.Column style={{ maxWidth: 450 }}>
                 <Card centered className="profileCard">
-                <h1 onLoad={handleRequests} >Pending Requests</h1>
+                <h1 className='requestsHeader' onLoad={handleRequests} >Pending Requests</h1>
                 </Card>
-            </Grid.Column>
-            {/* <Grid
-            textAlign="center"
-            style={{ height: "15vh" }}
-            verticalAlign="middle"
-            > */}
-            {/* <Grid.Column style={{ maxWidth: 450 }}> */}
-            {/* {profileInfo.map((user) => {
+        
+    
+          
+            
+            {requestArray.map((user) => {
                 return (
           <UserCard
             username={user.newObj.username}
@@ -60,9 +75,9 @@ export default function Requests({user}){
             key={user.newObj._id}
           />
                 )
-            })
-        }; */}
-        {/* </Grid.Column> */}
+            })}
+            </Grid.Column>
+       
         {/* </Grid> */}
         </Grid>
         </>

@@ -1,0 +1,26 @@
+img.ui.avatar.image{
+    height: 75px;
+    width: 75px;
+}
+.userCardText{
+    color: red;
+}
+
+div.content{
+    color:  rgb(112, 112, 112);
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    padding: auto;
+}
+h1{
+}
+
+#acceptButton{
+    color: white;
+    background-color: rgba(39, 160, 85, 0.822);
+}
+
+#acceptButton:hover{
+    opacity: .5
+}
