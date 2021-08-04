@@ -5,7 +5,7 @@ import userService from "../../utils/userService"
 import { useParams, Link } from "react-router-dom";
 import { Image, Grid, Icon, Card, Header, Loader } from "semantic-ui-react"
 import NavBar from "../../components/NavBar/NavBar";
-import ProfileContent from "../../components/ProfileContent/ProfileContent";
+import ProfileContent from "../../components/ProfileContent/PhotoPostContent";
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import SectionLabel from '../../components/SectionLabel/SectionLabel'
 
@@ -17,6 +17,7 @@ export default function ProfilePage({user, handleLogout, setUser}){
     const [error, setError] = useState("");
     const [changeProfile, setChangeProfile] = useState({})
     const [update, setUpdate] = useState('word')
+    const [posts, setPosts] = useState([])
   
     const { username } = useParams();
 
@@ -29,6 +30,7 @@ export default function ProfilePage({user, handleLogout, setUser}){
       const data = await userService.getProfile(username);
       // setPosts(() => [...data.posts]);
       setProfileUser(() => data.user);
+      setPosts(() => data.posts)
       setLoading(false)
     } catch (err) {
       console.log(err);
@@ -79,7 +81,7 @@ export default function ProfilePage({user, handleLogout, setUser}){
             <ProfileCard userRequest={profileUser} loggedInUser={user} setUser={setUser}/>
             <Card centered className="profileCard">
                 <SectionLabel />
-                <ProfileContent />
+                <ProfileContent user={user} posts={posts}/>
             </Card>
         </Grid.Column>
         </Grid>

@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Post = require('../models/post');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 const { v4: uuidv4 } = require('uuid');
@@ -15,11 +16,11 @@ module.exports = {
 };
 
 async function profile(req, res){
-  console.log('hitting profile func', req.params)
   try {
     const user = await User.findOne({username: req.params.username})
+    const posts = await Post.find({user: user._id})
     if(!user) return res.status(404).json({message: 'Parameters not found'})
-    return res.status(200).json({user: user})
+    return res.status(200).json({posts: posts, user: user})
   } catch(err){
     console.log(err)
     res.json({err})

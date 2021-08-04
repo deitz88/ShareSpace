@@ -13,7 +13,6 @@ module.exports = {
   };
 
   function create(req, res){
-    // console.log(req.file, req.body, "this is create method", req.user);
     try {
       const filePath = `${uuidv4()}/${req.file.originalname}`;
       const params = {
@@ -21,12 +20,10 @@ module.exports = {
         Key: filePath,
         Body: req.file.buffer,
       };
-      console.log(params, 'these are the params')
       s3.upload(params, async function (err, data) {
         if (err) {
          return res.json({ data: err });
         }
-         console.log(data, '<------ this is the data from the post')
         const post = await Post.create({comment: req.body.comment, user: req.user, photoUrl: data.Location});
         const populatedPost = await post.populate("user").execPopulate();
         return res.status(201).json({ post: populatedPost });
