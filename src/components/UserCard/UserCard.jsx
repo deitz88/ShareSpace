@@ -1,9 +1,20 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Image, Grid, Button } from 'semantic-ui-react'
+import { Card, Image, Grid, Button, Input } from 'semantic-ui-react'
 import './UserCard.css'
+import friendService from '../../utils/friendService'
 
 export default function UserCard({username, photo}){
+console.log(username)
+    function handleDeny(e){
+        e.preventDefault()
+        friendService.denyRequest(username)
+    }
+    function handleAccept(e){
+        e.preventDefault()
+        friendService.approveRequest(username)
+    }
+
     return(
         <>
         <br></br>
@@ -34,27 +45,28 @@ export default function UserCard({username, photo}){
             <br /><br />
             <div>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;
-            <Button
-            type="submit"
+            &nbsp; &nbsp; &nbsp;
+            <input
+            type="button"
+            value='Accept'
             className="btn"
             id="acceptButton"
-            
+            onClick={handleAccept}
            >
-                
-                Accept
-            </Button>
+            </input>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <Button
-            type="submit"
+            &nbsp;
+            
+            <input
+            type="button"
+            value='Deny'
             className="btn"
-            id="signupButton"
-            floated='right'
-            textAlign='right'>
-                Deny
-            </Button>
+            id="denyButton"
+            // floated='right'
+            // textAlign='right'
+            onClick={handleDeny}>
+            </input>
             </div>
         </Grid.Row>
     </Card.Group>

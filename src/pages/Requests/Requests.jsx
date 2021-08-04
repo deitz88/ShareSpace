@@ -49,7 +49,6 @@ export default function Requests({user}){
           </Grid>
         );
       }
-      console.log(requestArray[0].newObj.username, '<-----------------')
 
     return(
         <>

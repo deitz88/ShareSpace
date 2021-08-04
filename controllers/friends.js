@@ -4,7 +4,10 @@ const jwt = require('jsonwebtoken');
 module.exports = {
     sendRequest,
     friendList,
-    getRequests
+    getRequests, 
+    denyRequest,
+    acceptRequest,
+    getFriends
   };
 
 async function sendRequest(req, res){
@@ -27,11 +30,9 @@ async function sendRequest(req, res){
 }
 
 async function getRequests(req, res){
-    console.log('hitting controller')  
     try { 
         const user = await User.findById(req.user._id)
         const requests = [] 
-        // const requests = await user.friendRequests.populate("id").execPopulate();
         for(let i=0; i<user.friendRequests.length; i++){
            let newObj = await User.findById(user.friendRequests[i])
            requests.push({newObj})
@@ -39,12 +40,54 @@ async function getRequests(req, res){
         res.status(200).json(requests);
       } catch (err) {}
     }
+    async function getFriends(req, res){
+      console.log('hitting controller')  
+      try { 
+          const user = await User.findById(req.user._id)
+          const friendsArray = [] 
+          for(let i=0; i<user.friends.length; i++){
+             let newObj = await User.findById(user.friends[i])
+             friendsArray.push({newObj})
+          }
+          res.status(200).json(friendsArray);
+        } catch (err) {}
+      } 
+
+  function friendList(req, res){
+    console.log(req.params)
+  }
+
+  async function denyRequest(req, res){
+    try { 
+        const user = await User.findById(req.user._id)
+        const denyRequestedUser =
+        await User.findOne({username: req.params.username});
+        let index = user.friendRequests.indexOf(denyRequestedUser.id);
+        user.friendRequests.splice(index, 1);
+        user.save();
+        res.status(200).json(user.friendRequests);
+      } catch {}
+        
+    }
+    async function acceptRequest(req, res){
+
+    try { 
+        const user = await User.findById(req.user._id)
+        const approvedFriend =
+        await User.findOne({username: req.params.username})
+        console.log(approvedFriend.id);
+        user.friends.push(approvedFriend.id);
+        let index = user.friendRequests.indexOf(approvedFriend.id);
+        user.friendRequests.splice(index, 1);
+        user.save();
+        res.status(200).json(user.friendRequests);
+      } catch {}
+        
+    }
 
   function friendList(req, res){
     console.log(req.body)
   }
-
-
 
 
 

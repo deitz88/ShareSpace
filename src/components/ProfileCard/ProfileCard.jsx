@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
-import { Card, Image, Icon, Segment} from 'semantic-ui-react'
+import { Card, Image, Icon, Grid, Loader} from 'semantic-ui-react'
 import './ProfileCard.css';
 import NonFriendCard from './NonFriendCard';
 import RequestPendingCard from './RequestPendingCard'
@@ -9,20 +9,43 @@ import friendService from '../../utils/friendService';
 
 
 export default function ProfileCard({userRequest, loggedInUser, request, change}){
-const click = 'click'
-function change(click){
-    return click
-}
-
-function request(userRequest){
-    friendService.friendRequest(userRequest)
-}
+    const click = 'click'
+    const [loading, setLoading] = useState(true)
+    const [profile, setProfile] = useState('')
+    function change(click){
+        return click
+    }
+    
+    function request(userRequest){
+         friendService.friendRequest(userRequest)
+         setLoading(() => false);
+       
+    }
+    
+    // console.log(userRequest.friendRequests.includes(loggedInUser._id))
+    // console.log(loggedInUser._id)
+    // if (loading) {
+    //     return (
+    //       <Grid
+    //         textAlign="center"
+    //         style={{ height: "100vh" }}
+    //         verticalAlign="middle"
+    //       >
+    //         <Grid.Column style={{ maxWidth: 450 }}>
+    //           <Loader size="large" active>
+    //             Loading
+    //           </Loader>
+    //         </Grid.Column>
+    //       </Grid>
+    //     );
+    //   }
+  
 
 if(userRequest._id === loggedInUser._id){
     return(
         <Card centered className="profileCard">
         <Card.Group className='headerCard'>
-            <Card fluid header={userRequest.username}/>
+            <Card fluid header={userRequest.username}/> 
             <Link to='/update'>
                 <Icon  
                 className='settingIcon' 
@@ -52,12 +75,12 @@ if(userRequest._id === loggedInUser._id){
         </Card.Content>
     </Card>
     )
-} else if (loggedInUser._id.includes(userRequest.friendRequests)){
+} else if (userRequest.friendRequests.includes(loggedInUser._id)){
     return(
         
         <Card centered className="profileCard">
-        <NonFriendCard loggedInUser={loggedInUser} userRequest={userRequest} request={request}/>
-        {/* <RequestPendingCard userRequest={userRequest}/> */}
+        {/* <NonFriendCard loggedInUser={loggedInUser} userRequest={userRequest} request={request}/> */}
+        <RequestPendingCard userRequest={userRequest}/>
         <Image src={userRequest.photoUrl} wrapped ui={false} />
         <Card.Content>
             <Card.Header textAlign="center">
@@ -79,7 +102,7 @@ if(userRequest._id === loggedInUser._id){
         </Card.Content>
     </Card>
     )
-} else if(!loggedInUser._id.includes(userRequest.friendRequests)) {
+} else if(!userRequest.friendRequests.includes(loggedInUser._id)) {
     return(
         
         <Card centered className="profileCard">
