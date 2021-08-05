@@ -39,8 +39,10 @@ export default function ProfilePage({user, handleLogout, setUser}){
   }
 
   useEffect(() => {
-    getProfile();
+  
+  getProfile()
   }, []);
+
   if (loading) {
     return (
       <Grid

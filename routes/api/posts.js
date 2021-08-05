@@ -6,5 +6,6 @@ const upload = multer();
 
 
 router.post('/create', upload.single('photo'), postsCtrl.create);
+router.get('/show/:id', postsCtrl.show)
 
 module.exports = router;

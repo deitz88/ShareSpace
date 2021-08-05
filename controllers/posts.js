@@ -10,8 +10,11 @@ const BUCKET_NAME = process.env.BUCKET_NAME;
 
 module.exports = {
     create,
+    show
   };
-
+  function show(req, res){
+      console.log(req.params)
+  }
   function create(req, res){
     try {
       const filePath = `${uuidv4()}/${req.file.originalname}`;

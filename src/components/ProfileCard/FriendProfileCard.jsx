@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom"
-import { Card, Image, Icon, Segment} from 'semantic-ui-react'
+import { Card, Icon} from 'semantic-ui-react'
 import './ProfileCard.css';
 
 
@@ -18,8 +18,7 @@ export default function FriendProfileCard({userRequest, request}){
    
         <Icon  
         className='settingIcon' 
-        // name='smile outline'
-        name="heart outline"
+        name='smile outline'
         size="large"
         onClick={clickHandler}
             /> 

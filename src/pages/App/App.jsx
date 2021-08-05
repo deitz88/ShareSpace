@@ -12,6 +12,7 @@ import UpdateProfile from '../UpdateProfile/UpdateProfile';
 import userService from '../../utils/userService'
 import tokenService from '../../utils/tokenService';
 import NavBar from '../../components/NavBar/NavBar';
+import PhotoPostShow from '../PhotoPostShow/PhotoPostShow'
 
 
 
@@ -64,6 +65,9 @@ function App() {
               </Route>
               <Route exact path="/addpost">
                 <AddPost user={user} handleLogout={handleLogout} setUser={setUser}/>
+              </Route>
+              <Route path="/show/:id">
+                <PhotoPostShow user={user} handleLogout={handleLogout} setUser={setUser}/>
               </Route>
               <Route path="/:username">
                 <ProfilePage user={user} handleLogout={handleLogout} setUser={setUser}/>

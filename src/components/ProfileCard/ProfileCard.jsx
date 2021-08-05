@@ -80,7 +80,6 @@ if(userRequest._id === loggedInUser._id){
     return(
         
         <Card centered className="profileCard">
-        {/* <NonFriendCard loggedInUser={loggedInUser} userRequest={userRequest} request={request}/> */}
         <RequestPendingCard userRequest={userRequest}/>
         <Image src={userRequest.photoUrl} wrapped ui={false} />
         <Card.Content>
