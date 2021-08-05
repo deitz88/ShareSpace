@@ -5,14 +5,33 @@ import './PhotoPostContent.css'
 
 // const src='https://react.semantic-ui.com/images/wireframe/white-image.png'
 
-export default function PhotoPostContent({user, posts}){
-   
+export default function PhotoPostContent({user, profileUser, posts}){
     if(!posts.length){
         return(
+            <>
+            <br></br>
+            <br></br>
+        <Card.Group className='headerCard'>
+                <Card fluid header={
+                    user._id === profileUser._id 
+                    ?'Your Posts'
+                    :profileUser.username +"'s posts"}/>
+        </Card.Group>
+        <br>
+        </br>
          <h4 className='noPosts'>This user hasnt uploaded anyting yet!</h4>
+         </>
         )
     } else {
     return(
+        <>
+        <br></br>
+        <br></br>
+    <Card.Group className='headerCard'>
+            <Card fluid header='Your Posts'/>
+    </Card.Group>
+    <br>
+    </br>
         <Card.Group itemsPerRow={3}>
             {posts.map((post) => {
                 return (
@@ -22,6 +41,7 @@ export default function PhotoPostContent({user, posts}){
                 )}
                 )}
             </Card.Group>
+            </>
     )
 
     }

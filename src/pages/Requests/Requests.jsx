@@ -10,7 +10,7 @@ export default function Requests({user, setUser, handleLogout}){
         <>
         <Grid
             textAlign="center"
-            style={{ height: "45vh" }}
+            style={{ height: "15vh" }}
             verticalAlign="middle"
             >
             <Grid.Column style={{ maxWidth: 450 }}>

@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom"
 import './LoginPage.css';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'
 import userService from '../../utils/userService';
-import { Grid, Form, Header, Button, Message, Image, Segment } from "semantic-ui-react"
+import { Grid, Form, Header, Button, Message, Image, Segment, Card } from "semantic-ui-react"
 import MovieLogo from "../../components/MovieLogo/MovieLogo"
 
 
@@ -45,8 +45,9 @@ export default function LoginPage(props){
             verticalAlign="middle"
           >
             <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as="h2" color="teal" textAlign="center">
-                <Image className="signupLogo" src="https://i.imgur.com/zWf0THW.png" /> <span className="signupText">Login to Share Space </span>
+              <Header as="h2" textAlign="center">
+                <Image className="signupLogo" src="https://i.imgur.com/zWf0THW.png" /> 
+                <span className="signupText">Login to Share Space </span>
               </Header>
               <Form autoComplete="off" onSubmit={handleSubmit}>
                 <Segment stacked>

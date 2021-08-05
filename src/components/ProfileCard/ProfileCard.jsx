@@ -10,38 +10,12 @@ import friendService from '../../utils/friendService';
 
 
 export default function ProfileCard({userRequest, loggedInUser, setUser, setProfileUser}){
-    const click = 'click'
-    const [loading, setLoading] = useState(true)
-    const [profile, setProfile] = useState('')
-    function change(click){
-        return click
-    }
     
     async function request(userRequest){
        const updatedUser = await friendService.friendRequest(userRequest)
-        //  setLoading(() => false);
          setProfileUser(updatedUser)  
     }
-    
-    // console.log(userRequest.friendRequests.includes(loggedInUser._id))
-    // console.log(loggedInUser._id)
-    // if (loading) {
-    //     return (
-    //       <Grid
-    //         textAlign="center"
-    //         style={{ height: "100vh" }}
-    //         verticalAlign="middle"
-    //       >
-    //         <Grid.Column style={{ maxWidth: 450 }}>
-    //           <Loader size="large" active>
-    //             Loading
-    //           </Loader>
-    //         </Grid.Column>
-    //       </Grid>
-    //     );
-    //   }
-  
-        console.log(userRequest.friends.includes(loggedInUser._id))
+   
 if(userRequest._id === loggedInUser._id){
     return(
         <Card centered className="profileCard">
@@ -68,10 +42,10 @@ if(userRequest._id === loggedInUser._id){
                     </Segment> */}
                 </Card.Description>
         </Card.Content>
-        <Card.Content extra>
+        <Card.Content floated='right' extra>
         <a>
-            <Icon name='user' />
-            22 Friends
+            <Icon right name='user' />
+            {userRequest.friends.length ? userRequest.friends.length : 0}
         </a>
         </Card.Content>
     </Card>
@@ -97,7 +71,7 @@ if(userRequest._id === loggedInUser._id){
         <Card.Content extra>
         <a>
             <Icon name='user' />
-            22 Friends
+            {userRequest.friends.length ? userRequest.friends.length : 0}
         </a>
         </Card.Content>
     </Card>
@@ -127,7 +101,7 @@ if(userRequest._id === loggedInUser._id){
         <Card.Content extra>
         <a>
             <Icon name='user' />
-            22 Friends
+            {userRequest.friends.length ? userRequest.friends.length : 0}
         </a>
         </Card.Content>
     </Card>

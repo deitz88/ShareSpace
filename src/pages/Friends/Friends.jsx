@@ -13,7 +13,7 @@ export default function Friends({user, setUser, handleLogout}){
        
         <Grid
             textAlign="center"
-            style={{ height: "45vh" }}
+            style={{ height: "26vh" }}
             verticalAlign="middle"
             >
             <Grid.Column style={{ maxWidth: 450 }}>

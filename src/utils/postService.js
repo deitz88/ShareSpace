@@ -15,8 +15,16 @@ const BASE_URL = '/api/posts/';
     headers: {'Authorization': 'Bearer ' + tokenService.getToken()}
   }).then(res => res.json());
 }
+function getPost(id){
+    return fetch(BASE_URL + 'show/'+ id, {
+        method: 'GET',
+        headers: {'Authorization': 'Bearer ' + tokenService.getToken()}
+      }).then(res => res.json());
+    }
+
 
 export default{
     create, 
-    getAll
+    getAll, 
+    getPost
 }

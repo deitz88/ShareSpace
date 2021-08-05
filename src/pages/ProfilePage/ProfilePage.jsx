@@ -5,7 +5,7 @@ import userService from "../../utils/userService"
 import { useParams, Link } from "react-router-dom";
 import { Image, Grid, Icon, Card, Header, Loader } from "semantic-ui-react"
 import NavBar from "../../components/NavBar/NavBar";
-import ProfileContent from "../../components/PhotoPostContent/PhotoPostContent";
+import PhotoPostContent from "../../components/PhotoPostContent/PhotoPostContent";
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import SectionLabel from '../../components/SectionLabel/SectionLabel'
 
@@ -86,8 +86,7 @@ export default function ProfilePage({user, handleLogout, setUser}){
               setProfileUser={setProfileUser}
             />
             <Card centered className="profileCard">
-                <SectionLabel />
-                <ProfileContent user={user} posts={posts}/>
+                <PhotoPostContent user={user} profileUser={profileUser} posts={posts}/>
             </Card>
         </Grid.Column>
         </Grid>

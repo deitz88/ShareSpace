@@ -12,8 +12,10 @@ module.exports = {
     create,
     show
   };
-  function show(req, res){
-      console.log(req.params)
+  async function show(req, res){
+      const post = await Post.findById(req.params.id)
+      const postUser = await User.findById(post.user)
+      return res.json({post: post, postUser:postUser});
   }
   function create(req, res){
     try {
