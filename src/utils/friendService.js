@@ -3,8 +3,6 @@ import tokenService from './tokenService';
 const BASE_URL = '/api/friends/';
 
 function friendRequest(userRequest){
-    console.log(BASE_URL + `request/${userRequest._id}`)
-    // console.log(BASE_URL + 'request')
     return fetch(BASE_URL + `request/${userRequest._id}`, {
           method: 'GET',
           headers: {
@@ -26,7 +24,7 @@ function friendRequest(userRequest){
     }).then(res => {
         if(res.ok) return res.json()
       new Error('Error denying request');
-    }).then(data => data)
+    }).then(({token}) => tokenService.setToken(token));
 }
 
 function approveRequest(username){
@@ -38,7 +36,7 @@ function approveRequest(username){
      }).then(res => {
          if(res.ok) return res.json()
        new Error('Error accepting friend');
-     }).then(data => data)
+     }).then(({token}) => tokenService.setToken(token));
  }
 
  function removeFriend(username){
@@ -50,8 +48,9 @@ function approveRequest(username){
     }).then(res => {
         if(res.ok) return res.json()
       new Error('Error removing friend');
-    }).then(data => data)
+    }).then(({token}) => tokenService.setToken(token));
 }
+
 
 
 export default {

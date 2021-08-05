@@ -4,7 +4,7 @@ import UserCard from '../../components/UserCard/UserCard'
 import { Card, Grid, Header, Loader } from 'semantic-ui-react'
 import './Requests.css'
 
-export default function Requests({user, setUser, handleLogout}){
+export default function Requests({user, handleSignUpOrLogin, handleLogout}){
     
     return(
         <>
@@ -24,7 +24,7 @@ export default function Requests({user, setUser, handleLogout}){
             username={request.username}
             photo={request.photoUrl}
             key={request._id}
-            setUser={setUser}
+            handleSignUpOrLogin={handleSignUpOrLogin}
             user={user}
           />
                 )

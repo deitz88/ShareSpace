@@ -3,32 +3,23 @@ import { Router, useHistory } from "react-router-dom"
 import './ProfilePage.css';
 import userService from "../../utils/userService"
 import { useParams, Link } from "react-router-dom";
-import { Image, Grid, Icon, Card, Header, Loader } from "semantic-ui-react"
-import NavBar from "../../components/NavBar/NavBar";
+import {  Grid, Card, Header, Loader } from "semantic-ui-react"
 import PhotoPostContent from "../../components/PhotoPostContent/PhotoPostContent";
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
-import SectionLabel from '../../components/SectionLabel/SectionLabel'
+import friendService from '../../utils/friendService';
 
-export default function ProfilePage({user, handleLogout, setUser}){
-  // console.log(user)
-    // const [posts, setPosts] = useState([]);
+
+export default function ProfilePage({user, handleSignUpOrLogin}){
     const [profileUser, setProfileUser] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
-    const [changeProfile, setChangeProfile] = useState({})
-    const [update, setUpdate] = useState('word')
     const [posts, setPosts] = useState([])
   
     const { username } = useParams();
 
-    function handleProfile(){
-      setChangeProfile(() => getProfile())
-    }
-
   async function getProfile() {
     try {
       const data = await userService.getProfile(username);
-      // setPosts(() => [...data.posts]);
       setProfileUser(() => data.user);
       setPosts(() => data.posts)
       setLoading(false)
@@ -37,6 +28,11 @@ export default function ProfilePage({user, handleLogout, setUser}){
       setError("The Profile You Are Looking For Does Not Exist - Please Check Spelling And/Or Casing");
     }
   }
+  async function requestFriend(userRequest){
+      const updatedUser = await friendService.friendRequest(userRequest)
+      setProfileUser(updatedUser)
+        
+ }
 
   useEffect(() => {
   
@@ -58,14 +54,13 @@ export default function ProfilePage({user, handleLogout, setUser}){
       </Grid>
     );
   }
-  // if (error) {
-  //   return (
-  //     <>
-  //       {/* <NavBar user={user}/> */}
-  //       <h1>{error}</h1>
-  //     </>
-  //   );
-  // }
+  if (error) {
+    return (
+      <>
+        <h1>{error}</h1>
+      </>
+    );
+  }
   
     return(
         <>
@@ -78,12 +73,10 @@ export default function ProfilePage({user, handleLogout, setUser}){
             <Header floated="right">
             {/* <Link to="/main"><Icon name="setting" floated="right" size='large'></Icon></Link> */}
             </Header>
-            {/* <NavBar/> */}
             <ProfileCard 
               userRequest={profileUser} 
               loggedInUser={user} 
-              setUser={setUser}
-              setProfileUser={setProfileUser}
+              requestFriend={requestFriend}
             />
             <Card centered className="profileCard">
                 <PhotoPostContent user={user} profileUser={profileUser} posts={posts}/>

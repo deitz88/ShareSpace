@@ -5,17 +5,12 @@ import './ProfileCard.css';
 import NonFriendCard from './NonFriendCard';
 import FriendProfileCard from './FriendProfileCard';
 import RequestPendingCard from './RequestPendingCard'
-import friendService from '../../utils/friendService';
 
 
 
-export default function ProfileCard({userRequest, loggedInUser, setUser, setProfileUser}){
-    
-    async function request(userRequest){
-       const updatedUser = await friendService.friendRequest(userRequest)
-         setProfileUser(updatedUser)  
-    }
-   
+export default function ProfileCard({userRequest, loggedInUser, requestFriend}){
+    console.log(userRequest._id)
+   console.log (loggedInUser.friendRequests)
 if(userRequest._id === loggedInUser._id){
     return(
         <Card centered className="profileCard">
@@ -42,15 +37,15 @@ if(userRequest._id === loggedInUser._id){
                     </Segment> */}
                 </Card.Description>
         </Card.Content>
-        <Card.Content floated='right' extra>
+        <Card.Content extra>
         <a>
-            <Icon right name='user' />
+            <Icon name='user' />
             {userRequest.friends.length ? userRequest.friends.length : 0}
         </a>
         </Card.Content>
     </Card>
     )
-} else if (userRequest.friendRequests.includes(loggedInUser._id)){
+} else if (userRequest.friendRequests.includes(loggedInUser._id) || loggedInUser.friendRequests.includes(userRequest._id)){
     return(
         
         <Card centered className="profileCard">
@@ -83,7 +78,6 @@ if(userRequest._id === loggedInUser._id){
         <FriendProfileCard 
             loggedInUser={loggedInUser} 
             userRequest={userRequest} 
-            request={request}
         />
         <Image src={userRequest.photoUrl} wrapped ui={false} />
         <Card.Content>
@@ -111,9 +105,8 @@ if(userRequest._id === loggedInUser._id){
         
         <Card centered className="profileCard">
         <NonFriendCard 
-            loggedInUser={loggedInUser} 
             userRequest={userRequest} 
-            request={request}
+            requestFriend={requestFriend}
         />
         <Image src={userRequest.photoUrl} wrapped ui={false} />
         <Card.Content>

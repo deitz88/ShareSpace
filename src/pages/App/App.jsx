@@ -58,19 +58,19 @@ function App() {
                   Home PAGE COMPONENT WOULD GO HEREE
               </Route>
               <Route exact path="/friends">
-                <Friends user={user} handleLogout={handleLogout} setUser={setUser}/>
+                <Friends user={user} handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin}/>
               </Route>
               <Route exact path="/requests">
-                <Requests user={user} handleLogout={handleLogout} setUser={setUser}/>
+                <Requests user={user} handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin}/>
               </Route>
               <Route exact path="/addpost">
-                <AddPost user={user} handleLogout={handleLogout} setUser={setUser}/>
+                <AddPost user={user} handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin}/>
               </Route>
               <Route path="/show/:id">
-                <PhotoPostShow user={user} handleLogout={handleLogout} setUser={setUser}/>
+                <PhotoPostShow user={user} handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin}/>
               </Route>
               <Route path="/:username">
-                <ProfilePage user={user} handleLogout={handleLogout} setUser={setUser}/>
+                <ProfilePage user={user} handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin}/>
               </Route>
 
             </Switch>

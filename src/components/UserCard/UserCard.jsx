@@ -4,19 +4,19 @@ import { Card, Image, Grid, Button, Input } from 'semantic-ui-react'
 import './UserCard.css'
 import friendService from '../../utils/friendService'
 
-export default function UserCard({username, photo, setUser, user}){
+export default function UserCard({username, photo, handleSignUpOrLogin, user}){
 // console.log(username)
 
     async function handleDeny(e){
         e.preventDefault()
-        const updatedUser = await friendService.denyRequest(username)
-        setUser(updatedUser)
+        await friendService.denyRequest(username)
+        handleSignUpOrLogin()
     }
 
     async function handleAccept(e){
         e.preventDefault()
-        const updatedUser = await friendService.approveRequest(username)
-        setUser(updatedUser)
+        await friendService.approveRequest(username)
+        handleSignUpOrLogin()
     }
 
     return(
@@ -25,7 +25,7 @@ export default function UserCard({username, photo, setUser, user}){
         <br></br>
     <Card.Group className='headerCard'>
     <Card.Content text='test'>{username}
-                <Card.Header centered textAlign="center">
+                <Card.Header >
                 </Card.Header>
                 <Link to={username}>
                     <Image 

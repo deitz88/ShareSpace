@@ -1,18 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Image, Grid } from 'semantic-ui-react'
 import './FriendCard.css'
 import friendService from '../../utils/friendService'
 
-export default function FriendCard({user, username, photo, setUser}){
+export default function FriendCard({username, photo, handleSignUpOrLogin}){
 
     async function handleRemove(e){
         e.preventDefault()
         const updatedUser = await friendService.removeFriend(username)
-        setUser(updatedUser)
+        console.log(updatedUser)
+        handleSignUpOrLogin()
     }
-
-
+    useEffect(() => {
+        
+        }, []);
     return(
         <>
         <br></br>

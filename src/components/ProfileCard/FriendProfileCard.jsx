@@ -10,7 +10,7 @@ export default function FriendProfileCard({userRequest, request}){
 
     return (
     <Card.Group className='headerCardOther'>
-    <Card fluid textAlign='left' header={userRequest.username}/>
+    <Card fluid header={userRequest.username}/>
         <div className='iconTextNon'>
             <h5 className='firstRowText'>You're</h5>
             <h5 className='secondRowText'>Friends!</h5>

@@ -5,12 +5,12 @@ import './ProfileCard.css';
 
 
 
-export default function NonFriendCard({userRequest, request}){
-    const clickHandler = () => request(userRequest)
+export default function NonFriendCard({userRequest, requestFriend}){
+    const clickHandler = () => requestFriend(userRequest)
 
     return (
     <Card.Group className='headerCardOther'>
-    <Card fluid textAlign='left' header={userRequest.username}/>
+    <Card fluid header={userRequest.username}/>
         <div className='iconTextNon'>
             <h5 className='firstRowText'>Add</h5>
             <h5 className='secondRowText'>Friend</h5>

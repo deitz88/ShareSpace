@@ -34,10 +34,8 @@ export default function PhotoPostContent({user, profileUser, posts}){
     </br>
         <Card.Group itemsPerRow={3}>
             {posts.map((post) => {
-                return (
-                // <Link to={'show/' + post._id}>
-                <Card raised image={post.photoUrl} key={post._id} href={'show/' + post._id}/>
-                // </Link>
+                return ( 
+                    <Card as={Link} image={post.photoUrl} key={post._id} to={'show/' + post._id}/>
                 )}
                 )}
             </Card.Group>
