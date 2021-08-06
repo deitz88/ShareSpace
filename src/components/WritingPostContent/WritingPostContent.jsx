@@ -37,7 +37,7 @@ export default function WritingPostContent({user, profileUser, writings}){
             {writings.map((writing) => {
                 return ( 
                     <Card className="titleCard" as={Link} key={writing._id} to={'writing/' + writing._id}>
-                        <Card.Content left>
+                        <Card.Content>
                     <h4>{writing.title}</h4>
                     </Card.Content>
                     </Card>

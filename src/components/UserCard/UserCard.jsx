@@ -6,9 +6,7 @@ import friendService from '../../utils/friendService'
 
 export default function UserCard({username, user, setUserAccept, photo, handleSignUpOrLogin }){
 
-    console.log(user, 'before click')
     const [test, setTest] = useState({})
-    console.log(test, 'after click')
     async function handleDeny(e){
         e.preventDefault()
         await friendService.denyRequest(username)

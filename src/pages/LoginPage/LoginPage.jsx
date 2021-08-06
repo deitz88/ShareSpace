@@ -27,7 +27,7 @@ export default function LoginPage(props){
         try {
           await userService.login(formInput);
           props.handleSignUpOrLogin();
-          history.push("/main");
+          history.push("/mainphoto");
         } catch (err) {
           setError(err.message);
         }

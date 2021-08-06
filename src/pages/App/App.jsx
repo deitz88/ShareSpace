@@ -4,7 +4,7 @@ import './App.css';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import ProfilePage from '../ProfilePage/ProfilePage';
-import Main from '../Main/Main';
+import MainPhoto from '../MainPhoto/MainPhoto';
 import Friends from '../Friends/Friends';
 import Requests from '../Requests/Requests';
 import AddPost from '../AddPost/AddPost'
@@ -54,8 +54,8 @@ function App() {
             <Route exact path="/update">
               <UpdateProfile user={user} handleLogout={handleLogout}/>
             </Route>
-            <Route exact path="/main">
-              <Main user={user} handleLogout={handleLogout}/>
+            <Route exact path="/mainphoto">
+              <MainPhoto user={user} handleLogout={handleLogout}/>
             </Route>
               <Route exact path="/">
                   Home PAGE COMPONENT WOULD GO HEREE

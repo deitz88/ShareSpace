@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
+const { useRef } = require("react");
 const SECRET = process.env.SECRET;
 
 module.exports = {
@@ -28,8 +29,9 @@ async function denyRequest(req, res) {
     });
     let index = user.friendRequests.indexOf(denyRequestedUser.id);
     user.friendRequests.splice(index, 1);
+    const populatedUser = await user.populate('friends friendRequests').execPopulate()
     await user.save();
-    const token = createJWT(user); // user is the payload so this is the object in our jwt
+    const token = createJWT(populatedUser); // user is the payload so this is the object in our jwt
     res.json({ token });
   } catch {}
 }
@@ -45,10 +47,10 @@ async function removeFriend(req, res) {
 
     user.friends.splice(index, 1);
     removedUser.friends.splice(index2, 1);
-
+    const populatedUser = await user.populate('friends friendRequests').execPopulate()
     await user.save();
     await removedUser.save();
-    const token = createJWT(user); // user is the payload so this is the object in our jwt
+    const token = createJWT(populatedUser); // user is the payload so this is the object in our jwt
     res.json({ token });
   } catch {}
 }
@@ -59,14 +61,15 @@ async function acceptRequest(req, res) {
     const approvedFriend = await User.findOne({
       username: req.params.username,
     });
-    user.friends.push(approvedFriend.id);
-    approvedFriend.friends.push(user.id);
+     user.friends.push(approvedFriend.id);
+     approvedFriend.friends.push(user.id);
     let index = user.friendRequests.indexOf(approvedFriend.id);
-    user.friendRequests.splice(index, 1);
-    // await user.save();
-    // await approvedFriend.save()
+    await user.friendRequests.splice(index, 1);
+    const populatedUser = await user.populate('friends friendRequests').execPopulate()
+    await user.save();
+    await approvedFriend.save()
     
-    const token = createJWT(user);
+    const token = createJWT(populatedUser);
     res.json({token});
   } catch {}
 }

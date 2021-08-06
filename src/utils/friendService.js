@@ -10,7 +10,6 @@ function friendRequest(userRequest){
           },
       }).then(res => {
           if(res.ok) return res.json()
-          console.log(res.body)
         new Error('Error adding friend');
       }).then(data => data)
   }

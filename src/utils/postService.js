@@ -21,8 +21,8 @@ const BASE_URL = '/api/posts/';
     }).then(res => res.json());
   }
 
- function getAll() {
-  return fetch(BASE_URL, {
+ function getAllPhotoPosts() {
+  return fetch(BASE_URL + 'mainphoto/', {
     headers: {'Authorization': 'Bearer ' + tokenService.getToken()}
   }).then(res => res.json());
 }
@@ -50,22 +50,27 @@ function deleteWriting(id){
     headers: {'Authorization': 'Bearer ' + tokenService.getToken()}
   }).then(res => res.json());
 }
-function updateWriting(writing, id) {
-  return fetch(BASE_URL + 'updatewriting/' + id, {
+function updateWriting(writing) {
+  console.log(writing.id)
+  return fetch(BASE_URL + 'updatewriting/' + writing.id, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
       'Authorization': 'Bearer ' + tokenService.getToken()
   },
-    body: JSON.stringify(writing, id),
-  }).then(res => res.json());
+    body: JSON.stringify(writing),
+  }).then(res => {
+    if(res.ok) return res.json()
+  new Error('Error adding friend');
+}).then(data => data)
 }
+
 
 
 export default{
     create,
     createWriting, 
-    getAll, 
+    getAllPhotoPosts, 
     getPost,
     deleteOne,
     deleteWriting,

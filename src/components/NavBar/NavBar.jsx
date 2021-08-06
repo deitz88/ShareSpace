@@ -7,7 +7,7 @@ export default function NavBar({ user, handleLogout }) {
   return user ? (
     <Segment clearing>
       <Header as="h2" floated="right">
-        <Link to="/main">
+        <Link to="/mainphoto">
           <Icon name="home"></Icon>
         </Link>
         <Link to="/notifications">
