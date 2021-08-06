@@ -12,8 +12,14 @@ import {
 } from "semantic-ui-react";
 import "./PhotoPostCard.css";
 
-export default function PhotoPostCard({ post, user }) {
+export default function PhotoPostCard({ post, user, addLike, removeLike }) {
     const history=useHistory()
+    const link = Link
+    const likes = post.likes
+    const liked = post.likes ? post.likes.findIndex(like => like.username === user.username) : []
+    const clickHandler = liked > -1 ? () => removeLike(post.likes[liked]._id) : () => addLike(post._id)
+    const likeColor = liked > -1 ? 'red' : 'grey'
+    const likeIcon = liked > -1 ? "heart" : "heart outline"
   async function handleDelete(e) {
     e.preventDefault();
     await postService.deleteOne(post.post._id)
@@ -65,7 +71,7 @@ export default function PhotoPostCard({ post, user }) {
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; 
               &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               
-              <Icon name="heart outline"></Icon>
+              <Icon onClick={clickHandler} name={likeIcon} color={likeColor}></Icon>
             </Card.Description>
           </Card.Content>
         </Card>

@@ -5,9 +5,11 @@ import './PhotoPostFeed.css'
 
 export default function PhotoPostFeed({ post, removeLike, addLike, user }) {
     const link = Link
+    const likes = post.likes
     const liked = post.likes.findIndex(like => like.username === user.username)
     const clickHandler = liked > -1 ? () => removeLike(post.likes[liked]._id) : () => addLike(post._id)
-    const likeColor = liked > -1 ? 'red' : 'green'
+    const likeColor = liked > -1 ? 'red' : 'grey'
+    const likeIcon = liked > -1 ? "heart" : "heart outline"
   return (
     <Card>
       <Grid.Column style={{ maxWidth: 450 }}>
@@ -36,7 +38,7 @@ export default function PhotoPostFeed({ post, removeLike, addLike, user }) {
               <Segment>
                 {post.comment}
               </Segment>
-              <Icon className="like" name="heart outline" color={likeColor} onClick={clickHandler}></Icon>
+              <Icon className="like" name={likeIcon} color={likeColor} onClick={clickHandler}>{likes.length ? likes.length : ''}</Icon>
             </Card.Description>
           </Card.Content>
         </Card>

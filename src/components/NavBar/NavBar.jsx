@@ -2,8 +2,10 @@ import "./NavBar.css";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Segment, Header, Icon, Image } from "semantic-ui-react";
+import userService from "../../utils/userService";
 
-export default function NavBar({ user, handleLogout }) {
+export default function NavBar({ user, handleSignUpOrLogin, handleLogout }) {
+  console.log('hiting nav bar', user)
   return user ? (
     <Segment clearing>
       <Header as="h2" floated="right">
@@ -35,7 +37,7 @@ export default function NavBar({ user, handleLogout }) {
             </div>
           </Icon>
         </Link>
-        <Link to={"/" + user.username}>
+        <Link to={"/" + user.username} onClick={handleSignUpOrLogin}>
           <Icon name="user circle outline"></Icon>
         </Link>
         <Link to="/addpost">
