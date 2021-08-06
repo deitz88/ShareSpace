@@ -2,8 +2,9 @@ import tokenService from "./tokenService";
 
 const BASE_URL = '/api/'
 
-function addLike(postID){
-	return fetch(`${BASE_URL}posts/${postID}/likes`, {
+function addLike(id){
+    console.log(id)
+	return fetch(`${BASE_URL}posts/${id}/likes`, {
 		method: 'POST',
 		headers: {
 			'Authorization': 'Bearer ' + tokenService.getToken()
@@ -14,8 +15,9 @@ function addLike(postID){
 	})
 }
 
-function removeLike(likeID){
-	return fetch(`${BASE_URL}likes/${likeID}`, {
+function removeLike(id){
+    console.log(id)
+	return fetch(`${BASE_URL}likes/${id}`, {
 		method: 'DELETE',
 		headers: {
 			'Authorization': 'Bearer ' + tokenService.getToken()

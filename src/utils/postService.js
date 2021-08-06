@@ -11,6 +11,7 @@ const BASE_URL = '/api/posts/';
   }
   
   function createWriting(writing) {
+    console.log(writing)
     return fetch(BASE_URL + 'createwriting', {
       method: 'POST',
       headers: {

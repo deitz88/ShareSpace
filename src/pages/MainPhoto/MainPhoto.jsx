@@ -13,20 +13,37 @@ import {
 } from "semantic-ui-react";
 import "./MainPhoto.css";
 import PhotoPostFeed from "../../components/PhotoPostFeed/PhotoPostFeed";
+import likesService from "../../utils/likesService";
 
 export default function Main({ user, handleLogout }) {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
+//   const [loading, setLoading] = useState(true);
 
   async function getPosts() {
     const data = await postService.getAllPhotoPosts();
     setPosts([...data.posts]);
   }
+  async function addLike(postId) {
+    try {
+      await likesService.addLike(postId);
+      getPosts();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  async function removeLike(likeID) {
+    try {
+     await likesService.removeLike(likeID);
+      getPosts();
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   useEffect(() => {
     getPosts();
   }, []);
-
   if (posts.length < 1) {
     return (
       <Grid
@@ -58,7 +75,7 @@ export default function Main({ user, handleLogout }) {
           <Card.Group itemsPerRow={2}>
             {posts.map((post) => {
               return (
-                <PhotoPostFeed post={post} />
+                <PhotoPostFeed key={post._id} post={post} addLike={addLike} removeLike={removeLike} user={user}/>
               );
             })}
           </Card.Group>

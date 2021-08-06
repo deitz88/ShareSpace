@@ -1,0 +1,12 @@
+.like{
+    color: red;
+}
+.goToContainer{
+    color: rgba(139, 60, 128, 0.705);
+    margin-bottom: -20px;
+    margin-top: -30px;
+    font-size: small;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Source Sans Pro', sans-serif;
+}

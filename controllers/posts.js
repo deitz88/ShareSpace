@@ -69,7 +69,6 @@ async function createWriting(req, res) {
     user: req.body.user,
     content: req.body.content,
   });
-  console.log("hitting backend");
   return res.status(201).json({ writing });
 }
 async function deleteOne(req, res) {

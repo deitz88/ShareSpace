@@ -14,12 +14,8 @@ export default function AddWriting({user, handleLogout}) {
 
    async function handleSubmit(e) {
     e.preventDefault();
-    // const formData = new FormData();
-    // formData.append("title", input.title);
-    // formData.append("content", input.content);
     const data = await postService.createWriting(input);
-    console.log(data)
-    // history.push(`/${user.username}`)
+    history.push(`/${user.username}`)
     console.log('button works')
   }
 
