@@ -41,6 +41,15 @@ export default function NavBar({ user, handleLogout }) {
         <Link to="/addpost">
           <Icon name="plus square outline"></Icon>
         </Link>
+        <Link to="/addwriting">
+          <Icon name="pencil alternate">
+          <div className="writingSymbolContainer">
+              <span className="writingSymbol">
+                +
+              </span>
+            </div>
+          </Icon>
+        </Link>
         <Link to="" onClick={handleLogout}>
           <span className="logoutText">Logout</span>
         </Link>

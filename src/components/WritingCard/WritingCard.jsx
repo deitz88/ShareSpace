@@ -1,5 +1,5 @@
 import React from "react";
-import { Link , useHistory} from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
 import {
   Card,
@@ -10,15 +10,19 @@ import {
   Header,
   Button,
 } from "semantic-ui-react";
-import "./PhotoPostCard.css";
+import "./WritingCard.css";
 
-export default function PhotoPostCard({ post, user }) {
-    const history=useHistory()
+export default function WritingCard({ writing, user }) {
+  const history = useHistory();
   async function handleDelete(e) {
     e.preventDefault();
-    await postService.deleteOne(post.post._id)
-    history.push('/' + user.username)
-
+    await postService.deleteWriting(writing.writing._id);
+    history.push("/" + user.username);
+    console.log('hello, this is a button')
+  }
+  async function handleUpdate(e) {
+    e.preventDefault();
+    history.push(`/updatewriting/${writing.writing._id}`)
   }
 
   return (
@@ -27,12 +31,12 @@ export default function PhotoPostCard({ post, user }) {
         <Card centered className="profileCard">
           <Card fluid id="usernameHeader">
             <Header as="h2" className="postUsername" floated="right">
-              {post.postUser.username}
-              <Link to={"/" + post.postUser.username}>
+              Author: &nbsp;&nbsp;{writing.writingUser.username}
+              <Link to={"/" + writing.writingUser.username}>
                 <Image
                   className="postAvatar"
                   to="/"
-                  src={post.postUser.photoUrl}
+                  src={writing.writingUser.photoUrl}
                   avatar
                   size="large"
                   floated="left"
@@ -40,18 +44,18 @@ export default function PhotoPostCard({ post, user }) {
               </Link>
             </Header>
           </Card>
-          <Card centered raised image={post.post.photoUrl} size="medium" />
+          <Card centered raised as='h4' header={writing.writing.title}/>
           <Card.Content>
             <Card.Description>
               <Segment>
-                <span className="postBio">Comment:</span>
-                <br /> <br />
-                {post.post.comment}
+        
+                <br /> 
+                {writing.writing.content}
               </Segment>
-              {user._id === post.postUser._id ? (
+              {user._id === writing.writingUser._id ? (
                 <Card.Group itemsPerRow={2}>
                   <Card>
-                    <Button>Update</Button>
+                    <Button onClick={handleUpdate}>Update</Button>
                   </Card>
                   <Card>
                     <Button onClick={handleDelete}>Delete</Button>
@@ -62,9 +66,8 @@ export default function PhotoPostCard({ post, user }) {
               <Icon name="comment outline"></Icon>
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; 
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              
               <Icon name="heart outline"></Icon>
             </Card.Description>
           </Card.Content>

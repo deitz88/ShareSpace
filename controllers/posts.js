@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Writing = require('../models/writing');
 const Post = require('../models/post');
 const jwt = require('jsonwebtoken');
 const S3 = require("aws-sdk/clients/s3");
@@ -10,13 +11,26 @@ const BUCKET_NAME = process.env.BUCKET_NAME;
 
 module.exports = {
     create,
-    show
+    createWriting,
+    show,
+    showWriting,
+    deleteOne,
+    updateWriting,
+    deleteWriting
   };
   async function show(req, res){
       const post = await Post.findById(req.params.id)
       const postUser = await User.findById(post.user)
       return res.json({post: post, postUser:postUser});
   }
+  async function showWriting(req, res){
+    const writing = await Writing.findById(req.params.id)
+    const writingUser = await User.findById(writing.user)
+    return res.json({writing: writing, writingUser:writingUser});
+}
+async function updateWriting(req, res){
+  console.log('hitting func')
+}
   function create(req, res){
     try {
       const filePath = `${uuidv4()}/${req.file.originalname}`;
@@ -37,4 +51,21 @@ module.exports = {
     console.log(err);
     return res.json({ err });
   }
+}
+async function createWriting(req, res){
+  console.log(req.body)
+  const writing = Writing.create({title: req.body.title, user: req.body.user, content: req.body.content})
+  console.log('hitting backend')
+  return res.status(201).json({ writing });
+}
+async function deleteOne(req, res){
+  // console.log(req.user) 
+  await Post.findByIdAndDelete(req.params.id)
+  return res.status(200).json('complete')
+}
+
+async function deleteWriting(req, res){
+  // console.log(req.user) 
+  await Writing.findByIdAndDelete(req.params.id)
+  return res.status(200).json('complete')
 }

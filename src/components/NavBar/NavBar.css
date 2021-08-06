@@ -52,3 +52,17 @@ i.icon.bell.outline{
     padding: auto;
     color: rgba(202, 2, 2, 0.664)
 }
+.writingSymbol{
+    font-size: 15px;
+    position: absolute;
+    font-weight: bolder;
+}
+.writingSymbolContainer{
+    position: relative;
+    right: 13px;
+    bottom: 38px; 
+    margin: auto;
+    padding: auto;
+}
+
+

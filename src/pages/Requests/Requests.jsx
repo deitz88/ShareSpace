@@ -1,11 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import NavBar from '../../components/NavBar/NavBar'
 import UserCard from '../../components/UserCard/UserCard'
 import { Card, Grid, Header, Loader } from 'semantic-ui-react'
 import './Requests.css'
+import friendService from '../../utils/friendService'
 
-export default function Requests({user, handleSignUpOrLogin, handleLogout}){
-    
+export default function Requests({user, handleSignUpOrLogin }){
+//    const [userAccept, setUserAccept] = useState('')
+//     // async function handleDeny(e){
+//     //     e.preventDefault()
+//     //     await friendService.denyRequest(username)
+//     //     handleSignUpOrLogin()
+//     // }
+
+//     async function handleAccept(user){
+//         // e.preventDefault()
+//         // await friendService.approveRequest(user)
+//         // handleSignUpOrLogin()
+//         console.log('hitting', user)
+//     }
+//     // handleAccept()
+//     // useEffect(() => {
+  
+//     //    handleAccept(userAccept)
+//     //     }, [userAccept]);
     return(
         <>
         <Grid
@@ -25,6 +42,7 @@ export default function Requests({user, handleSignUpOrLogin, handleLogout}){
             photo={request.photoUrl}
             key={request._id}
             handleSignUpOrLogin={handleSignUpOrLogin}
+            // setUserAccept={setUserAccept}
             user={user}
           />
                 )

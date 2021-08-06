@@ -13,6 +13,9 @@ import userService from '../../utils/userService'
 import tokenService from '../../utils/tokenService';
 import NavBar from '../../components/NavBar/NavBar';
 import PhotoPostShow from '../PhotoPostShow/PhotoPostShow'
+import AddWriting from '../AddWriting/AddWriting'
+import WritingShow from '../WritingShow/WritingShow';
+import UpdateWriting from '../UpdateWriting/UpdateWriting';
 
 
 
@@ -66,8 +69,17 @@ function App() {
               <Route exact path="/addpost">
                 <AddPost user={user} handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin}/>
               </Route>
+              <Route exact path="/addwriting">
+                <AddWriting user={user} handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin}/>
+              </Route>
+              <Route exact path="/updatewriting/:id">
+                <UpdateWriting user={user} handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin}/>
+              </Route>
               <Route path="/show/:id">
                 <PhotoPostShow user={user} handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin}/>
+              </Route>
+              <Route path="/writing/:id">
+                <WritingShow user={user} handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin}/>
               </Route>
               <Route path="/:username">
                 <ProfilePage user={user} handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin}/>

@@ -2,7 +2,6 @@ function setToken(token) {
     if (token) {
       // localStorage is given to us by the browser
       localStorage.setItem('token', token);
-      console.log(token)
     } else {
       localStorage.removeItem('token');
     }

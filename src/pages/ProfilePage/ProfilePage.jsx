@@ -5,6 +5,7 @@ import userService from "../../utils/userService"
 import { useParams, Link } from "react-router-dom";
 import {  Grid, Card, Header, Loader } from "semantic-ui-react"
 import PhotoPostContent from "../../components/PhotoPostContent/PhotoPostContent";
+import WritingPostContent from "../../components/WritingPostContent/WritingPostContent";
 import ProfileCard from '../../components/ProfileCard/ProfileCard'
 import friendService from '../../utils/friendService';
 
@@ -14,6 +15,7 @@ export default function ProfilePage({user, handleSignUpOrLogin}){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [posts, setPosts] = useState([])
+    const [userWritings, setUserWritings] = useState([])
   
     const { username } = useParams();
 
@@ -23,6 +25,7 @@ export default function ProfilePage({user, handleSignUpOrLogin}){
       setProfileUser(() => data.user);
       setPosts(() => data.posts)
       setLoading(false)
+      setUserWritings(() => data.writings)
     } catch (err) {
       console.log(err);
       setError("The Profile You Are Looking For Does Not Exist - Please Check Spelling And/Or Casing");
@@ -80,6 +83,9 @@ export default function ProfilePage({user, handleSignUpOrLogin}){
             />
             <Card centered className="profileCard">
                 <PhotoPostContent user={user} profileUser={profileUser} posts={posts}/>
+            </Card>
+            <Card centered className="profileCard">
+                <WritingPostContent user={user} profileUser={profileUser} writings={userWritings}/>
             </Card>
         </Grid.Column>
         </Grid>

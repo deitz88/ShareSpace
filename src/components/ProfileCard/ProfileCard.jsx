@@ -9,8 +9,6 @@ import RequestPendingCard from './RequestPendingCard'
 
 
 export default function ProfileCard({userRequest, loggedInUser, requestFriend}){
-    console.log(userRequest._id)
-   console.log (loggedInUser.friendRequests)
 if(userRequest._id === loggedInUser._id){
     return(
         <Card centered className="profileCard">
@@ -39,6 +37,7 @@ if(userRequest._id === loggedInUser._id){
         </Card.Content>
         <Card.Content extra>
         <a>
+            Friends: &nbsp;&nbsp;
             <Icon name='user' />
             {userRequest.friends.length ? userRequest.friends.length : 0}
         </a>
@@ -65,6 +64,7 @@ if(userRequest._id === loggedInUser._id){
         </Card.Content>
         <Card.Content extra>
         <a>
+            Friends: &nbsp;&nbsp;
             <Icon name='user' />
             {userRequest.friends.length ? userRequest.friends.length : 0}
         </a>
@@ -94,6 +94,7 @@ if(userRequest._id === loggedInUser._id){
         </Card.Content>
         <Card.Content extra>
         <a>
+            Friends: &nbsp;&nbsp;
             <Icon name='user' />
             {userRequest.friends.length ? userRequest.friends.length : 0}
         </a>
@@ -123,8 +124,9 @@ if(userRequest._id === loggedInUser._id){
         </Card.Content>
         <Card.Content extra>
         <a>
+            Friends: &nbsp;&nbsp;
             <Icon name='user' />
-            22 Friends
+            {userRequest.friends.length ? userRequest.friends.length : 0}
         </a>
         </Card.Content>
     </Card>

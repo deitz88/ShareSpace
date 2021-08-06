@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Image, Grid, Button, Input } from 'semantic-ui-react'
+import { Card, Image, Grid } from 'semantic-ui-react'
 import './UserCard.css'
 import friendService from '../../utils/friendService'
 
-export default function UserCard({username, photo, handleSignUpOrLogin, user}){
-// console.log(username)
+export default function UserCard({username, user, setUserAccept, photo, handleSignUpOrLogin }){
 
+    console.log(user, 'before click')
+    const [test, setTest] = useState({})
+    console.log(test, 'after click')
     async function handleDeny(e){
         e.preventDefault()
         await friendService.denyRequest(username)
@@ -16,9 +18,13 @@ export default function UserCard({username, photo, handleSignUpOrLogin, user}){
     async function handleAccept(e){
         e.preventDefault()
         await friendService.approveRequest(username)
-        handleSignUpOrLogin()
+        await handleSignUpOrLogin()
+        setTest(user)
     }
-
+    // function clickHandler(e){
+    //     e.preventDefault()
+    //     setUserAccept(username)
+    // }
     return(
         <>
         <br></br>
@@ -56,6 +62,7 @@ export default function UserCard({username, photo, handleSignUpOrLogin, user}){
             className="btn"
             id="acceptButton"
             onClick={handleAccept}
+            // onClick={clickHandler}
            >
             </input>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -69,7 +76,8 @@ export default function UserCard({username, photo, handleSignUpOrLogin, user}){
             id="denyButton"
             // floated='right'
             // textAlign='right'
-            onClick={handleDeny}>
+            // onClick={handleDeny}
+            >
             </input>
             </div>
         </Grid.Row>

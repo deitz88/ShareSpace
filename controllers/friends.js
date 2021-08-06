@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
+const SECRET = process.env.SECRET;
 
 module.exports = {
   sendRequest,
@@ -65,12 +66,7 @@ async function acceptRequest(req, res) {
     // await user.save();
     // await approvedFriend.save()
     
-    //hitting right up until here, 
-    //and also hitting in jwt.Create helper
-    //user can be logged properly before the return statement in helper
     const token = createJWT(user);
-    console.log(token)
-    //cannot log token, cannot console.log anything here, not hitting
     res.json({token});
   } catch {}
 }

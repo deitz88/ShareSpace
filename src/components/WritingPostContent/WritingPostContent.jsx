@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import {Card, Grid, Header, Image, Icon, Group } from 'semantic-ui-react'
-import './PhotoPostContent.css'
+import './WritingPostContent.css'
 
 // const src='https://react.semantic-ui.com/images/wireframe/white-image.png'
 
-export default function PhotoPostContent({user, profileUser, posts}){
-    if(!posts.length){
+export default function WritingPostContent({user, profileUser, writings}){
+    // console.log(writings)
+    if(!writings.length){
         return(
             <>
             <br></br>
@@ -14,12 +15,12 @@ export default function PhotoPostContent({user, profileUser, posts}){
         <Card.Group className='headerCard'>
                 <Card fluid header={
                     user._id === profileUser._id 
-                    ?'Your Photo Posts'
-                    :profileUser.username +"'s Photo Posts"}/>
+                    ?'Your Writings'
+                    :profileUser.username +"'s Writings"}/>
         </Card.Group>
         <br>
         </br>
-         <h4 className='noPosts'>This user hasnt uploaded anyting yet!</h4>
+         <h4 className='noPosts'>No Writings Yet...</h4>
          </>
         )
     } else {
@@ -28,14 +29,18 @@ export default function PhotoPostContent({user, profileUser, posts}){
         <br></br>
         <br></br>
     <Card.Group className='headerCard'>
-            <Card fluid header='Your Posts'/>
+            <Card fluid header='Your Writings'/>
     </Card.Group>
     <br>
     </br>
         <Card.Group itemsPerRow={3}>
-            {posts.map((post) => {
+            {writings.map((writing) => {
                 return ( 
-                    <Card as={Link} image={post.photoUrl} key={post._id} to={'show/' + post._id}/>
+                    <Card className="titleCard" as={Link} key={writing._id} to={'writing/' + writing._id}>
+                        <Card.Content left>
+                    <h4>{writing.title}</h4>
+                    </Card.Content>
+                    </Card>
                 )}
                 )}
             </Card.Group>

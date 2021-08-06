@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const postSchema = new mongoose.Schema({
+const writingSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
-    photoUrl: String,
-    comment: String,
+    title: String,
+    content: String,
     // likes: [likesSchema]
 })
 
@@ -12,5 +12,4 @@ const postSchema = new mongoose.Schema({
 //   userId: { type: mongoose.Schema.Types.ObjectId }
 // })
  
-
-module.exports = mongoose.model('Post', postSchema);
+module.exports = mongoose.model('Writing', writingSchema);
