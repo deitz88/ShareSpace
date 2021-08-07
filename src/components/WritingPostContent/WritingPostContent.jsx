@@ -29,7 +29,10 @@ export default function WritingPostContent({user, profileUser, writings}){
         <br></br>
         <br></br>
     <Card.Group className='headerCard'>
-            <Card fluid header='Your Writings'/>
+            <Card fluid header={
+                    user._id === profileUser._id 
+                    ?'Your Writings'
+                    :profileUser.username +"'s Writings"}/>
     </Card.Group>
     <br>
     </br>

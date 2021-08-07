@@ -2,7 +2,7 @@ import tokenService from './tokenService';
 
 const BASE_URL = '/api/friends/';
 
-function friendRequest(userRequest){
+function friendRequest(userRequest, user){
     return fetch(BASE_URL + `request/${userRequest._id}`, {
           method: 'GET',
           headers: {

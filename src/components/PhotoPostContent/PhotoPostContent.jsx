@@ -14,8 +14,8 @@ export default function PhotoPostContent({user, profileUser, posts}){
         <Card.Group className='headerCard'>
                 <Card fluid header={
                     user._id === profileUser._id 
-                    ?'Your Photo Posts'
-                    :profileUser.username +"'s Photo Posts"}/>
+                    ?'Your Posts'
+                    :profileUser.username +"'s Posts"}/>
         </Card.Group>
         <br>
         </br>
@@ -28,7 +28,10 @@ export default function PhotoPostContent({user, profileUser, posts}){
         <br></br>
         <br></br>
     <Card.Group className='headerCard'>
-            <Card fluid header='Your Posts'/>
+            <Card fluid header={
+                    user._id === profileUser._id 
+                    ?'Your Posts'
+                    :profileUser.username +"'s Posts"}/>
     </Card.Group>
     <br>
     </br>
