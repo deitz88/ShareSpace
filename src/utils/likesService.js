@@ -14,6 +14,17 @@ function addLike(id){
 	  new Error('Error liking Post');
 	})
 }
+function addLikeWriting(id){
+	return fetch(`${BASE_URL}writings/${id}/likes`, {
+		method: 'POST',
+		headers: {
+			'Authorization': 'Bearer ' + tokenService.getToken()
+		}
+	}).then(res => {
+		if(res.ok) return res.json()
+	  new Error('Error liking Post');
+	})
+}
 
 function removeLike(id){
     console.log(id)
@@ -27,8 +38,22 @@ function removeLike(id){
 	  new Error('Error removing like Post');
 	})
 }
+function removeLikeWriting(id){
+    console.log(id)
+	return fetch(`${BASE_URL}writinglikes/${id}`, {
+		method: 'DELETE',
+		headers: {
+			'Authorization': 'Bearer ' + tokenService.getToken()
+		}
+	}).then(res => {
+		if(res.ok) return res.json()
+	  new Error('Error removing like Post');
+	})
+}
 
 export default{
     addLike,
-    removeLike
+    removeLike,
+    addLikeWriting,
+    removeLikeWriting
 }

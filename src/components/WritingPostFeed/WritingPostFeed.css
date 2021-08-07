@@ -1,0 +1,18 @@
+
+.goToContainerWriting{
+    color: rgba(139, 60, 128, 0.705);
+    margin-bottom: -40px;
+    margin-top: -30px;
+    font-size: small;
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.title{
+   font-size: 13px;
+   font-style: italic;
+   text-decoration: underline;
+}
+.writingTitle{
+    color: rgba(54, 54, 54, 0.8)
+}

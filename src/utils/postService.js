@@ -27,6 +27,11 @@ const BASE_URL = '/api/posts/';
     headers: {'Authorization': 'Bearer ' + tokenService.getToken()}
   }).then(res => res.json());
 }
+function getAllWritingPosts() {
+  return fetch(BASE_URL + 'mainwriting/', {
+    headers: {'Authorization': 'Bearer ' + tokenService.getToken()}
+  }).then(res => res.json());
+}
 function getPost(id){
     return fetch(BASE_URL + 'show/'+ id, {
         method: 'GET',
@@ -76,5 +81,6 @@ export default{
     deleteOne,
     deleteWriting,
     getWriting, 
-    updateWriting
+    updateWriting,
+    getAllWritingPosts
 }

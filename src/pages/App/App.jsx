@@ -16,6 +16,7 @@ import PhotoPostShow from '../PhotoPostShow/PhotoPostShow'
 import AddWriting from '../AddWriting/AddWriting'
 import WritingShow from '../WritingShow/WritingShow';
 import UpdateWriting from '../UpdateWriting/UpdateWriting';
+import MainWriting from '../MainWriting/MainWriting';
 
 
 
@@ -55,6 +56,9 @@ function App() {
             </Route>
             <Route exact path="/mainphoto">
               <MainPhoto user={user} handleLogout={handleLogout}/>
+            </Route>
+            <Route exact path="/mainwriting">
+              <MainWriting user={user} handleLogout={handleLogout}/>
             </Route>
               <Route exact path="/">
                   Home PAGE COMPONENT WOULD GO HEREE

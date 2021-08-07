@@ -17,7 +17,8 @@ module.exports = {
   deleteOne,
   updateWriting,
   deleteWriting,
-  postIndex
+  postIndex,
+  writingIndex
 };
 
 async function show(req, res) {
@@ -26,7 +27,10 @@ async function show(req, res) {
   return res.json({ post: post, postUser: postUser });
 }
 async function showWriting(req, res) {
+  console.log(req.params)
   const writing = await Writing.findById(req.params.id);
+  console.log(writing, 'hitting backend')
+  // console.log(User.findById(writing.user))
   const writingUser = await User.findById(writing.user);
   return res.json({ writing: writing, writingUser: writingUser });
 }
@@ -86,5 +90,12 @@ async function postIndex(req, res) {
   try {
     const posts = await Post.find({}).populate("user").exec();
     res.status(200).json({ posts });
+  } catch (err) {}
+}
+
+async function writingIndex(req, res) {
+  try {
+    const writings = await Writing.find({}).populate("user").exec();
+    res.status(200).json({ writings });
   } catch (err) {}
 }

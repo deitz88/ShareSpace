@@ -10,7 +10,10 @@ export default function NavBar({ user, handleSignUpOrLogin, handleLogout }) {
     <Segment clearing>
       <Header as="h2" floated="right">
         <Link to="/mainphoto">
-          <Icon name="home"></Icon>
+          <Icon name="camera retro"></Icon>
+        </Link>
+        <Link to="/mainwriting">
+          <Icon name="copy"></Icon>
         </Link>
         <Link to="/notifications">
           {/* <Icon name="bell">

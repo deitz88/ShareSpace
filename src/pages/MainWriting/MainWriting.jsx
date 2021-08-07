@@ -11,40 +11,44 @@ import {
   Segment,
   Icon,
 } from "semantic-ui-react";
-import "./MainPhoto.css";
-import PhotoPostFeed from "../../components/PhotoPostFeed/PhotoPostFeed";
+import "./MainWriting.css";
+import WritingPostFeed from "../../components/WritingPostFeed/WritingPostFeed";
 import likesService from "../../utils/likesService";
 
-export default function MainPhoto({ user, handleLogout }) {
-  const [posts, setPosts] = useState([]);
+
+
+
+
+export default function MainWriting({ user, handleLogout }) {
+  const [writings, setWritings] = useState([]);
 //   const [loading, setLoading] = useState(true);
 
-  async function getPosts() {
-    const data = await postService.getAllPhotoPosts();
-    setPosts([...data.posts]);
+  async function getWritings() {
+    const data = await postService.getAllWritingPosts();
+    setWritings([...data.writings]);
   }
-  async function addLike(postId) {
+  async function addLikeWriting(id) {
     try {
-      await likesService.addLike(postId);
-      getPosts();
+      await likesService.addLikeWriting(id);
+      getWritings();
     } catch (err) {
       console.log(err);
     }
   }
 
-  async function removeLike(likeID) {
+  async function removeLikeWriting(id) {
     try {
-     await likesService.removeLike(likeID);
-      getPosts();
+     await likesService.removeLikeWriting(id);
+     getWritings();
     } catch (err) {
       console.log(err);
     }
   }
 
   useEffect(() => {
-    getPosts();
+    getWritings();
   }, []);
-  if (posts.length < 1) {
+  if (writings.length < 1) {
     return (
       <Grid
         textAlign="center"
@@ -73,9 +77,9 @@ export default function MainPhoto({ user, handleLogout }) {
           </Card.Group>
           <br></br>
           <Card.Group itemsPerRow={2}>
-            {posts.map((post) => {
+            {writings.map((writing) => {
               return (
-                <PhotoPostFeed key={post._id} post={post} addLike={addLike} removeLike={removeLike} user={user}/>
+                <WritingPostFeed key={writing._id} writing={writing} addLikeWriting={addLikeWriting} removeLikeWriting={removeLikeWriting} user={user}/>
               );
             })}
           </Card.Group>

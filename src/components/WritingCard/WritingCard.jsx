@@ -12,8 +12,20 @@ import {
 } from "semantic-ui-react";
 import "./WritingCard.css";
 
-export default function WritingCard({ writing, user }) {
+export default function WritingCard({ writing, user, addLikeWriting, removeLikeWriting }) {
   const history = useHistory();
+  const likes = writing.writing.likes;
+  const liked = writing.writing.likes.findIndex(
+    (like) => like.username === user.username
+  );
+  console.log(writing, 'from writing card')
+  const clickHandler =
+  liked > -1
+    ? () => removeLikeWriting(writing.writing.likes[liked]._id)
+    : () => addLikeWriting(writing.writing._id);
+const likeColor = liked > -1 ? "red" : "grey";
+const likeIcon = liked > -1 ? "heart" : "heart outline";
+
   async function handleDelete(e) {
     e.preventDefault();
     await postService.deleteWriting(writing.writing._id);
@@ -68,7 +80,7 @@ export default function WritingCard({ writing, user }) {
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              <Icon name="heart outline"></Icon>
+              <Icon className='heartIcon' name={likeIcon} color={likeColor} onClick={clickHandler}>&nbsp;{likes.length ? likes.length : ''}</Icon>
             </Card.Description>
           </Card.Content>
         </Card>

@@ -12,6 +12,7 @@ router.get('/show/:id', postsCtrl.show)
 router.get('/writing/:id', postsCtrl.showWriting)
 router.get('/delete/:id', postsCtrl.deleteOne)
 router.get('/deletewriting/:id', postsCtrl.deleteWriting)
-router.get('/mainPhoto', postsCtrl.postIndex)
+router.get('/mainphoto', postsCtrl.postIndex)
+router.get('/mainwriting', postsCtrl.writingIndex)
 
 module.exports = router;
