@@ -33,3 +33,20 @@ h2.ui.right.floated.header.postUsername{
    cursor: pointer;
    opacity: .7;
 }
+.usernameText{
+    padding: 0px;
+    width: fit-content;
+    padding: 0%;
+}
+div.contentContainer{
+    text-align: start;
+    padding: 0px;
+    margin-bottom: -20px;
+    margin-top: -10px;
+}
+span.comment{
+display: inline
+}
+div.ui.floating.message{
+    text-align: start;
+}

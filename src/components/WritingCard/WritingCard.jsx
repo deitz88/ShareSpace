@@ -10,7 +10,9 @@ import {
   Header,
   Button,
   Form,
-  Divider
+  Divider,
+  Message,
+  Dropdown
 } from "semantic-ui-react";
 import "./WritingCard.css";
 
@@ -22,10 +24,18 @@ export default function WritingCard({
   handleCommentSubmit,
   handleChange,
   input,
-  commentsAndUsers
+  commentsAndUsers,
+  handleDeleteComment,
+  toggleDropdown,
+  menu,
+  dropdown,
+  comment
 }) {
   const history = useHistory();
   const [show, setShow] = useState(false);
+  // const [dropdown, setDropdown] = useState(false);
+  // const [comment, setComment] = useState('')
+  // const [menu, setMenu] = useState(false)
 
   const likes = writing.writing.likes;
   const liked = writing.writing.likes.findIndex(
@@ -42,7 +52,7 @@ export default function WritingCard({
     e.preventDefault();
     setShow(!show);
   }
-
+  
   async function handleDelete(e) {
     e.preventDefault();
     await postService.deleteWriting(writing.writing._id);
@@ -53,8 +63,7 @@ export default function WritingCard({
     e.preventDefault();
     history.push(`/updatewriting/${writing.writing._id}`);
   }
-console.log(commentsAndUsers[0].comment.comment)
- 
+
   const iconName = show == true ? "comment" : "comment outline";
   return (
     <Grid textAlign="center" style={{ height: "50vh" }} verticalAlign="middle">
@@ -67,7 +76,7 @@ console.log(commentsAndUsers[0].comment.comment)
                 <Image
                   className="postAvatar"
                   to="/"
-                    src={writing.writingUser.photoUrl}
+                  src={writing.writingUser.photoUrl}
                   avatar
                   size="large"
                   floated="left"
@@ -112,52 +121,59 @@ console.log(commentsAndUsers[0].comment.comment)
         {show == true ? (
           <Card fluid>
             <Form>
-            <Form.TextArea name="comment" placeholder="comment" onChange={handleChange}/>
-            <div>
-              <Button id="signupButton" className="btn" size="tiny" onClick={handleCommentSubmit}>
-                Add Comment
-              </Button>
-              <div className="closeBtn" onClick={changeShow}>
-                X
+              <Form.TextArea
+                name="comment"
+                placeholder="comment"
+                onChange={handleChange}
+              />
+              <div>
+                <Button
+                  id="signupButton"
+                  className="btn"
+                  size="tiny"
+                  onClick={handleCommentSubmit}
+                >
+                  Add Comment
+                </Button>
+                <div className="closeBtn" onClick={changeShow}>
+                  X
+                </div>
               </div>
-            </div>
-          </Form>
+            </Form>
           </Card>
         ) : (
           ""
         )}
         <Card fluid header="Comments:" id="usernameHeader" />
-       <Segment>
-       {commentsAndUsers.map((commentsAndUser) => {
-                return ( 
-                  <div className='contentContainer'>
-                 <Grid>
-                  <Grid.Row>
-                  <Grid.Column width={3}>
-                    <Link to='/'>
-                    <Image src={commentsAndUser.user.photoUrl} avatar size='tiny' />
-                    </Link>
-                  </Grid.Column>
-                  <Grid.Column header width={3}>
-                    {/* <Card> */}
-                    <h6>{commentsAndUser.user.username}</h6>
-                    
-                  </Grid.Column>
-                  <Grid.Column width={10}>
-                   <h6>{commentsAndUser.comment.comment}</h6>
+        <Segment>
+          {commentsAndUsers.map((commentsAndUser) => {
+            return (
+              <>
+                <Message floating key={commentsAndUser.comment._id}>
+                  {commentsAndUser.comment.user === user._id ? (
+                    <Icon
+                      name="ellipsis horizontal"
+                      onClick={toggleDropdown}
+                      id={commentsAndUser.comment._id}
+                    >
 
-                  </Grid.Column>
-                  </Grid.Row>
-                   </Grid> 
-                   <Divider horizontal></Divider>
-                   </div>
-                )}
-                )}
-
- 
-
-        
-       </Segment>
+                      {dropdown == true ? '' : ''}
+                    </Icon>
+                    ) : (
+                      ""
+                      )}
+                  <Link to="/">{commentsAndUser.user.username}:&nbsp;</Link>
+                  <span className="comment">
+                    {commentsAndUser.comment.comment}
+                  </span>
+                  <Divider horizontal></Divider>
+                  <Icon name="heart outline"></Icon>
+                {menu == true &&  comment == commentsAndUser.comment._id ? <Button className='btn' size='tiny' onClick={handleDeleteComment}>Delete</Button> : ''}
+                </Message>
+              </>
+            );
+          })}
+        </Segment>
       </Grid.Column>
     </Grid>
   );

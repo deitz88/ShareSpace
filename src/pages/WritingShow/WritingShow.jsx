@@ -11,6 +11,10 @@ export default function WritingShow({ user }) {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [writing, setWriting] = useState({});
+  const [dropdown, setDropdown] = useState(false);
+  const [comment, setComment] = useState('')
+  const [menu, setMenu] = useState(false)
+
   const [commentsAndUsers, setCommentsAndUsers] = useState([]);
   const [input, setInput] = useState({
     comment: "",
@@ -41,9 +45,8 @@ export default function WritingShow({ user }) {
   }
   async function handleCommentSubmit(e) {
     e.preventDefault();
-    const data = await commentService.addWritingComment(input);
-    getWriting(id);
-    console.log(data);
+    await commentService.addWritingComment(input);
+    await getWriting(id);
   }
   useEffect(() => {
     async function getWriting(id) {
@@ -62,6 +65,17 @@ export default function WritingShow({ user }) {
     } catch (err) {
       console.log(err);
     }
+  }
+  function toggleDropdown(e) {
+    e.preventDefault();
+    setDropdown(!dropdown);
+    setComment(e.target.id)
+    setMenu(!menu)
+  }
+  async function handleDeleteComment(e){
+      e.preventDefault()
+      console.log(comment)
+    //   commentService.deleteWritingComment()
   }
 
   if (loading) {
@@ -88,6 +102,11 @@ export default function WritingShow({ user }) {
         handleCommentSubmit={handleCommentSubmit}
         removeLikeWriting={removeLikeWriting}
         addLikeWriting={addLikeWriting}
+        handleDeleteComment={handleDeleteComment}
+        menu={menu}
+        dropdown={dropdown}
+        comment={comment}
+        toggleDropdown={toggleDropdown}
       />
     );
   }
