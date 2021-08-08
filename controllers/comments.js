@@ -4,6 +4,7 @@ const Comment = require('../models/comment')
 
 module.exports = {
     addWritingComment,
+    deleteWritingComment
 }
 
 async function addWritingComment(req, res){
@@ -14,4 +15,7 @@ async function addWritingComment(req, res){
     })
     return res.status(201).json({ comment });
 }
-
+async function deleteWritingComment(req, res){
+    await Comment.findByIdAndDelete(req.params.id)
+    return res.status(201).json('deleted comment on writing');
+}

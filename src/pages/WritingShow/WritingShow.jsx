@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
 import { Card, Grid, Segment, Icon, Loader } from "semantic-ui-react";
 import "./WritingShow.css";
@@ -8,6 +8,7 @@ import likesService from "../../utils/likesService";
 import commentService from "../../utils/commentService";
 
 export default function WritingShow({ user }) {
+  const history = useHistory()
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [writing, setWriting] = useState({});
@@ -74,8 +75,9 @@ export default function WritingShow({ user }) {
   }
   async function handleDeleteComment(e){
       e.preventDefault()
-      console.log(comment)
-    //   commentService.deleteWritingComment()
+      await commentService.deleteWritingComment(comment)
+      getWriting(id)
+      history.push(`/writing/${id}`)
   }
 
   if (loading) {

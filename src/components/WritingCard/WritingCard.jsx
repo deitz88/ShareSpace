@@ -12,7 +12,7 @@ import {
   Form,
   Divider,
   Message,
-  Dropdown
+  Dropdown,
 } from "semantic-ui-react";
 import "./WritingCard.css";
 
@@ -29,13 +29,10 @@ export default function WritingCard({
   toggleDropdown,
   menu,
   dropdown,
-  comment
+  comment,
 }) {
   const history = useHistory();
   const [show, setShow] = useState(false);
-  // const [dropdown, setDropdown] = useState(false);
-  // const [comment, setComment] = useState('')
-  // const [menu, setMenu] = useState(false)
 
   const likes = writing.writing.likes;
   const liked = writing.writing.likes.findIndex(
@@ -52,7 +49,7 @@ export default function WritingCard({
     e.preventDefault();
     setShow(!show);
   }
-  
+
   async function handleDelete(e) {
     e.preventDefault();
     await postService.deleteWriting(writing.writing._id);
@@ -156,19 +153,33 @@ export default function WritingCard({
                       onClick={toggleDropdown}
                       id={commentsAndUser.comment._id}
                     >
-
-                      {dropdown == true ? '' : ''}
+                      {dropdown == true ? "" : ""}
                     </Icon>
-                    ) : (
-                      ""
-                      )}
+                  ) : (
+                    ""
+                  )}
                   <Link to="/">{commentsAndUser.user.username}:&nbsp;</Link>
                   <span className="comment">
                     {commentsAndUser.comment.comment}
                   </span>
                   <Divider horizontal></Divider>
                   <Icon name="heart outline"></Icon>
-                {menu == true &&  comment == commentsAndUser.comment._id ? <Button className='btn' size='tiny' onClick={handleDeleteComment}>Delete</Button> : ''}
+                  {menu == true && comment == commentsAndUser.comment._id ? (
+                    <>
+                      <Button
+                        className="btn"
+                        size="tiny"
+                        onClick={handleDeleteComment}
+                      >
+                        Delete
+                      </Button>{" "}
+                      <Button className="btn" size="tiny">
+                        Update
+                      </Button>
+                    </>
+                  ) : (
+                    ""
+                  )}
                 </Message>
               </>
             );
