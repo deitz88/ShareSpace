@@ -5,7 +5,13 @@ import './PhotoPostContent.css'
 
 // const src='https://react.semantic-ui.com/images/wireframe/white-image.png'
 
-export default function PhotoPostContent({user, profileUser, posts}){
+export default function PhotoPostContent({user, profileUser, posts, error}){
+    if(error){
+        return(
+            <h1>error!</h1>
+        )
+    } else {
+    
     if(!posts.length){
         return(
             <>
@@ -46,4 +52,5 @@ export default function PhotoPostContent({user, profileUser, posts}){
     )
 
     }
+}
 }

@@ -19,3 +19,17 @@ h2.ui.right.floated.header.postUsername{
     cursor: pointer;
     opacity: .7;
 }
+.closeBtn{
+    color: rgb(45, 45, 45);
+    background-color: whitesmoke;
+    width: fit-content;
+    padding: 0px 4px 0px 4px;
+    border-radius: 3px;
+    position: absolute;
+    bottom: 6px;
+    right: 30px
+}
+.closeBtn:hover{
+   cursor: pointer;
+   opacity: .7;
+}

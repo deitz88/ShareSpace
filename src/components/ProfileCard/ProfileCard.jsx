@@ -12,11 +12,11 @@ export default function ProfileCard({
   loggedInUser,
   requestFriend,
 }) {
-    let friendArray=[]
-    for(let i=0; i<loggedInUser.friendRequests.length; i++){
-        friendArray.push(loggedInUser.friendRequests[i]._id)
-    }
-    console.log(friendArray)
+  let friendArray = [];
+  for (let i = 0; i < loggedInUser.friendRequests.length; i++) {
+    friendArray.push(loggedInUser.friendRequests[i]._id);
+  }
+  console.log(friendArray);
   if (userRequest._id === loggedInUser._id) {
     return (
       <UsersCard
@@ -26,9 +26,8 @@ export default function ProfileCard({
       />
     );
   } else if (
-
-      userRequest.friendRequests.includes(loggedInUser._id) ||
-      friendArray.includes(userRequest._id) 
+    userRequest.friendRequests.includes(loggedInUser._id) ||
+    friendArray.includes(userRequest._id)
   ) {
     return <RequestPendingCard userRequest={userRequest} />;
   } else if (userRequest.friends.includes(loggedInUser._id)) {

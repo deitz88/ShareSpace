@@ -9,3 +9,8 @@ div.ui.card.raised.ProfilePostCard{
     height: 10px
 
 }
+.contentContainer{
+    /* background-color: blueviolet; */
+    margin: 10px;
+    padding: 10px;
+}

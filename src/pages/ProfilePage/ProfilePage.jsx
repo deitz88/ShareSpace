@@ -11,6 +11,7 @@ import friendService from '../../utils/friendService';
 
 
 export default function ProfilePage({user, handleSignUpOrLogin}){
+    const history=useHistory()  
     const [profileUser, setProfileUser] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -26,6 +27,7 @@ export default function ProfilePage({user, handleSignUpOrLogin}){
       setPosts(() => data.posts)
       setLoading(false)
       setUserWritings(() => data.writings)
+      console.log('hitting here')
     } catch (err) {
       console.log(err);
       setError("The Profile You Are Looking For Does Not Exist - Please Check Spelling And/Or Casing");
@@ -57,13 +59,12 @@ export default function ProfilePage({user, handleSignUpOrLogin}){
       </Grid>
     );
   }
-  if (error) {
+  else if (error) {
+    history.push('/main')    
     return (
-      <>
-        <h1>{error}</h1>
-      </>
+     <h1>{error}</h1>
     );
-  }
+  } else {
   
     return(
         <>
@@ -82,7 +83,7 @@ export default function ProfilePage({user, handleSignUpOrLogin}){
               requestFriend={requestFriend}
             />
             <Card centered className="profileCard">
-                <PhotoPostContent user={user} profileUser={profileUser} posts={posts}/>
+                <PhotoPostContent error={error} user={user} profileUser={profileUser} posts={posts}/>
             </Card>
             <Card centered className="profileCard">
                 <WritingPostContent user={user} profileUser={profileUser} writings={userWritings}/>
@@ -91,6 +92,7 @@ export default function ProfilePage({user, handleSignUpOrLogin}){
         </Grid>
     </>
     )
+  }
 }
 
 

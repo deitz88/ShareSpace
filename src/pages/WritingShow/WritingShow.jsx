@@ -5,11 +5,17 @@ import { Card, Grid, Segment, Icon, Loader } from "semantic-ui-react";
 import "./WritingShow.css";
 import WritingCard from "../../components/WritingCard/WritingCard";
 import likesService from "../../utils/likesService";
+import commentService from "../../utils/commentService";
 
 export default function WritingShow({ user }) {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [writing, setWriting] = useState({});
+  const [commentsAndUsers, setCommentsAndUsers] = useState([]);
+  const [input, setInput] = useState({
+    comment: "",
+    writingId: id,
+  });
 
   async function getWriting(id) {
     setLoading(true);
@@ -17,8 +23,9 @@ export default function WritingShow({ user }) {
     setWriting(retrievedWriting);
     setLoading(false);
   }
+
   async function removeLikeWriting(likeID) {
-      console.log(id)
+    console.log(id);
     try {
       await likesService.removeLikeWriting(likeID);
       getWriting(id);
@@ -26,11 +33,24 @@ export default function WritingShow({ user }) {
       console.log(err);
     }
   }
+  function handleChange(e) {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  }
+  async function handleCommentSubmit(e) {
+    e.preventDefault();
+    const data = await commentService.addWritingComment(input);
+    getWriting(id);
+    console.log(data);
+  }
   useEffect(() => {
     async function getWriting(id) {
       setLoading(true);
       const retrievedWriting = await postService.getWriting(id);
       setWriting(retrievedWriting);
+      setCommentsAndUsers(retrievedWriting.commentsAndUser);
       setLoading(false);
     }
     getWriting(id);
@@ -43,7 +63,6 @@ export default function WritingShow({ user }) {
       console.log(err);
     }
   }
-
 
   if (loading) {
     return (
@@ -60,7 +79,16 @@ export default function WritingShow({ user }) {
       </Grid>
     );
   } else {
-    return <WritingCard writing={writing} user={user}  removeLikeWriting={removeLikeWriting}
-    addLikeWriting={addLikeWriting}/>;
+    return (
+      <WritingCard
+        writing={writing}
+        handleChange={handleChange}
+        user={user}
+        commentsAndUsers={commentsAndUsers}
+        handleCommentSubmit={handleCommentSubmit}
+        removeLikeWriting={removeLikeWriting}
+        addLikeWriting={addLikeWriting}
+      />
+    );
   }
 }

@@ -1,9 +1,11 @@
 const User = require("../models/user");
 const Writing = require("../models/writing");
+const Comment = require("../models/comment")
 const Post = require("../models/post");
 const jwt = require("jsonwebtoken");
 const S3 = require("aws-sdk/clients/s3");
 const { v4: uuidv4 } = require("uuid");
+const user = require("../models/user");
 
 const s3 = new S3();
 
@@ -27,13 +29,17 @@ async function show(req, res) {
   return res.json({ post: post, postUser: postUser });
 }
 async function showWriting(req, res) {
-  console.log(req.params)
   const writing = await Writing.findById(req.params.id);
-  console.log(writing, 'hitting backend')
-  // console.log(User.findById(writing.user))
   const writingUser = await User.findById(writing.user);
-  return res.json({ writing: writing, writingUser: writingUser });
+  const comments = await Comment.find({writing: writing._id})
+  let commentAndUser=[]
+    for(const comment of comments){
+      const user = await User.findById(comment.user)
+      commentAndUser.push({comment: comment, user: user})
+    }
+  return res.json({ writing: writing, commentsAndUser: commentAndUser, writingUser: writingUser });
 }
+
 async function updateWriting(req, res) {
   const writing = await Writing.findByIdAndUpdate(req.body.id, {
     title: req.body.title,

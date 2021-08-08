@@ -26,6 +26,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/posts', require('./routes/api/posts'));
 app.use('/api/friends', require('./routes/api/friends'));
 app.use('/api', require('./routes/api/likes'));
+app.use('/api/comments', require('./routes/api/comments'));
 
 
 // "catch all" route
