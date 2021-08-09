@@ -42,6 +42,9 @@ export default function ProfilePage({ user, handleSignUpOrLogin }) {
     getProfile();
   }, [username]);
 
+  if (error) {
+    return (<h1>{error}</h1>);
+  }
   if (loading) {
     return (
       <Grid
@@ -56,9 +59,7 @@ export default function ProfilePage({ user, handleSignUpOrLogin }) {
         </Grid.Column>
       </Grid>
     );
-  } else if (error) {
-    return <h1>{error}</h1>;
-  } else {
+  }
     return (
       <>
         <Grid
@@ -94,5 +95,4 @@ export default function ProfilePage({ user, handleSignUpOrLogin }) {
         </Grid>
       </>
     );
-  }
 }
