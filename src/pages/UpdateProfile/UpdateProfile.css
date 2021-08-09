@@ -1,29 +1,29 @@
-
-
-.updateText{
-    color: rgba(139, 60, 128, 0.705);
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: bold;
-    
+.updateText {
+  color: rgba(139, 60, 128, 0.705);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: bold;
 }
 
-#signupButton{
-    color: white;
-    background-color: rgba(160, 39, 65, 0.822);
+#signupButton {
+  color: white;
+  background-color: rgba(160, 39, 65, 0.822);
 }
 
-#signupButton:hover{
-    opacity: .5
+#signupButton:hover {
+  opacity: 0.5;
 }
-.signupForm{
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.973), rgba(192, 192, 192, 0.3));
-    border-radius: 10px;
+.signupForm {
+  background-image: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.973),
+    rgba(192, 192, 192, 0.3)
+  );
+  border-radius: 10px;
 }
 
-div.ui.stacked.signupForm{
-    background-color: rgba(255, 255, 255, 0.507)
+div.ui.stacked.signupForm {
+  background-color: rgba(255, 255, 255, 0.507);
 }
-form.ui.form{
-    background-color: rgba(228, 228, 228, 0.452)
-    /* background-color: black; */
+form.ui.form {
+  background-color: rgba(228, 228, 228, 0.452);
 }

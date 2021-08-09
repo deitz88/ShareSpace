@@ -4,7 +4,10 @@ const Comment = require('../models/comment')
 
 module.exports = {
     addWritingComment,
-    deleteWritingComment
+    deleteWritingComment,
+    getComment,
+    addPhotoComment
+    
 }
 
 async function addWritingComment(req, res){
@@ -15,7 +18,23 @@ async function addWritingComment(req, res){
     })
     return res.status(201).json({ comment });
 }
+
+async function addPhotoComment(req, res){
+    console.log(req.body, 'req body here')
+    const comment = await Comment.create({
+        comment: req.body.comment,
+        user: req.user._id,
+        post: req.body.postId
+    })
+    return res.status(201).json({ comment });
+}
+
 async function deleteWritingComment(req, res){
     await Comment.findByIdAndDelete(req.params.id)
     return res.status(201).json('deleted comment on writing');
+}
+
+async function getComment(req, res){
+    const comment = await Comment.findById(req.params.id)
+    return res.status(201).json({ comment });
 }

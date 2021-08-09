@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
 import {
@@ -9,16 +9,35 @@ import {
   Image,
   Header,
   Button,
+  Form,
+  Message,
+  Divider,
 } from "semantic-ui-react";
 import "./PhotoPostCard.css";
+import commentService from "../../utils/commentService";
 
-export default function PhotoPostCard({ post, user, addLike, removeLike }) {
+export default function PhotoPostCard({
+  post,
+  user,
+  addLike,
+  removeLike,
+  handleChange,
+  handleCommentSubmit,
+  commentsAndUsers,
+  toggleDropdown,
+  dropdown,
+  addLikeComment,
+  removeLikeComment,
+  menu,
+  comment,
+  handleDeleteComment,
+}) {
   const history = useHistory();
+  const [show, setShow] = useState(false);
   const likes = post.post.likes;
   const liked = post.post.likes.findIndex(
     (like) => like.username === user.username
   );
-  console.log(liked)
   const clickHandler =
     liked > -1
       ? () => removeLike(post.post.likes[liked]._id)
@@ -31,8 +50,26 @@ export default function PhotoPostCard({ post, user, addLike, removeLike }) {
     await postService.deleteOne(post.post._id);
     history.push("/" + user.username);
   }
-  useEffect(() => {}, []);
 
+  function changeShow(e) {
+    e.preventDefault();
+    setShow(!show);
+  }
+  async function clickHandlerComment(e) {
+    e.preventDefault();
+    let comment = await commentService.getComment(e.target.id);
+    let likedComment = comment.comment.likes.findIndex(
+      (like) => like.username === user.username
+    );
+
+    if (likedComment > -1) {
+      removeLikeComment(comment.comment.likes[likedComment]._id);
+    } else {
+      addLikeComment(comment.comment._id);
+    }
+  }
+
+  const iconName = show == true ? "comment" : "comment outline";
   return (
     <Grid textAlign="center" style={{ height: "50vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
@@ -71,18 +108,110 @@ export default function PhotoPostCard({ post, user, addLike, removeLike }) {
                 </Card.Group>
               ) : null}
               <br />
-              <Icon name="comment outline"></Icon>
+              <Icon name={iconName} onClick={changeShow}></Icon>
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-              <Icon className='heartIcon' onClick={clickHandler} name={likeIcon} color={likeColor}>
-                &nbsp;{likes.length ? likes.length : ''}
+              <Icon
+                className="heartIcon"
+                onClick={clickHandler}
+                name={likeIcon}
+                color={likeColor}
+              >
+                &nbsp;{likes.length ? likes.length : ""}
               </Icon>
             </Card.Description>
           </Card.Content>
         </Card>
+        {show == true ? (
+          <Card fluid>
+            <Form>
+              <Form.TextArea
+                name="comment"
+                placeholder="comment"
+                onChange={handleChange}
+              />
+              <div>
+                <Button
+                  id="signupButton"
+                  className="btn"
+                  size="tiny"
+                  onClick={handleCommentSubmit}
+                >
+                  Add Comment
+                </Button>
+                <div className="closeBtn" onClick={changeShow}>
+                  X
+                </div>
+              </div>
+            </Form>
+          </Card>
+        ) : (
+          ""
+        )}
         <Card fluid header="Comments:" id="usernameHeader" />
+        <Segment>
+          {commentsAndUsers.map((commentsAndUser) => {
+            return (
+              <>
+                <Message floating key={commentsAndUser.comment._id}>
+                  {commentsAndUser.comment.user === user._id ? (
+                    <Icon
+                      name="ellipsis horizontal"
+                      onClick={toggleDropdown}
+                      id={commentsAndUser.comment._id}
+                    >
+                      {dropdown == true ? "" : ""}
+                    </Icon>
+                  ) : (
+                    ""
+                  )}
+                  <Link to="/">{commentsAndUser.user.username}:&nbsp;</Link>
+                  <span className="comment">
+                    {commentsAndUser.comment.comment}
+                  </span>
+                  <Divider horizontal></Divider>
+                  {/* <CommentIcon /> */}
+                  <Icon
+                    name={
+                      commentsAndUser.comment.likes.findIndex(
+                        (like) => like.username === user.username
+                      ) > -1
+                        ? "heart"
+                        : "heart outline"
+                    }
+                    color={
+                      commentsAndUser.comment.likes.findIndex(
+                        (like) => like.username === user.username
+                      ) > -1
+                        ? "red"
+                        : "grey"
+                    }
+                    id={commentsAndUser.comment._id}
+                    onClick={clickHandlerComment}
+                  ></Icon>
+                  {menu == true && comment == commentsAndUser.comment._id ? (
+                    <>
+                      <Button
+                        className="btn"
+                        size="tiny"
+                        onClick={handleDeleteComment}
+                      >
+                        Delete
+                      </Button>{" "}
+                      <Button className="btn" size="tiny">
+                        Update
+                      </Button>
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </Message>
+              </>
+            );
+          })}
+        </Segment>
       </Grid.Column>
     </Grid>
   );

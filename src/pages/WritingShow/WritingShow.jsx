@@ -8,13 +8,13 @@ import likesService from "../../utils/likesService";
 import commentService from "../../utils/commentService";
 
 export default function WritingShow({ user }) {
-  const history = useHistory()
+  const history = useHistory();
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [writing, setWriting] = useState({});
   const [dropdown, setDropdown] = useState(false);
-  const [comment, setComment] = useState('')
-  const [menu, setMenu] = useState(false)
+  const [comment, setComment] = useState("");
+  const [menu, setMenu] = useState(false);
 
   const [commentsAndUsers, setCommentsAndUsers] = useState([]);
   const [input, setInput] = useState({
@@ -38,17 +38,20 @@ export default function WritingShow({ user }) {
       console.log(err);
     }
   }
+
   function handleChange(e) {
     setInput({
       ...input,
       [e.target.name]: e.target.value,
     });
   }
+
   async function handleCommentSubmit(e) {
     e.preventDefault();
     await commentService.addWritingComment(input);
     await getWriting(id);
   }
+
   useEffect(() => {
     async function getWriting(id) {
       setLoading(true);
@@ -56,9 +59,11 @@ export default function WritingShow({ user }) {
       setWriting(retrievedWriting);
       setCommentsAndUsers(retrievedWriting.commentsAndUser);
       setLoading(false);
+      console.log(retrievedWriting)
     }
     getWriting(id);
   }, []);
+
   async function addLikeWriting(id) {
     try {
       await likesService.addLikeWriting(id);
@@ -67,17 +72,37 @@ export default function WritingShow({ user }) {
       console.log(err);
     }
   }
+  async function addLikeComment(commentId){
+    try {
+        const data =await likesService.addLikeComment(commentId);
+        console.log(data)
+        getWriting(id);
+      } catch (err) {
+        console.log(err);
+      }
+  }
+ 
+  async function removeLikeComment(likeID) {
+    try {
+      await likesService.removeLikeComment(likeID);
+      getWriting(id);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   function toggleDropdown(e) {
     e.preventDefault();
     setDropdown(!dropdown);
-    setComment(e.target.id)
-    setMenu(!menu)
+    setComment(e.target.id);
+    setMenu(!menu);
   }
-  async function handleDeleteComment(e){
-      e.preventDefault()
-      await commentService.deleteWritingComment(comment)
-      getWriting(id)
-      history.push(`/writing/${id}`)
+
+  async function handleDeleteComment(e) {
+    e.preventDefault();
+    await commentService.deleteWritingComment(comment);
+    getWriting(id);
+    history.push(`/writing/${id}`);
   }
 
   if (loading) {
@@ -109,6 +134,8 @@ export default function WritingShow({ user }) {
         dropdown={dropdown}
         comment={comment}
         toggleDropdown={toggleDropdown}
+        addLikeComment={addLikeComment}
+        removeLikeComment={removeLikeComment}
       />
     );
   }

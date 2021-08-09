@@ -26,6 +26,18 @@ function addLikeWriting(id) {
     new Error("Error liking Post");
   });
 }
+function addLikeComment(id){
+    return fetch(`${BASE_URL}comments/${id}/likes`, {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + tokenService.getToken(),
+        },
+      }).then((res) => {
+        if (res.ok) return res.json();
+        new Error("Error liking Post");
+      });
+
+}
 
 function removeLike(id) {
   console.log(id);
@@ -53,9 +65,25 @@ function removeLikeWriting(id) {
   });
 }
 
+function removeLikeComment(id) {
+    return fetch(`${BASE_URL}commentlikes/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + tokenService.getToken(),
+      },
+    }).then((res) => {
+      if (res.ok) return res.json();
+      new Error("Error removing like from commnent");
+    });
+  }
+
+
+
 export default {
   addLike,
   removeLike,
   addLikeWriting,
   removeLikeWriting,
+  addLikeComment,
+  removeLikeComment
 };

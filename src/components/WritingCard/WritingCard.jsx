@@ -15,15 +15,18 @@ import {
   Dropdown,
 } from "semantic-ui-react";
 import "./WritingCard.css";
+import commentService from "../../utils/commentService";
+// import CommentIcon from '../../components/CommentIcon/CommentIcon'
 
 export default function WritingCard({
   writing,
   user,
   addLikeWriting,
+  addLikeComment,
+  removeLikeComment,
   removeLikeWriting,
   handleCommentSubmit,
   handleChange,
-  input,
   commentsAndUsers,
   handleDeleteComment,
   toggleDropdown,
@@ -38,6 +41,25 @@ export default function WritingCard({
   const liked = writing.writing.likes.findIndex(
     (like) => like.username === user.username
   );
+
+  async function clickHandlerComment(e) {
+    e.preventDefault();
+    console.log(this.name);
+    let comment = await commentService.getComment(e.target.id);
+    let likedComment = comment.comment.likes.findIndex(
+      (like) => like.username === user.username
+    );
+    // console.log(comment.comment)
+
+    if (likedComment > -1) {
+      removeLikeComment(comment.comment.likes[likedComment]._id);
+      // this.name='heart outline'
+      // this.color='grey'
+    } else {
+      addLikeComment(comment.comment._id);
+    }
+  }
+
   const clickHandler =
     liked > -1
       ? () => removeLikeWriting(writing.writing.likes[liked]._id)
@@ -163,7 +185,24 @@ export default function WritingCard({
                     {commentsAndUser.comment.comment}
                   </span>
                   <Divider horizontal></Divider>
-                  <Icon name="heart outline"></Icon>
+                  {/* <CommentIcon /> */}
+                  <Icon
+                    name={commentsAndUser.comment.likes.findIndex(
+                      (like) => like.username === user.username
+                    ) > -1
+                  ? 'heart'
+                  : 'heart outline'
+                  }
+                    color={
+                      commentsAndUser.comment.likes.findIndex(
+                        (like) => like.username === user.username
+                      ) > -1
+                        ? "red"
+                        : "grey"
+                    }
+                    id={commentsAndUser.comment._id}
+                    onClick={clickHandlerComment}
+                  ></Icon>
                   {menu == true && comment == commentsAndUser.comment._id ? (
                     <>
                       <Button

@@ -15,7 +15,7 @@ export default function UpdateWriting({ user, handleLogout }) {
     title: "",
     content: "",
     user: user,
-    id: ''
+    id: "",
   });
 
   async function getWriting(id) {
@@ -26,7 +26,11 @@ export default function UpdateWriting({ user, handleLogout }) {
   }
 
   function test() {
-    setInput({ title: writing.writing.title, content: writing.writing.content, id: writing.writing._id});
+    setInput({
+      title: writing.writing.title,
+      content: writing.writing.content,
+      id: writing.writing._id,
+    });
   }
 
   useEffect(() => {
@@ -48,23 +52,15 @@ export default function UpdateWriting({ user, handleLogout }) {
       </Grid>
     );
   }
-    
 
-    function handleChange(e) {
-      setInput({
-        ...input,
-        [e.target.name]: e.target.value,
-      });
-    }
+  function handleChange(e) {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  }
 
-
-
-    return (
-      <UpdateWritingCard
-        handleChange={handleChange}
-        test={test}
-        input={input}
-      />
-    );
-  
+  return (
+    <UpdateWritingCard handleChange={handleChange} test={test} input={input} />
+  );
 }
