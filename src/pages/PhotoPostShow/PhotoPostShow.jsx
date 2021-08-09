@@ -35,11 +35,11 @@ console.log(commentsAndUsers)
   }, []);
   
   async function getPost(id) {
-    setLoading(true);
+    // setLoading(true);
     const retrievedPost = await postService.getPost(id);
     setPost(retrievedPost);
     setCommentsAndUsers(retrievedPost.commentsAndUser)
-    setLoading(false);
+    // setLoading(false);
   }
 
   async function addLike(postId) {

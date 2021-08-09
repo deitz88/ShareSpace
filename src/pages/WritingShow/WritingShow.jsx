@@ -22,11 +22,24 @@ export default function WritingShow({ user }) {
     writingId: id,
   });
 
+  useEffect(() => {
+    async function getWriting(id) {
+      setLoading(true);
+      const retrievedWriting = await postService.getWriting(id);
+      setWriting(retrievedWriting);
+      setCommentsAndUsers(retrievedWriting.commentsAndUser);
+      setLoading(false);
+      console.log(retrievedWriting)
+    }
+    getWriting(id);
+  }, []);
+
   async function getWriting(id) {
-    setLoading(true);
+    // setLoading(true);
     const retrievedWriting = await postService.getWriting(id);
     setWriting(retrievedWriting);
-    setLoading(false);
+    setCommentsAndUsers(retrievedWriting.commentsAndUser);
+    // setLoading(false);
   }
 
   async function removeLikeWriting(likeID) {
@@ -52,17 +65,6 @@ export default function WritingShow({ user }) {
     await getWriting(id);
   }
 
-  useEffect(() => {
-    async function getWriting(id) {
-      setLoading(true);
-      const retrievedWriting = await postService.getWriting(id);
-      setWriting(retrievedWriting);
-      setCommentsAndUsers(retrievedWriting.commentsAndUser);
-      setLoading(false);
-      console.log(retrievedWriting)
-    }
-    getWriting(id);
-  }, []);
 
   async function addLikeWriting(id) {
     try {
