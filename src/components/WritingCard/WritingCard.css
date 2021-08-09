@@ -1,52 +1,51 @@
-img.ui.large.avatar.left.floated.image.postAvatar{
-    height: 40px;
-    width: 40px;
-    padding: 5px;
-    position: absolute;
-    top: -2px;
-    left: 5px
+img.ui.large.avatar.left.floated.image.postAvatar {
+  height: 40px;
+  width: 40px;
+  padding: 5px;
+  position: absolute;
+  top: -2px;
+  left: 5px;
+}
+img.ui.large.avatar.left.floated.image.postAvatar:hover {
+  opacity: 0.5;
+}
 
+h2.ui.right.floated.header.postUsername {
+  color: rgba(180, 46, 75, 0.7);
+  padding-top: 5px;
 }
-img.ui.large.avatar.left.floated.image.postAvatar:hover{
-   opacity: .5;
+.heartIcon:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
-
-h2.ui.right.floated.header.postUsername{
-    color: rgba(180, 46, 75, 0.7);
-    padding-top: 5px;
+.closeBtn {
+  color: rgb(45, 45, 45);
+  background-color: whitesmoke;
+  width: fit-content;
+  padding: 0px 4px 0px 4px;
+  border-radius: 3px;
+  position: absolute;
+  bottom: 6px;
+  right: 30px;
 }
-.heartIcon:hover{
-    cursor: pointer;
-    opacity: .7;
+.closeBtn:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
-.closeBtn{
-    color: rgb(45, 45, 45);
-    background-color: whitesmoke;
-    width: fit-content;
-    padding: 0px 4px 0px 4px;
-    border-radius: 3px;
-    position: absolute;
-    bottom: 6px;
-    right: 30px
+.usernameText {
+  padding: 0px;
+  width: fit-content;
+  padding: 0%;
 }
-.closeBtn:hover{
-   cursor: pointer;
-   opacity: .7;
+div.contentContainer {
+  text-align: start;
+  padding: 0px;
+  margin-bottom: -20px;
+  margin-top: -10px;
 }
-.usernameText{
-    padding: 0px;
-    width: fit-content;
-    padding: 0%;
+span.comment {
+  display: inline;
 }
-div.contentContainer{
-    text-align: start;
-    padding: 0px;
-    margin-bottom: -20px;
-    margin-top: -10px;
-}
-span.comment{
-display: inline
-}
-div.ui.floating.message{
-    text-align: start;
+div.ui.floating.message {
+  text-align: start;
 }

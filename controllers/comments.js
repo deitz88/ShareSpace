@@ -20,7 +20,6 @@ async function addWritingComment(req, res){
 }
 
 async function addPhotoComment(req, res){
-    console.log(req.body, 'req body here')
     const comment = await Comment.create({
         comment: req.body.comment,
         user: req.user._id,

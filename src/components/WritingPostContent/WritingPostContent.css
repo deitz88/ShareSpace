@@ -1,16 +1,14 @@
-.noPosts{
-    color: rgba(180, 46, 75, 0.7);
-    margin: auto;
-    padding-bottom: 10px;
-    padding-top: 10px;
+.noPosts {
+  color: rgba(180, 46, 75, 0.7);
+  margin: auto;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
-div.ui.card.raised.ProfilePostCard{
-    height: 10px
-
+div.ui.card.raised.ProfilePostCard {
+  height: 10px;
 }
-.contentContainer{
-    /* background-color: blueviolet; */
-    margin: 10px;
-    padding: 10px;
+.contentContainer {
+  margin: 10px;
+  padding: 10px;
 }

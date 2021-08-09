@@ -7,8 +7,7 @@ const upload = multer();
 router.post('/signup', upload.single('photo'), usersCtrl.signup);
 router.post('/login', usersCtrl.login);
 router.get('/:username', usersCtrl.profile);
-// router.get('/friends', usersCtrl.friendList)
-// router.post('/request', usersCtrl.sendRequest)
+// router.post('/update/:id', usersCtrl.updateProfile)
 
 /*---------- Protected Routes ----------*/
 

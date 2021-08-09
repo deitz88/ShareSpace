@@ -3,7 +3,6 @@ import tokenService from "./tokenService";
 const BASE_URL = "/api/";
 
 function addLike(id) {
-  console.log(id);
   return fetch(`${BASE_URL}posts/${id}/likes`, {
     method: "POST",
     headers: {
@@ -26,21 +25,19 @@ function addLikeWriting(id) {
     new Error("Error liking Post");
   });
 }
-function addLikeComment(id){
-    return fetch(`${BASE_URL}comments/${id}/likes`, {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + tokenService.getToken(),
-        },
-      }).then((res) => {
-        if (res.ok) return res.json();
-        new Error("Error liking Post");
-      });
-
+function addLikeComment(id) {
+  return fetch(`${BASE_URL}comments/${id}/likes`, {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  }).then((res) => {
+    if (res.ok) return res.json();
+    new Error("Error liking Post");
+  });
 }
 
 function removeLike(id) {
-  console.log(id);
   return fetch(`${BASE_URL}likes/${id}`, {
     method: "DELETE",
     headers: {
@@ -53,7 +50,6 @@ function removeLike(id) {
 }
 
 function removeLikeWriting(id) {
-  console.log(id);
   return fetch(`${BASE_URL}writinglikes/${id}`, {
     method: "DELETE",
     headers: {
@@ -66,18 +62,16 @@ function removeLikeWriting(id) {
 }
 
 function removeLikeComment(id) {
-    return fetch(`${BASE_URL}commentlikes/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: "Bearer " + tokenService.getToken(),
-      },
-    }).then((res) => {
-      if (res.ok) return res.json();
-      new Error("Error removing like from commnent");
-    });
-  }
-
-
+  return fetch(`${BASE_URL}commentlikes/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  }).then((res) => {
+    if (res.ok) return res.json();
+    new Error("Error removing like from commnent");
+  });
+}
 
 export default {
   addLike,
@@ -85,5 +79,5 @@ export default {
   addLikeWriting,
   removeLikeWriting,
   addLikeComment,
-  removeLikeComment
+  removeLikeComment,
 };

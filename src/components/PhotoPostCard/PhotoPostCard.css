@@ -1,21 +1,56 @@
-img.ui.large.avatar.left.floated.image.postAvatar{
-    height: 40px;
-    width: 40px;
-    padding: 5px;
-    position: absolute;
-    top: -2px;
-    left: 5px
+img.ui.large.avatar.left.floated.image.postAvatar {
+  height: 40px;
+  width: 40px;
+  padding: 5px;
+  position: absolute;
+  top: -2px;
+  left: 5px;
+}
+img.ui.large.avatar.left.floated.image.postAvatar:hover {
+  opacity: 0.5;
+}
+
+h2.ui.right.floated.header.postUsername {
+  color: rgba(180, 46, 75, 0.7);
+  padding-top: 5px;
+}
+.heartIcon:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+.heartOutline:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+.heartOutline {
+  position: absolute;
+  right: 0px;
+  /* top: 100px */
+  /* bottom: 60px */
+}
+
+div.ui.floating.message {
+  width: 90%;
+  margin-bottom: -10px;
+  padding-bottom: 5px;
+}
+.threeDots {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.heartContainer{
+    position: relative;
+    bottom: 30px
+}
+.counterContainer{
+    position: relative;
+    right: 2px;
+    bottom: 2px;
 
 }
-img.ui.large.avatar.left.floated.image.postAvatar:hover{
-   opacity: .5;
-}
 
-h2.ui.right.floated.header.postUsername{
-    color: rgba(180, 46, 75, 0.7);
-    padding-top: 5px;
-}
-.heartIcon:hover{
-    cursor: pointer;
-    opacity: .7;
+button.tiny.ui.button{
+  padding: 5px 10px;
+  margin-left: 10px;
 }

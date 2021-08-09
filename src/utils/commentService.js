@@ -42,18 +42,18 @@ function deleteWritingComment(id) {
   }).then((res) => res.json());
 }
 
-function getComment(id){
-    return fetch(`${BASE_URL}comment/` + id, {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + tokenService.getToken(),
-        },
-      }).then((res) => res.json());
-    }
+function getComment(id) {
+  return fetch(`${BASE_URL}comment/` + id, {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  }).then((res) => res.json());
+}
 
 export default {
   addWritingComment,
   deleteWritingComment,
   getComment,
-  addPhotoComment
+  addPhotoComment,
 };

@@ -12,11 +12,9 @@ import {
   Form,
   Divider,
   Message,
-  Dropdown,
 } from "semantic-ui-react";
 import "./WritingCard.css";
 import commentService from "../../utils/commentService";
-// import CommentIcon from '../../components/CommentIcon/CommentIcon'
 
 export default function WritingCard({
   writing,
@@ -44,12 +42,10 @@ export default function WritingCard({
 
   async function clickHandlerComment(e) {
     e.preventDefault();
-    console.log(this.name);
     let comment = await commentService.getComment(e.target.id);
     let likedComment = comment.comment.likes.findIndex(
       (like) => like.username === user.username
     );
-    // console.log(comment.comment)
 
     if (likedComment > -1) {
       removeLikeComment(comment.comment.likes[likedComment]._id);
@@ -76,7 +72,6 @@ export default function WritingCard({
     e.preventDefault();
     await postService.deleteWriting(writing.writing._id);
     history.push("/" + user.username);
-    console.log("hello, this is a button");
   }
   async function handleUpdate(e) {
     e.preventDefault();
@@ -121,7 +116,7 @@ export default function WritingCard({
                 </Card.Group>
               ) : null}
               <br />
-              <Icon name={iconName} onClick={changeShow}></Icon>
+              <Icon name={iconName} onClick={changeShow}>&nbsp;{commentsAndUsers.length ? commentsAndUsers.length : ''}</Icon>
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -186,13 +181,14 @@ export default function WritingCard({
                   </span>
                   <Divider horizontal></Divider>
                   {/* <CommentIcon /> */}
-                  <Icon
-                    name={commentsAndUser.comment.likes.findIndex(
-                      (like) => like.username === user.username
-                    ) > -1
-                  ? 'heart'
-                  : 'heart outline'
-                  }
+                  {/* <Icon
+                    name={
+                      commentsAndUser.comment.likes.findIndex(
+                        (like) => like.username === user.username
+                      ) > -1
+                        ? "heart"
+                        : "heart outline"
+                    }
                     color={
                       commentsAndUser.comment.likes.findIndex(
                         (like) => like.username === user.username
@@ -202,7 +198,7 @@ export default function WritingCard({
                     }
                     id={commentsAndUser.comment._id}
                     onClick={clickHandlerComment}
-                  ></Icon>
+                  ></Icon> */}
                   {menu == true && comment == commentsAndUser.comment._id ? (
                     <>
                       <Button
@@ -220,6 +216,27 @@ export default function WritingCard({
                     ""
                   )}
                 </Message>
+                <div className='heartContainer'>
+                <Icon
+                    name={
+                      commentsAndUser.comment.likes.findIndex(
+                        (like) => like.username === user.username
+                      ) > -1
+                        ? "heart"
+                        : "heart outline"
+                    }
+                    color={
+                      commentsAndUser.comment.likes.findIndex(
+                        (like) => like.username === user.username
+                      ) > -1
+                        ? "red"
+                        : "grey"
+                    }
+                    id={commentsAndUser.comment._id}
+                    onClick={clickHandlerComment}
+                    className='heartOutline'
+                  > <div className='counterContainer'>&nbsp;{commentsAndUser.comment.likes.length ? commentsAndUser.comment.likes.length : ""}</div></Icon>
+                  </div>
               </>
             );
           })}

@@ -1,8 +1,8 @@
-#addButton{
-    color: white;
-    background-color: rgba(160, 39, 65, 0.822);
+#addButton {
+  color: white;
+  background-color: rgba(160, 39, 65, 0.822);
 }
 
-#addButton:hover{
-    opacity: .5
+#addButton:hover {
+  opacity: 0.5;
 }

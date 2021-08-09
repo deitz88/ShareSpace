@@ -60,7 +60,6 @@ async function addLikePost(req, res) {
   }
 
 async function addLikeComment(req, res) {
-    console.log(req.user._id, 'HERE HERE HERE HERE HERE')
   try {
     const comment = await Comment.findById(req.params.id);
     comment.likes.push({ username: req.user.username, userId: req.user._id });
@@ -69,7 +68,6 @@ async function addLikeComment(req, res) {
   } catch (err) {
     res.json({ data: err });
   }
-  console.log("adding like to comment");
 }
 
 async function deleteLikeWriting(req, res) {
@@ -98,5 +96,4 @@ async function deleteLikeComment(req, res) {
   } catch (err) {
     res.json({ error: err });
   }
-  console.log("removing like from comment");
 }

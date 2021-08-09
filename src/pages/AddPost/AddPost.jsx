@@ -18,7 +18,6 @@ export default function AddPost({ user, handleLogout }) {
     formData.append("photo", selectedFile);
     formData.append("comment", input.comment);
     const data = await postService.create(formData);
-    console.log(data);
     history.push(`/${user.username}`);
   }
 

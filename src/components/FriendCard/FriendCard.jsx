@@ -9,7 +9,6 @@ export default function FriendCard({username, photo, handleSignUpOrLogin}){
     async function handleRemove(e){
         e.preventDefault()
         const updatedUser = await friendService.removeFriend(username)
-        console.log(updatedUser)
         handleSignUpOrLogin()
     }
     useEffect(() => {

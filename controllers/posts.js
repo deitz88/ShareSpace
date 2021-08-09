@@ -25,18 +25,13 @@ module.exports = {
 
 async function show(req, res) {
   const post = await Post.findById(req.params.id);
-  console.log(post._id, 'here here here')
   const postUser = await User.findById(post.user);
   const comments = await Comment.find({post: post._id})
-  // console.log(comments, 'here here here')
   let commentAndUser=[]
   for(const comment of comments){
-    console.log('HITTING HERE MAN')
     const user = await User.findById(comment.user)
-    console.log(user, '<===============================here')
     commentAndUser.push({comment: comment, user: user})
   }
-  console.log(commentAndUser)
   return res.json({ post: post, commentsAndUser: commentAndUser, postUser: postUser });
 }
 async function showWriting(req, res) {
@@ -84,7 +79,6 @@ function create(req, res) {
   }
 }
 async function createWriting(req, res) {
-  console.log(req.body);
   const writing = Writing.create({
     title: req.body.title,
     user: req.body.user,
@@ -93,13 +87,11 @@ async function createWriting(req, res) {
   return res.status(201).json({ writing });
 }
 async function deleteOne(req, res) {
-  // console.log(req.user)
   await Post.findByIdAndDelete(req.params.id);
   return res.status(200).json("complete");
 }
 
 async function deleteWriting(req, res) {
-  // console.log(req.user)
   await Writing.findByIdAndDelete(req.params.id);
   return res.status(200).json("complete");
 }

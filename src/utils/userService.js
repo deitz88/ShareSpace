@@ -19,10 +19,24 @@ function getProfile(username) {
     if (res.ok) {
       return res.json();
     } else {
+      console.log(res)
       throw new Error("Bad Credentials");
     }
   });
 }
+
+// function UpdateProfile(info) {
+//   console.log(info) //this is working, req.body == {} on backend
+//   return fetch(BASE_URL + `update/${info.user._id}`, {
+//     method: "POST",
+//     headers: { Authorization: "Bearer " + tokenService.getToken() 
+//   },
+//     body: JSON.stringify(info),
+//   }).then((res) => {
+//     if (res.ok) return res.json();
+//     throw new Error("error updating profile");
+//   });
+// }
 
 function getUser() {
   return tokenService.getUserFromToken();
@@ -52,4 +66,5 @@ export default {
   login,
   getUser,
   getProfile,
+  // UpdateProfile,
 };

@@ -10,14 +10,15 @@ export default function UpdateWritingCard({
   test,
   input,
 }) {
+
   useEffect(() => {
     test();
   }, []);
+  
   const history = useHistory();
   async function handleSubmit(e) {
     e.preventDefault();
-    const data = await postService.updateWriting(input);
-    console.log(data);
+    await postService.updateWriting(input);
     history.push(`/writing/${input.id}`);
   }
   return (

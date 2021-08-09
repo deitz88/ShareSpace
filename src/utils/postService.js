@@ -11,7 +11,6 @@ function create(post) {
 }
 
 function createWriting(writing) {
-  console.log(writing);
   return fetch(BASE_URL + "createwriting", {
     method: "POST",
     headers: {
@@ -63,7 +62,6 @@ function deleteWriting(id) {
 }
 
 function updateWriting(writing) {
-  console.log(writing.id);
   return fetch(BASE_URL + "updatewriting/" + writing.id, {
     method: "POST",
     headers: {

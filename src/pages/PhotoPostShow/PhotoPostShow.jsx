@@ -9,37 +9,34 @@ import commentService from "../../utils/commentService";
 
 export default function PhotoPostShow({ user }) {
   const { id } = useParams();
-  const history = useHistory()
+  const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [post, setPost] = useState({});
   const [commentsAndUsers, setCommentsAndUsers] = useState([]);
   const [dropdown, setDropdown] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [show, setShow] = useState(false);
   const [comment, setComment] = useState("");
   const [input, setInput] = useState({
     comment: "",
     postId: id,
   });
-  console.log(post)
-console.log(commentsAndUsers)
 
   useEffect(() => {
     async function getPost(id) {
       setLoading(true);
       const retrievedPost = await postService.getPost(id);
       setPost(retrievedPost);
-      setCommentsAndUsers(retrievedPost.commentsAndUser)
+      setCommentsAndUsers(retrievedPost.commentsAndUser);
       setLoading(false);
     }
     getPost(id);
   }, []);
-  
+
   async function getPost(id) {
-    // setLoading(true);
     const retrievedPost = await postService.getPost(id);
     setPost(retrievedPost);
-    setCommentsAndUsers(retrievedPost.commentsAndUser)
-    // setLoading(false);
+    setCommentsAndUsers(retrievedPost.commentsAndUser);
   }
 
   async function addLike(postId) {
@@ -77,7 +74,7 @@ console.log(commentsAndUsers)
     e.preventDefault();
     const data = await commentService.addPhotoComment(input);
     await getPost(id);
-    console.log(data)
+    setShow(!show)
   }
   function toggleDropdown(e) {
     e.preventDefault();
@@ -85,14 +82,13 @@ console.log(commentsAndUsers)
     setComment(e.target.id);
     setMenu(!menu);
   }
-  async function addLikeComment(commentId){
+  async function addLikeComment(commentId) {
     try {
-        const data =await likesService.addLikeComment(commentId);
-        console.log(data)
-        getPost(id);
-      } catch (err) {
-        console.log(err);
-      }
+      const data = await likesService.addLikeComment(commentId);
+      getPost(id);
+    } catch (err) {
+      console.log(err);
+    }
   }
   async function removeLikeComment(likeID) {
     try {
@@ -134,6 +130,8 @@ console.log(commentsAndUsers)
         addLikeComment={addLikeComment}
         comment={comment}
         removeLikeComment={removeLikeComment}
+        setShow={setShow}
+        show={show}
       />
     );
   }

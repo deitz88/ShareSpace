@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import {
   Grid,
@@ -13,7 +13,6 @@ import {
 import userService from "../../utils/userService";
 import { useHistory } from "react-router-dom";
 import "./UpdateProfile.css";
-import NavBar from "../../components/NavBar/NavBar";
 
 export default function UpdateProfile({ user }) {
   const history = useHistory();
@@ -21,35 +20,46 @@ export default function UpdateProfile({ user }) {
   const [fileUpload, setFileUpload] = useState("");
   const [formInput, setFormInput] = useState({
     username: `${user.username}`,
-    bio: "",
+    bio: `${user.bio}`,
+    user: user,
+    photoUrl: user.photoUrl
   });
 
-  function handleInput(e) {
+  useEffect(() => {
+    test();
+  }, []);
+
+  function test() {
+    setFormInput({
+      username: user.username,
+      bio: user.bio,
+      user: user,
+    });
+  }
+
+  // function handleInput(e) {
+  //   setFormInput({
+  //     ...formInput,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // }
+  function handleChange(e) {
     setFormInput({
       ...formInput,
       [e.target.name]: e.target.value,
     });
   }
-
+console.log(fileUpload)
   function handleFileUpload(e) {
     setFileUpload(e.target.files[0]);
   }
-
   async function handleSubmit(e) {
     e.preventDefault();
-    const form = new FormData();
-    form.append("photo", fileUpload);
-
-    for (let key in formInput) {
-      form.append(key, formInput[key]);
-    }
-    for (var pair of form.entries()) {
-    }
+    userService.UpdateProfile(formInput)
   }
 
   return (
     <>
-      <NavBar user={user} />
       <Grid
         textAlign="center"
         style={{ height: "65vh" }}
@@ -62,16 +72,17 @@ export default function UpdateProfile({ user }) {
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
             <Segment stacked className="signupForm">
-              <Label>Username:</Label>
+              <Label>Username: {user.username}</Label>
               <br />
               <br />
 
               <Form.Input
-                type="textarea"
+                type="username"
                 name="username"
-                placeholder={user.username}
-                onChange={handleInput}
+                value='username is unique and cannot be changed at this time'
+                onChange={handleChange}
                 required
+                disabled
               />
 
               <Label>Bio:</Label>
@@ -79,10 +90,10 @@ export default function UpdateProfile({ user }) {
               <br />
               <Form.Field className="signupForm">
                 <Form.TextArea
-                  type="textarea"
+                  type="bio"
                   name="bio"
-                  placeholder={user.bio}
-                  onChange={handleInput}
+                  value={formInput.bio}
+                  onChange={handleChange}
                   required
                 />
               </Form.Field>
@@ -108,5 +119,4 @@ export default function UpdateProfile({ user }) {
       </Grid>
     </>
   );
-
 }

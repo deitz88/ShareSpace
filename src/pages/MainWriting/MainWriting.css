@@ -1,0 +1,12 @@
+.toggleButton{
+    color: red
+}
+button#signupButton.ui.button.toggleButton {
+position: absolute;
+right: 18px;
+font-size: 10px;
+padding: 5px 10px;
+background-color: rgba(160, 39, 65, 0.5);
+color:white;
+top: 45px
+}

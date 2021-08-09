@@ -31,9 +31,11 @@ export default function PhotoPostCard({
   menu,
   comment,
   handleDeleteComment,
+  setShow,
+  show,
 }) {
+
   const history = useHistory();
-  const [show, setShow] = useState(false);
   const likes = post.post.likes;
   const liked = post.post.likes.findIndex(
     (like) => like.username === user.username
@@ -108,7 +110,7 @@ export default function PhotoPostCard({
                 </Card.Group>
               ) : null}
               <br />
-              <Icon name={iconName} onClick={changeShow}></Icon>
+              <Icon name={iconName} onClick={changeShow}>&nbsp;{commentsAndUsers.length ? commentsAndUsers.length : ''}</Icon>
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -161,6 +163,7 @@ export default function PhotoPostCard({
                       name="ellipsis horizontal"
                       onClick={toggleDropdown}
                       id={commentsAndUser.comment._id}
+                      className='threeDots'
                     >
                       {dropdown == true ? "" : ""}
                     </Icon>
@@ -173,7 +176,11 @@ export default function PhotoPostCard({
                   </span>
                   <Divider horizontal></Divider>
                   {/* <CommentIcon /> */}
-                  <Icon
+
+
+
+
+                  {/* <Icon
                     name={
                       commentsAndUser.comment.likes.findIndex(
                         (like) => like.username === user.username
@@ -190,7 +197,11 @@ export default function PhotoPostCard({
                     }
                     id={commentsAndUser.comment._id}
                     onClick={clickHandlerComment}
-                  ></Icon>
+                    className='heartOutline'
+                  ></Icon> */}
+
+
+
                   {menu == true && comment == commentsAndUser.comment._id ? (
                     <>
                       <Button
@@ -208,6 +219,27 @@ export default function PhotoPostCard({
                     ""
                   )}
                 </Message>
+                <div className='heartContainer'>
+                <Icon
+                    name={
+                      commentsAndUser.comment.likes.findIndex(
+                        (like) => like.username === user.username
+                      ) > -1
+                        ? "heart"
+                        : "heart outline"
+                    }
+                    color={
+                      commentsAndUser.comment.likes.findIndex(
+                        (like) => like.username === user.username
+                      ) > -1
+                        ? "red"
+                        : "grey"
+                    }
+                    id={commentsAndUser.comment._id}
+                    onClick={clickHandlerComment}
+                    className='heartOutline'
+                  > <div className='counterContainer'>&nbsp;{commentsAndUser.comment.likes.length ? commentsAndUser.comment.likes.length : ""}</div></Icon>
+                  </div>
               </>
             );
           })}

@@ -1,27 +1,31 @@
-div.ui.stacked.segment{
-    background-color: rgba(255, 255, 255, 0.507);
+div.ui.stacked.segment {
+  background-color: rgba(255, 255, 255, 0.507);
 }
 
-div.column{
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.973), rgba(192, 192, 192, 0.3));
-    border-radius: 10px;
+div.column {
+  background-image: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.973),
+    rgba(192, 192, 192, 0.3)
+  );
+  border-radius: 10px;
 }
 
-div.ui.message{
-    background-color: rgba(233, 233, 233, 0.507);
+div.ui.message {
+  background-color: rgba(233, 233, 233, 0.507);
 }
 
-a{
-    color: rgba(139, 60, 128, 0.705);
-    font-weight: 500;
+a {
+  color: rgba(139, 60, 128, 0.705);
+  font-weight: 500;
 }
-a:hover{
-    color: rgba(92, 39, 85, 0.705);
+a:hover {
+  color: rgba(92, 39, 85, 0.705);
 }
-.btmText{
-    font-family: 'Source Sans Pro', sans-serif;
-    font-size: medium;
-    font-weight: 600;
-    margin-right: 10px;
-    color:rgba(88, 88, 88, 0.808)
+.btmText {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: medium;
+  font-weight: 600;
+  margin-right: 10px;
+  color: rgba(88, 88, 88, 0.808);
 }

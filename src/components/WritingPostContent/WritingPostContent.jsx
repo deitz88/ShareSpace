@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Grid, Header, Image, Icon, Group } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 import "./WritingPostContent.css";
-
-// const src='https://react.semantic-ui.com/images/wireframe/white-image.png'
 
 export default function WritingPostContent({
   user,

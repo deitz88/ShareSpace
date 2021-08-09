@@ -37,7 +37,6 @@ async function denyRequest(req, res) {
 }
 
 async function removeFriend(req, res) {
-  // console.log(req.params)
   try {
     const user = await User.findById(req.user._id);
     const removedUser = await User.findOne({ username: req.params.username });

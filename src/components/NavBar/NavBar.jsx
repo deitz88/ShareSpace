@@ -8,7 +8,6 @@ export default function NavBar({ user, handleSignUpOrLogin, handleLogout }) {
   function postClick(){
     setPostLink(!postLink)
   }
-console.log(postLink)
   return user ? (
     <Segment clearing>
       <Header as="h2" floated="right">

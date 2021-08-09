@@ -5,24 +5,6 @@ import "./Requests.css";
 import friendService from "../../utils/friendService";
 
 export default function Requests({ user, handleSignUpOrLogin }) {
-  //    const [userAccept, setUserAccept] = useState('')
-  //     // async function handleDeny(e){
-  //     //     e.preventDefault()
-  //     //     await friendService.denyRequest(username)
-  //     //     handleSignUpOrLogin()
-  //     // }
-
-  //     async function handleAccept(user){
-  //         // e.preventDefault()
-  //         // await friendService.approveRequest(user)
-  //         // handleSignUpOrLogin()
-  //         console.log('hitting', user)
-  //     }
-  //     // handleAccept()
-  //     // useEffect(() => {
-
-  //     //    handleAccept(userAccept)
-  //     //     }, [userAccept]);
   return (
     <>
       <Grid
@@ -42,7 +24,6 @@ export default function Requests({ user, handleSignUpOrLogin }) {
                 photo={request.photoUrl}
                 key={request._id}
                 handleSignUpOrLogin={handleSignUpOrLogin}
-                // setUserAccept={setUserAccept}
                 user={user}
               />
             );

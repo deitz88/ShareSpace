@@ -1,6 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Card, Image, Icon, Segment } from "semantic-ui-react";
+import { Card, Image, Icon } from "semantic-ui-react";
 import "./ProfileCard.css";
 
 export default function RequestPendingCard({ userRequest }) {

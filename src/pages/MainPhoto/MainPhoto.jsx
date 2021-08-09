@@ -17,7 +17,12 @@ import likesService from "../../utils/likesService";
 
 export default function MainPhoto({ user, handleLogout }) {
   const [posts, setPosts] = useState([]);
-//   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState(true);
+
+  function clickToggle(e) {
+    e.preventDefault();
+    setFilter(!filter);
+  }
 
   async function getPosts() {
     const data = await postService.getAllPhotoPosts();
@@ -34,7 +39,7 @@ export default function MainPhoto({ user, handleLogout }) {
 
   async function removeLike(likeID) {
     try {
-     await likesService.removeLike(likeID);
+      await likesService.removeLike(likeID);
       getPosts();
     } catch (err) {
       console.log(err);
@@ -70,14 +75,46 @@ export default function MainPhoto({ user, handleLogout }) {
           <br></br>
           <Card.Group className="headerCard">
             <Card fluid header="Browse Posts:" />
+            <Button
+              className="toggleButton"
+              id="signupButton"
+              onClick={clickToggle}
+            >
+              {filter == true ? "showing recent" : "showing oldest"}
+            </Button>
           </Card.Group>
           <br></br>
           <Card.Group itemsPerRow={2}>
-            {posts.map((post) => {
-              return (
-                <PhotoPostFeed key={post._id} post={post} addLike={addLike} removeLike={removeLike} user={user}/>
-              );
-            })}
+            {/* post.sort({}) */}
+            {filter == true ? (
+              <>
+                {posts.slice(0).reverse().map((post) => {
+                  return (
+                    <PhotoPostFeed
+                      key={post._id}
+                      post={post}
+                      addLike={addLike}
+                      removeLike={removeLike}
+                      user={user}
+                    />
+                  );
+                })}
+              </>
+            ) : (
+              <>
+                {posts.map((post) => {
+                  return (
+                    <PhotoPostFeed
+                      key={post._id}
+                      post={post}
+                      addLike={addLike}
+                      removeLike={removeLike}
+                      user={user}
+                    />
+                  );
+                })}
+              </>
+            )}
           </Card.Group>
         </Grid.Column>
       </Grid>

@@ -15,13 +15,15 @@ import "./MainWriting.css";
 import WritingPostFeed from "../../components/WritingPostFeed/WritingPostFeed";
 import likesService from "../../utils/likesService";
 
-
-
-
-
 export default function MainWriting({ user, handleLogout }) {
   const [writings, setWritings] = useState([]);
-//   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState(true)
+  //   const [loading, setLoading] = useState(true);
+
+  function clickToggle(e){
+    e.preventDefault()
+    setFilter(!filter)
+  }
 
   async function getWritings() {
     const data = await postService.getAllWritingPosts();
@@ -38,8 +40,8 @@ export default function MainWriting({ user, handleLogout }) {
 
   async function removeLikeWriting(id) {
     try {
-     await likesService.removeLikeWriting(id);
-     getWritings();
+      await likesService.removeLikeWriting(id);
+      getWritings();
     } catch (err) {
       console.log(err);
     }
@@ -74,14 +76,41 @@ export default function MainWriting({ user, handleLogout }) {
           <br></br>
           <Card.Group className="headerCard">
             <Card fluid header="Browse Posts:" />
+            <Button className='toggleButton' id='signupButton' onClick={clickToggle}>{filter == true ? 'showing recent' : 'showing oldest'}</Button>
+
           </Card.Group>
           <br></br>
           <Card.Group itemsPerRow={2}>
-            {writings.map((writing) => {
+            {filter == true ?
+            <>
+            {writings.slice(0).reverse().map((writing) => {
               return (
-                <WritingPostFeed key={writing._id} writing={writing} addLikeWriting={addLikeWriting} removeLikeWriting={removeLikeWriting} user={user}/>
+                <WritingPostFeed
+                  key={writing._id}
+                  writing={writing}
+                  addLikeWriting={addLikeWriting}
+                  removeLikeWriting={removeLikeWriting}
+                  user={user}
+                />
               );
             })}
+            </>
+            :
+            <>
+            {writings.map((writing) => {
+              return (
+                <WritingPostFeed
+                  key={writing._id}
+                  writing={writing}
+                  addLikeWriting={addLikeWriting}
+                  removeLikeWriting={removeLikeWriting}
+                  user={user}
+                />
+              );
+            })}
+            </>
+            }
+ 
           </Card.Group>
         </Grid.Column>
       </Grid>

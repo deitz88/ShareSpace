@@ -1,14 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Image, Icon, Segment } from "semantic-ui-react";
+import { Card, Image, Icon } from "semantic-ui-react";
 import "./ProfileCard.css";
 
-export default function UsersCard({
-  userRequest,
-  loggedInUser,
-  requestFriend,
-}) {
-  const link = Link;
+export default function UsersCard({ userRequest }) {
   return (
     <Card centered className="profileCard">
       <Card.Group className="headerCard">

@@ -16,7 +16,6 @@ export default function ProfileCard({
   for (let i = 0; i < loggedInUser.friendRequests.length; i++) {
     friendArray.push(loggedInUser.friendRequests[i]._id);
   }
-  console.log(friendArray);
   if (userRequest._id === loggedInUser._id) {
     return (
       <UsersCard

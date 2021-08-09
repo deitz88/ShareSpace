@@ -29,7 +29,6 @@ export default function WritingShow({ user }) {
       setWriting(retrievedWriting);
       setCommentsAndUsers(retrievedWriting.commentsAndUser);
       setLoading(false);
-      console.log(retrievedWriting)
     }
     getWriting(id);
   }, []);
@@ -65,7 +64,6 @@ export default function WritingShow({ user }) {
     await getWriting(id);
   }
 
-
   async function addLikeWriting(id) {
     try {
       await likesService.addLikeWriting(id);
@@ -74,16 +72,15 @@ export default function WritingShow({ user }) {
       console.log(err);
     }
   }
-  async function addLikeComment(commentId){
+  async function addLikeComment(commentId) {
     try {
-        const data =await likesService.addLikeComment(commentId);
-        console.log(data)
-        getWriting(id);
-      } catch (err) {
-        console.log(err);
-      }
+      const data = await likesService.addLikeComment(commentId);
+      getWriting(id);
+    } catch (err) {
+      console.log(err);
+    }
   }
- 
+
   async function removeLikeComment(likeID) {
     try {
       await likesService.removeLikeComment(likeID);
