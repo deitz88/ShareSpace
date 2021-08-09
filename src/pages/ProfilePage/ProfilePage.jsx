@@ -32,7 +32,7 @@ export default function ProfilePage({ user, handleSignUpOrLogin }) {
       );
     }
   }
-  
+
   async function requestFriend(userRequest) {
     const updatedUser = await friendService.friendRequest(userRequest);
     setProfileUser(updatedUser);
@@ -40,7 +40,7 @@ export default function ProfilePage({ user, handleSignUpOrLogin }) {
 
   useEffect(() => {
     getProfile();
-  }, []);
+  }, [username]);
 
   if (loading) {
     return (

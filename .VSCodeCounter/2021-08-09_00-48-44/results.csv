@@ -1,0 +1,96 @@
+"filename", "language", "JavaScript React", "CSS", "JavaScript", "Markdown", "JSON", "HTML", "comment", "blank", "total"
+"/Users/thewanderer/code/ShareSpace/README.md", "Markdown", 0, 0, 0, 26, 0, 0, 0, 14, 40
+"/Users/thewanderer/code/ShareSpace/build/manifest.json", "JSON", 0, 0, 0, 0, 25, 0, 0, 1, 26
+"/Users/thewanderer/code/ShareSpace/config/auth.js", "JavaScript", 0, 0, 18, 0, 0, 0, 4, 1, 23
+"/Users/thewanderer/code/ShareSpace/config/database.js", "JavaScript", 0, 0, 13, 0, 0, 0, 0, 3, 16
+"/Users/thewanderer/code/ShareSpace/controllers/comments.js", "JavaScript", 0, 0, 33, 0, 0, 0, 0, 7, 40
+"/Users/thewanderer/code/ShareSpace/controllers/friends.js", "JavaScript", 0, 0, 73, 0, 0, 0, 0, 10, 83
+"/Users/thewanderer/code/ShareSpace/controllers/likes.js", "JavaScript", 0, 0, 91, 0, 0, 0, 0, 9, 100
+"/Users/thewanderer/code/ShareSpace/controllers/posts.js", "JavaScript", 0, 0, 103, 0, 0, 0, 0, 7, 110
+"/Users/thewanderer/code/ShareSpace/controllers/users.js", "JavaScript", 0, 0, 78, 0, 0, 0, 5, 16, 99
+"/Users/thewanderer/code/ShareSpace/models/comment.js", "JavaScript", 0, 0, 13, 0, 0, 0, 0, 3, 16
+"/Users/thewanderer/code/ShareSpace/models/post.js", "JavaScript", 0, 0, 12, 0, 0, 0, 0, 5, 17
+"/Users/thewanderer/code/ShareSpace/models/user.js", "JavaScript", 0, 0, 43, 0, 0, 0, 11, 11, 65
+"/Users/thewanderer/code/ShareSpace/models/writing.js", "JavaScript", 0, 0, 12, 0, 0, 0, 0, 3, 15
+"/Users/thewanderer/code/ShareSpace/package-lock.json", "JSON", 0, 0, 0, 0, 37641, 0, 0, 1, 37642
+"/Users/thewanderer/code/ShareSpace/package.json", "JSON", 0, 0, 0, 0, 50, 0, 0, 1, 51
+"/Users/thewanderer/code/ShareSpace/public/index.html", "HTML", 0, 0, 0, 0, 0, 32, 31, 3, 66
+"/Users/thewanderer/code/ShareSpace/public/manifest.json", "JSON", 0, 0, 0, 0, 25, 0, 0, 1, 26
+"/Users/thewanderer/code/ShareSpace/routes/api/comments.js", "JavaScript", 0, 0, 8, 0, 0, 0, 0, 4, 12
+"/Users/thewanderer/code/ShareSpace/routes/api/friends.js", "JavaScript", 0, 0, 8, 0, 0, 0, 0, 4, 12
+"/Users/thewanderer/code/ShareSpace/routes/api/likes.js", "JavaScript", 0, 0, 11, 0, 0, 0, 3, 2, 16
+"/Users/thewanderer/code/ShareSpace/routes/api/posts.js", "JavaScript", 0, 0, 15, 0, 0, 0, 0, 3, 18
+"/Users/thewanderer/code/ShareSpace/routes/api/users.js", "JavaScript", 0, 0, 9, 0, 0, 0, 3, 5, 17
+"/Users/thewanderer/code/ShareSpace/server.js", "JavaScript", 0, 0, 18, 0, 0, 0, 17, 7, 42
+"/Users/thewanderer/code/ShareSpace/src/components/ErrorMessage/ErrorMessage.jsx", "JavaScript React", 4, 0, 0, 0, 0, 0, 0, 1, 5
+"/Users/thewanderer/code/ShareSpace/src/components/FriendCard/FriendCard.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/thewanderer/code/ShareSpace/src/components/FriendCard/FriendCard.jsx", "JavaScript React", 62, 0, 0, 0, 0, 0, 3, 3, 68
+"/Users/thewanderer/code/ShareSpace/src/components/MovieLogo/MovieLogo.jsx", "JavaScript React", 6, 0, 0, 0, 0, 0, 0, 4, 10
+"/Users/thewanderer/code/ShareSpace/src/components/NavBar/NavBar.css", "CSS", 0, 65, 0, 0, 0, 0, 0, 5, 70
+"/Users/thewanderer/code/ShareSpace/src/components/NavBar/NavBar.jsx", "JavaScript React", 91, 0, 0, 0, 0, 0, 6, 3, 100
+"/Users/thewanderer/code/ShareSpace/src/components/PhotoPostCard/PhotoPostCard.css", "CSS", 0, 49, 0, 0, 0, 0, 2, 5, 56
+"/Users/thewanderer/code/ShareSpace/src/components/PhotoPostCard/PhotoPostCard.jsx", "JavaScript React", 220, 0, 0, 0, 0, 0, 17, 14, 251
+"/Users/thewanderer/code/ShareSpace/src/components/PhotoPostContent/PhotoPostContent.css", "CSS", 0, 9, 0, 0, 0, 0, 0, 3, 12
+"/Users/thewanderer/code/ShareSpace/src/components/PhotoPostContent/PhotoPostContent.jsx", "JavaScript React", 51, 0, 0, 0, 0, 0, 1, 4, 56
+"/Users/thewanderer/code/ShareSpace/src/components/PhotoPostFeed/PhotoPostFeed.css", "CSS", 0, 9, 0, 0, 0, 0, 0, 1, 10
+"/Users/thewanderer/code/ShareSpace/src/components/PhotoPostFeed/PhotoPostFeed.jsx", "JavaScript React", 48, 0, 0, 0, 0, 0, 0, 4, 52
+"/Users/thewanderer/code/ShareSpace/src/components/ProfileCard/FriendProfileCard.jsx", "JavaScript React", 38, 0, 0, 0, 0, 0, 1, 3, 42
+"/Users/thewanderer/code/ShareSpace/src/components/ProfileCard/NonFriendCard.jsx", "JavaScript React", 41, 0, 0, 0, 0, 0, 0, 3, 44
+"/Users/thewanderer/code/ShareSpace/src/components/ProfileCard/ProfileCard.css", "CSS", 0, 58, 0, 0, 0, 0, 3, 2, 63
+"/Users/thewanderer/code/ShareSpace/src/components/ProfileCard/ProfileCard.jsx", "JavaScript React", 43, 0, 0, 0, 0, 0, 0, 2, 45
+"/Users/thewanderer/code/ShareSpace/src/components/ProfileCard/RequestPendingCard.jsx", "JavaScript React", 37, 0, 0, 0, 0, 0, 1, 2, 40
+"/Users/thewanderer/code/ShareSpace/src/components/ProfileCard/UsersCard.jsx", "JavaScript React", 36, 0, 0, 0, 0, 0, 1, 2, 39
+"/Users/thewanderer/code/ShareSpace/src/components/Scroll/Scroll.jsx", "JavaScript React", 1, 0, 0, 0, 0, 0, 0, 0, 1
+"/Users/thewanderer/code/ShareSpace/src/components/UpdateWritingCard/UpdateWritingCard.jsx", "JavaScript React", 62, 0, 0, 0, 0, 0, 0, 4, 66
+"/Users/thewanderer/code/ShareSpace/src/components/UserCard/UserCard.css", "CSS", 0, 78, 0, 0, 0, 0, 0, 6, 84
+"/Users/thewanderer/code/ShareSpace/src/components/UserCard/UserCard.jsx", "JavaScript React", 70, 0, 0, 0, 0, 0, 1, 4, 75
+"/Users/thewanderer/code/ShareSpace/src/components/WritingCard/WritingCard.css", "CSS", 0, 50, 0, 0, 0, 0, 0, 2, 52
+"/Users/thewanderer/code/ShareSpace/src/components/WritingCard/WritingCard.jsx", "JavaScript React", 221, 0, 0, 0, 0, 0, 18, 9, 248
+"/Users/thewanderer/code/ShareSpace/src/components/WritingPostContent/WritingPostContent.css", "CSS", 0, 13, 0, 0, 0, 0, 0, 2, 15
+"/Users/thewanderer/code/ShareSpace/src/components/WritingPostContent/WritingPostContent.jsx", "JavaScript React", 69, 0, 0, 0, 0, 0, 0, 2, 71
+"/Users/thewanderer/code/ShareSpace/src/components/WritingPostFeed/WritingPostFeed.css", "CSS", 0, 17, 0, 0, 0, 0, 0, 1, 18
+"/Users/thewanderer/code/ShareSpace/src/components/WritingPostFeed/WritingPostFeed.jsx", "JavaScript React", 72, 0, 0, 0, 0, 0, 0, 3, 75
+"/Users/thewanderer/code/ShareSpace/src/index.css", "CSS", 0, 12, 0, 0, 0, 0, 0, 2, 14
+"/Users/thewanderer/code/ShareSpace/src/index.js", "JavaScript", 0, 0, 12, 0, 0, 0, 3, 2, 17
+"/Users/thewanderer/code/ShareSpace/src/pages/AddPost/AddPost.css", "CSS", 0, 7, 0, 0, 0, 0, 0, 2, 9
+"/Users/thewanderer/code/ShareSpace/src/pages/AddPost/AddPost.jsx", "JavaScript React", 65, 0, 0, 0, 0, 0, 0, 6, 71
+"/Users/thewanderer/code/ShareSpace/src/pages/AddWriting/AddWriting.css", "CSS", 0, 7, 0, 0, 0, 0, 0, 2, 9
+"/Users/thewanderer/code/ShareSpace/src/pages/AddWriting/AddWriting.jsx", "JavaScript React", 58, 0, 0, 0, 0, 0, 0, 5, 63
+"/Users/thewanderer/code/ShareSpace/src/pages/App/App.css", "CSS", 0, 37, 0, 0, 0, 0, 1, 6, 44
+"/Users/thewanderer/code/ShareSpace/src/pages/App/App.jsx", "JavaScript React", 127, 0, 0, 0, 0, 0, 0, 6, 133
+"/Users/thewanderer/code/ShareSpace/src/pages/App/App.test.js", "JavaScript", 0, 0, 8, 0, 0, 0, 0, 2, 10
+"/Users/thewanderer/code/ShareSpace/src/pages/Friends/Friends.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/thewanderer/code/ShareSpace/src/pages/Friends/Friends.jsx", "JavaScript React", 34, 0, 0, 0, 0, 0, 0, 4, 38
+"/Users/thewanderer/code/ShareSpace/src/pages/Home/Home.css", "CSS", 0, 46, 0, 0, 0, 0, 0, 3, 49
+"/Users/thewanderer/code/ShareSpace/src/pages/Home/Home.jsx", "JavaScript React", 65, 0, 0, 0, 0, 0, 0, 5, 70
+"/Users/thewanderer/code/ShareSpace/src/pages/LoginPage/LoginPage.css", "CSS", 0, 28, 0, 0, 0, 0, 0, 4, 32
+"/Users/thewanderer/code/ShareSpace/src/pages/LoginPage/LoginPage.jsx", "JavaScript React", 94, 0, 0, 0, 0, 0, 0, 5, 99
+"/Users/thewanderer/code/ShareSpace/src/pages/MainPhoto/MainPhoto.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/thewanderer/code/ShareSpace/src/pages/MainPhoto/MainPhoto.jsx", "JavaScript React", 118, 0, 0, 0, 0, 0, 0, 6, 124
+"/Users/thewanderer/code/ShareSpace/src/pages/MainWriting/MainWriting.css", "CSS", 0, 12, 0, 0, 0, 0, 0, 0, 12
+"/Users/thewanderer/code/ShareSpace/src/pages/MainWriting/MainWriting.jsx", "JavaScript React", 111, 0, 0, 0, 0, 0, 1, 8, 120
+"/Users/thewanderer/code/ShareSpace/src/pages/PhotoPostShow/PhotoPostShow.css", "CSS", 0, 6, 0, 0, 0, 0, 0, 2, 8
+"/Users/thewanderer/code/ShareSpace/src/pages/PhotoPostShow/PhotoPostShow.jsx", "JavaScript React", 130, 0, 0, 0, 0, 0, 0, 9, 139
+"/Users/thewanderer/code/ShareSpace/src/pages/ProfileFriendsList/ProfileFriendsList.css", "CSS", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/Users/thewanderer/code/ShareSpace/src/pages/ProfileFriendsList/ProfileFriendsList.jsx", "JavaScript React", 38, 0, 0, 0, 0, 0, 0, 4, 42
+"/Users/thewanderer/code/ShareSpace/src/pages/ProfilePage/ProfilePage.css", "CSS", 0, 3, 0, 0, 0, 0, 0, 1, 4
+"/Users/thewanderer/code/ShareSpace/src/pages/ProfilePage/ProfilePage.jsx", "JavaScript React", 92, 0, 0, 0, 0, 0, 0, 7, 99
+"/Users/thewanderer/code/ShareSpace/src/pages/Requests/Requests.css", "CSS", 0, 6, 0, 0, 0, 0, 0, 1, 7
+"/Users/thewanderer/code/ShareSpace/src/pages/Requests/Requests.jsx", "JavaScript React", 34, 0, 0, 0, 0, 0, 0, 4, 38
+"/Users/thewanderer/code/ShareSpace/src/pages/SignupPage/SignupPage.css", "CSS", 0, 34, 0, 0, 0, 0, 1, 6, 41
+"/Users/thewanderer/code/ShareSpace/src/pages/SignupPage/SignupPage.jsx", "JavaScript React", 108, 0, 0, 0, 0, 0, 0, 8, 116
+"/Users/thewanderer/code/ShareSpace/src/pages/UpdateProfile/UpdateProfile.css", "CSS", 0, 26, 0, 0, 0, 0, 0, 4, 30
+"/Users/thewanderer/code/ShareSpace/src/pages/UpdateProfile/UpdateProfile.jsx", "JavaScript React", 109, 0, 0, 0, 0, 0, 6, 8, 123
+"/Users/thewanderer/code/ShareSpace/src/pages/UpdateWriting/UpdateWriting.css", "CSS", 0, 10, 0, 0, 0, 0, 0, 2, 12
+"/Users/thewanderer/code/ShareSpace/src/pages/UpdateWriting/UpdateWriting.jsx", "JavaScript React", 59, 0, 0, 0, 0, 0, 0, 8, 67
+"/Users/thewanderer/code/ShareSpace/src/pages/WritingShow/WritingShow.css", "CSS", 0, 6, 0, 0, 0, 0, 0, 2, 8
+"/Users/thewanderer/code/ShareSpace/src/pages/WritingShow/WritingShow.jsx", "JavaScript React", 127, 0, 0, 0, 0, 0, 2, 13, 142
+"/Users/thewanderer/code/ShareSpace/src/serviceWorker.js", "JavaScript", 0, 0, 98, 0, 0, 0, 31, 13, 142
+"/Users/thewanderer/code/ShareSpace/src/setupTests.js", "JavaScript", 0, 0, 1, 0, 0, 0, 4, 1, 6
+"/Users/thewanderer/code/ShareSpace/src/utils/commentService.js", "JavaScript", 0, 0, 44, 0, 0, 0, 8, 8, 60
+"/Users/thewanderer/code/ShareSpace/src/utils/friendService.js", "JavaScript", 0, 0, 60, 0, 0, 0, 0, 7, 67
+"/Users/thewanderer/code/ShareSpace/src/utils/likesService.js", "JavaScript", 0, 0, 76, 0, 0, 0, 0, 8, 84
+"/Users/thewanderer/code/ShareSpace/src/utils/postService.js", "JavaScript", 0, 0, 79, 0, 0, 0, 0, 12, 91
+"/Users/thewanderer/code/ShareSpace/src/utils/tokenService.js", "JavaScript", 0, 0, 31, 0, 0, 0, 0, 5, 36
+"/Users/thewanderer/code/ShareSpace/src/utils/userService.js", "JavaScript", 0, 0, 50, 0, 0, 0, 14, 7, 71
+"Total", "-", 2541, 588, 1017, 26, 37741, 32, 199, 427, 42571
