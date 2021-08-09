@@ -1,0 +1,49 @@
+img.ui.image.logoGif{
+    background-image: black;
+    border-radius: 5px;
+}
+
+div.ui.modal.transition.visible.active{
+    background-color: rgba(0, 0, 0, 0.315);
+    width: fit-content;
+    top: 50px;
+}
+.homeButtonContainer{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: -10px;
+}
+
+#homeText{
+    background-color: rgba(255, 255, 255, 0.473);
+    margin-top: 0%
+}
+
+#homeButton{
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    outline: 0;
+    border: none;
+    vertical-align: baseline;
+    background: #e0e1e2 none;
+    color: white;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    margin: 0 3em 0 3em;
+    padding: .78571429em 1.7em .78571429em;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: 700;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: .28571429rem;
+    background-color: rgba(160, 39, 65, 0.65);
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgb(34 36 38 / 15%) inset;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;
+    will-change: '';
+    -webkit-tap-highlight-color: transparent;
+}

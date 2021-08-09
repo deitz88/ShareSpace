@@ -43,7 +43,6 @@ h1{
     transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;
     will-change: '';
     -webkit-tap-highlight-color: transparent;
-
 }
 
 #acceptButton:hover{

@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Modal, Embed, Image } from "semantic-ui-react";
-import ReactPlayer from "react-player";
-
+import { Modal, Image, Grid, Segment, Header } from "semantic-ui-react";
+import "./Home.css";
 export default function Home({ user }) {
   const [toggle, setToggle] = useState(true);
   const [open, setOpen] = useState(true);
-  const [videoFilePath, setVideoFilePath] = useState(null);
 
-  const handleVideoUpload = (event) => {
-    setVideoFilePath(URL.createObjectURL(event.target.files[0]));
-  };
   const history = useHistory();
   useEffect(() => {
     setOpen(true);
   }, []);
+
+  function handleLogin(e) {
+    e.preventDefault();
+    history.push("/login");
+  }
+  function handleSignup(e) {
+    e.preventDefault();
+    history.push("/signup");
+  }
 
   if (toggle == true) {
     return (
@@ -23,19 +27,35 @@ export default function Home({ user }) {
         onClose={() => setToggle(false)}
         onOpen={() => setOpen(true)}
       >
-        {/* <Embed
-          source="vimeo"
-          id='582223853'
-          autoplay='1'
-          aspectRatio='4:3'
-        /> */}
-        <Image src={process.env.PUBLIC_URL + 'app_images/Share.gif'}/>
-        {/* <ReactPlayer
-          url={videoFilePath}
-          width="100%"
-          height="100%"
-          controls={true}
-        /> */}
+        <Image
+          className="logoGif"
+          src={process.env.PUBLIC_URL + "app_images/ShareSpace.gif"}
+        />
+        <Segment id="homeText" floating>
+          <Header floating>welcome to share space</Header>
+        </Segment>
+        <Grid.Row>
+          <br />
+          <br />
+          <div className="homeButtonContainer">
+            <input
+              type="button"
+              value="Signup"
+              className="homeButton"
+              id="homeButton"
+              onClick={handleSignup}
+            ></input>
+            <input
+              type="button"
+              value="Login"
+              className="homeButton"
+              id="homeButton"
+              onClick={handleLogin}
+            ></input>
+          </div>
+        </Grid.Row>
+
+        {/* <Button id='signupButton'>Signup</Button> <Button id='signupButton'>Login</Button> */}
       </Modal>
     );
   } else {
