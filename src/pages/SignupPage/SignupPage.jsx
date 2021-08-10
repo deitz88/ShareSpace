@@ -39,7 +39,7 @@ export default function SignUpPage(props) {
     try {
       await userService.signup(form);
       props.handleSignUpOrLogin();
-      history.push("/main");
+      history.push("/mainphoto");
     } catch (err) {
       setError(err.message);
     }

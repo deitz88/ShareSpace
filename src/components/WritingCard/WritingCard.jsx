@@ -31,9 +31,11 @@ export default function WritingCard({
   menu,
   dropdown,
   comment,
+  show,
+  setShow
 }) {
   const history = useHistory();
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
   const likes = writing.writing.likes;
   const liked = writing.writing.likes.findIndex(

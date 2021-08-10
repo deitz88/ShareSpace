@@ -15,6 +15,7 @@ export default function WritingShow({ user }) {
   const [dropdown, setDropdown] = useState(false);
   const [comment, setComment] = useState("");
   const [menu, setMenu] = useState(false);
+  const [show, setShow] = useState(false);
 
   const [commentsAndUsers, setCommentsAndUsers] = useState([]);
   const [input, setInput] = useState({
@@ -62,6 +63,7 @@ export default function WritingShow({ user }) {
     e.preventDefault();
     await commentService.addWritingComment(input);
     await getWriting(id);
+    setShow(!show)
   }
 
   async function addLikeWriting(id) {
@@ -135,6 +137,8 @@ export default function WritingShow({ user }) {
         toggleDropdown={toggleDropdown}
         addLikeComment={addLikeComment}
         removeLikeComment={removeLikeComment}
+        show={show}
+        setShow={setShow}
       />
     );
   }
