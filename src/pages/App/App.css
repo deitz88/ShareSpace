@@ -2,7 +2,7 @@
   text-align: center;
 }
 body.container {
-  /* background-image: linear-gradient(to top, rgba(72, 72, 72, 0.483), black); */
+  background-image: linear-gradient(to right, ivory, rgba(0, 0, 0, 0.2));
   background-repeat: round;
   background-attachment: fixed;
 }

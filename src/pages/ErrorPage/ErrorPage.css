@@ -1,6 +1,6 @@
 img.ui.image.error{
     display: flex;
-    height: 450px;
+    height: 80%;
     width: 80%;
 }
 .imageContainer{
@@ -11,4 +11,4 @@ justify-content: center;
     color: rgba(160, 39, 65, 0.822);
     font-family: "Source Sans Pro", sans-serif;
     font-weight: bold;
-  }
+}

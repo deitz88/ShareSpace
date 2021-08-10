@@ -23,6 +23,7 @@ export default function Home({ user }) {
   if (toggle == true) {
     return (
       <Modal
+      closeIcon
         open={open}
         onClose={() => setToggle(false)}
         onOpen={() => setOpen(true)}

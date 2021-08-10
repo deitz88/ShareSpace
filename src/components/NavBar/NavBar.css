@@ -67,7 +67,7 @@ i.icon.bell.outline {
 
 div.ui.clearing.segment.navContainer {
   /* background-color: rgba(190, 190, 190, 0.801); */
-  background-color: black;
+  /* background-color: black; */
 
   border-radius: 0px;
 }
@@ -75,3 +75,43 @@ div.ui.clearing.segment.navContainer {
 img.ui.mini.image.headerLogo:hover {
   opacity: 0.7;
 }
+.iconName{
+    display: table;
+    font-size: 10px;
+    background-color: rgba(192, 192, 192, 0.4);
+    border-radius: 7px;
+    height: 0px;
+    position: fixed;
+    padding: 1px 4px;
+    margin-top: 10px;
+    box-shadow: 0em .2em .7em rgba(0, 0, 0, 0.466);
+    opacity: .7;
+}
+
+#requests{
+    right: 243px
+}
+#friends{
+   right: 205px 
+}
+#mainPhoto{
+    right: 320px
+}
+#mainWriting{
+    right: 272px
+}
+#profile{
+    right: 172px
+}
+#writing{
+right: 84px
+}
+#post{
+right: 127px
+}
+
+.iconMsgCont{
+    position: absolute;
+    height: 0px;
+}
+

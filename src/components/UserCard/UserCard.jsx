@@ -64,6 +64,7 @@ export default function UserCard({
               value="Deny"
               className="btn"
               id="denyButton"
+              onClick={handleDeny}
             ></input>
           </div>
         </Grid.Row>

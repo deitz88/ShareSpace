@@ -17,22 +17,22 @@ import AddWriting from "../AddWriting/AddWriting";
 import WritingShow from "../WritingShow/WritingShow";
 import UpdateWriting from "../UpdateWriting/UpdateWriting";
 import MainWriting from "../MainWriting/MainWriting";
-import Home from '../Home/Home'
-import ErrorPage from '../ErrorPage/ErrorPage'
+import Home from "../Home/Home";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 function App() {
   const history = useHistory();
-  const [user, setUser] = useState(userService.getUser()); 
+  const [user, setUser] = useState(userService.getUser());
 
   function handleSignUpOrLogin() {
-    setUser(userService.getUser()); 
+    setUser(userService.getUser());
   }
 
   function handleLogout() {
     tokenService.removeToken();
     userService.logout();
     setUser(null);
-    history.push("/");
+    history.push("/login");
   }
 
   return (
@@ -49,6 +49,12 @@ function App() {
         <Route exact path="/signup">
           <SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />
         </Route>
+        <Route exact path="/">
+          <Home user={user} />
+        </Route>
+        <Route exact path="/404">
+          <ErrorPage />
+        </Route>
         {user ? (
           <>
             <Switch>
@@ -60,12 +66,6 @@ function App() {
               </Route>
               <Route exact path="/mainwriting">
                 <MainWriting user={user} handleLogout={handleLogout} />
-              </Route>
-              <Route exact path="/">
-                <Home user={user}/>
-              </Route>
-              <Route exact path='/404'>
-                <ErrorPage />
               </Route>
               <Route exact path="/friends">
                 <Friends
@@ -126,7 +126,7 @@ function App() {
             </Switch>
           </>
         ) : (
-          <Redirect to="/login" />
+          <Redirect to="/" />
         )}
       </Switch>
     </div>

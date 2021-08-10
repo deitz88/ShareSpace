@@ -20,7 +20,6 @@ async function profile(req, res){
   try {
     const user = await User.findOne({username: req.params.username})
     if(!user) return res.status(404).json({message: 'Parameters not found'})
-    console.log('hitting here')
     const posts = await Post.find({user: user._id})
     const writings = await Writing.find({user: user._id})
     return res.status(200).json({posts: posts, user: user, writings: writings})

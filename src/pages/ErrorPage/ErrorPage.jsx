@@ -7,26 +7,17 @@ import {
   Segment,
   Message,
   Button,
-  Image
+  Image,
 } from "semantic-ui-react";
-import "./ErrorPage.css"
+import "./ErrorPage.css";
 
 export default function ErrorPage() {
   return (
-  <>
-      {/* <Image
-        className="errorBug"
-        src={process.env.PUBLIC_URL + "app_images/bug.gif"}
-      /> */}
-      <div className='imageContainer'>
+    <div className="imageContainer">
       <Image
         className="error"
-        src={process.env.PUBLIC_URL + "app_images/error.gif"}
-        />
-        </div>
-        <Header as='h1'>
-        <span className="messageText"> hell</span>
-        </Header>
-   </>
+        src={process.env.PUBLIC_URL + "app_images/404.png"}
+      />
+    </div>
   );
 }
