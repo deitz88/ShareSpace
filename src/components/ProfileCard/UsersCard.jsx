@@ -9,9 +9,10 @@ export default function UsersCard({ userRequest, posts, writings }) {
     <Card centered className="profileCard">
       <Card.Group className="headerCard">
         <Card fluid header={userRequest.username} id="usernameHeader" />
-        <Link to="/update">
+        {/* <Link to="/update">
           <Icon className="settingIcon" name="setting" size="large" />
-        </Link>
+        </Link> */} 
+        <br />  {/* remove this once update works*/}
       </Card.Group>
       <Image src={userRequest.photoUrl} wrapped ui={false} />
       <Card.Content>

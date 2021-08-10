@@ -18,7 +18,7 @@ export default function FriendCard({username, photo, handleSignUpOrLogin}){
         <>
     <Card.Group className='headerCard'>
     &nbsp; &nbsp; &nbsp;
-    <Card.Content text='test'>{username}
+    <Card.Content>{username}
                 <Card.Header textAlign="center">
                 </Card.Header>
                 <Link to={username}>
