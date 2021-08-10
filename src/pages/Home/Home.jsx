@@ -28,12 +28,20 @@ export default function Home({ user }) {
         onClose={() => setToggle(false)}
         onOpen={() => setOpen(true)}
       >
+        <Header style={{background: 'ivory'}} textAlign='center'>
+          Welcome to Share Space
+        </Header>
         <Image
           className="logoGif"
           src='https://i.imgur.com/S9tbSpK.gif'
         />
         <Segment id="homeText" floating>
-          <Header floating>welcome to share space</Header>
+          <Header textAlign='centered'>
+           Share Space is a place to share, meet,<br />
+           and connect with like minded individuals.
+           <br /><br /> 
+           Join us today!
+            </Header>
         </Segment>
         <Grid.Row>
           <br />

@@ -4,7 +4,6 @@ import { Card, Image, Icon } from "semantic-ui-react";
 import "./ProfileCard.css";
 
 export default function UsersCard({ userRequest, posts, writings }) {
-  console.log(userRequest);
   return (
     <Card centered className="profileCard">
       <Card.Group className="headerCard">
