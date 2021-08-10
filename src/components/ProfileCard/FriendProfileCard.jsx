@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Card, Icon, Image } from "semantic-ui-react";
 import "./ProfileCard.css";
 
@@ -20,14 +19,6 @@ export default function FriendProfileCard({ userRequest, posts, writings }) {
         <Card.Header textAlign="center">
           <h2 className="bioHeader">Bio:</h2>
         </Card.Header>
-        <Card.Meta>
-          {/* <span className='date'>Joined in 2015</span> */}
-        </Card.Meta>
-        <Card.Description>
-          {/* <Segment>
-                         Bio:
-                     </Segment> */}
-        </Card.Description>
       </Card.Content>
       <Card.Content extra>
         <a>

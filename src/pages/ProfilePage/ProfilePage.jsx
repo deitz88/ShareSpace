@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Router, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./ProfilePage.css";
 import userService from "../../utils/userService";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Grid, Card, Header, Loader } from "semantic-ui-react";
 import PhotoPostContent from "../../components/PhotoPostContent/PhotoPostContent";
 import WritingPostContent from "../../components/WritingPostContent/WritingPostContent";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
 import {
@@ -32,11 +32,9 @@ export default function WritingCard({
   dropdown,
   comment,
   show,
-  setShow
+  setShow,
 }) {
   const history = useHistory();
-  // const [show, setShow] = useState(false);
-
   const likes = writing.writing.likes;
   const liked = writing.writing.likes.findIndex(
     (like) => like.username === user.username
@@ -51,8 +49,6 @@ export default function WritingCard({
 
     if (likedComment > -1) {
       removeLikeComment(comment.comment.likes[likedComment]._id);
-      // this.name='heart outline'
-      // this.color='grey'
     } else {
       addLikeComment(comment.comment._id);
     }
@@ -80,9 +76,13 @@ export default function WritingCard({
     history.push(`/updatewriting/${writing.writing._id}`);
   }
 
-  const iconName = show == true ? "comment" : "comment outline";
+  const iconName = show === true ? "comment" : "comment outline";
   return (
-    <Grid textAlign="center"  style={{ height: "100vh"}, {margin: '20px'}} verticalAlign="middle">
+    <Grid
+      textAlign="center"
+      style={({ height: "100vh" }, { margin: "20px" })}
+      verticalAlign="middle"
+    >
       <Grid.Column style={{ maxWidth: 450 }}>
         <Card centered className="profileCard">
           <Card fluid id="usernameHeader">
@@ -118,7 +118,9 @@ export default function WritingCard({
                 </Card.Group>
               ) : null}
               <br />
-              <Icon name={iconName} onClick={changeShow}>&nbsp;{commentsAndUsers.length ? commentsAndUsers.length : ''}</Icon>
+              <Icon name={iconName} onClick={changeShow}>
+                &nbsp;{commentsAndUsers.length ? commentsAndUsers.length : ""}
+              </Icon>
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -134,7 +136,7 @@ export default function WritingCard({
             </Card.Description>
           </Card.Content>
         </Card>
-        {show == true ? (
+        {show === true ? (
           <Card fluid>
             <Form>
               <Form.TextArea
@@ -172,7 +174,7 @@ export default function WritingCard({
                       onClick={toggleDropdown}
                       id={commentsAndUser.comment._id}
                     >
-                      {dropdown == true ? "" : ""}
+                      {dropdown === true ? "" : ""}
                     </Icon>
                   ) : (
                     ""
@@ -181,27 +183,7 @@ export default function WritingCard({
                   <span className="comment">
                     {commentsAndUser.comment.comment}
                   </span>
-                  <Divider horizontal></Divider>
-                  {/* <CommentIcon /> */}
-                  {/* <Icon
-                    name={
-                      commentsAndUser.comment.likes.findIndex(
-                        (like) => like.username === user.username
-                      ) > -1
-                        ? "heart"
-                        : "heart outline"
-                    }
-                    color={
-                      commentsAndUser.comment.likes.findIndex(
-                        (like) => like.username === user.username
-                      ) > -1
-                        ? "red"
-                        : "grey"
-                    }
-                    id={commentsAndUser.comment._id}
-                    onClick={clickHandlerComment}
-                  ></Icon> */}
-                  {menu == true && comment == commentsAndUser.comment._id ? (
+                  {menu === true && comment === commentsAndUser.comment._id ? (
                     <>
                       <Button
                         className="btn"
@@ -218,8 +200,8 @@ export default function WritingCard({
                     ""
                   )}
                 </Message>
-                <div className='heartContainer'>
-                <Icon
+                <div className="heartContainer">
+                  <Icon
                     name={
                       commentsAndUser.comment.likes.findIndex(
                         (like) => like.username === user.username
@@ -236,9 +218,17 @@ export default function WritingCard({
                     }
                     id={commentsAndUser.comment._id}
                     onClick={clickHandlerComment}
-                    className='heartOutline'
-                  > <div className='counterContainer'>&nbsp;{commentsAndUser.comment.likes.length ? commentsAndUser.comment.likes.length : ""}</div></Icon>
-                  </div>
+                    className="heartOutline"
+                  >
+                    {" "}
+                    <div className="counterContainer">
+                      &nbsp;
+                      {commentsAndUser.comment.likes.length
+                        ? commentsAndUser.comment.likes.length
+                        : ""}
+                    </div>
+                  </Icon>
+                </div>
               </>
             );
           })}

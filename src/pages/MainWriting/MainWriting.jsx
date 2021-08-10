@@ -1,24 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
 import {
   Grid,
-  Loader,
   Card,
-  Header,
-  Image,
   Button,
   Segment,
-  Icon,
 } from "semantic-ui-react";
 import "./MainWriting.css";
 import WritingPostFeed from "../../components/WritingPostFeed/WritingPostFeed";
 import likesService from "../../utils/likesService";
 
-export default function MainWriting({ user, handleLogout }) {
+export default function MainWriting({ user }) {
   const [writings, setWritings] = useState([]);
   const [filter, setFilter] = useState(true)
-  //   const [loading, setLoading] = useState(true);
 
   function clickToggle(e){
     e.preventDefault()
@@ -62,7 +56,7 @@ export default function MainWriting({ user, handleLogout }) {
         <br></br>
         <Card.Group className="headerCard">
           <Card fluid header="Browse Writings:" />
-          <Button className='toggleButton' id='signupButton' onClick={clickToggle}>{filter == true ? 'showing recent' : 'showing oldest'}</Button>
+          <Button className='toggleButton' id='signupButton' onClick={clickToggle}>{filter === true ? 'showing recent' : 'showing oldest'}</Button>
 
         </Card.Group>
         <Segment>
@@ -83,12 +77,12 @@ export default function MainWriting({ user, handleLogout }) {
           <br></br>
           <Card.Group className="headerCard">
             <Card fluid header="Browse Posts:" />
-            <Button className='toggleButton' id='signupButton' onClick={clickToggle}>{filter == true ? 'showing recent' : 'showing oldest'}</Button>
+            <Button className='toggleButton' id='signupButton' onClick={clickToggle}>{filter === true ? 'showing recent' : 'showing oldest'}</Button>
 
           </Card.Group>
           <br></br>
           <Card.Group itemsPerRow={2}>
-            {filter == true ?
+            {filter === true ?
             <>
             {writings.slice(0).reverse().map((writing) => {
               return (

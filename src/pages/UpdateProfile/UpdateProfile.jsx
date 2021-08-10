@@ -104,7 +104,6 @@ console.log(fileUpload)
                 <Form.Input
                   type="file"
                   name="photo"
-                  placeholder="tes"
                   placeholder="upload image"
                   onChange={handleFileUpload}
                 />

@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import NavBar from "../../components/NavBar/NavBar";
+import React, { useEffect } from "react";
 import FriendCard from "../../components/FriendCard/FriendCard";
-import { Card, Grid, Header, Loader } from "semantic-ui-react";
-import './Friends.css'
+import { Card, Grid, Header } from "semantic-ui-react";
+import "./Friends.css";
 
-export default function Friends({ user, handleSignUpOrLogin, handleLogout }) {
+export default function Friends({ user, handleSignUpOrLogin }) {
   return (
     <>
       <Grid
@@ -17,7 +15,7 @@ export default function Friends({ user, handleSignUpOrLogin, handleLogout }) {
           <Card centered className="friendCard">
             <h1 className="requestsHeader">Friends List</h1>
           </Card>
-          {user.friends.length ? '' : <Header>No Requests Yet</Header>}
+          {user.friends.length ? "" : <Header>No Requests Yet</Header>}
           {user.friends.map((friend) => {
             return (
               <FriendCard
@@ -30,8 +28,6 @@ export default function Friends({ user, handleSignUpOrLogin, handleLogout }) {
             );
           })}
         </Grid.Column>
-
-        {/* </Grid> */}
       </Grid>
     </>
   );

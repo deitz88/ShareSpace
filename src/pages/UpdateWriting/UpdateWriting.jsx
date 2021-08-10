@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Button, Form, Grid, Segment, Card, Loader } from "semantic-ui-react";
+import { Grid, Loader } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
 import "./UpdateWriting.css";
 import UpdateWritingCard from "../../components/UpdateWritingCard/UpdateWritingCard";
 
-export default function UpdateWriting({ user, handleLogout }) {
+export default function UpdateWriting({ user }) {
   const { id } = useParams();
-  const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [writing, setWriting] = useState({});
   const [input, setInput] = useState({

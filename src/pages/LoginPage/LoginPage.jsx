@@ -11,9 +11,7 @@ import {
   Message,
   Image,
   Segment,
-  Card,
 } from "semantic-ui-react";
-import MovieLogo from "../../components/MovieLogo/MovieLogo";
 
 export default function LoginPage(props) {
   const history = useHistory();

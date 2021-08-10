@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
 import {
@@ -11,7 +11,6 @@ import {
   Button,
   Form,
   Message,
-  Divider,
 } from "semantic-ui-react";
 import "./PhotoPostCard.css";
 import commentService from "../../utils/commentService";
@@ -34,7 +33,6 @@ export default function PhotoPostCard({
   setShow,
   show,
 }) {
-
   const history = useHistory();
   const likes = post.post.likes;
   const liked = post.post.likes.findIndex(
@@ -71,9 +69,13 @@ export default function PhotoPostCard({
     }
   }
 
-  const iconName = show == true ? "comment" : "comment outline";
+  const iconName = show === true ? "comment" : "comment outline";
   return (
-    <Grid textAlign="center"  style={{ height: "100vh"}, {margin: '20px'}} verticalAlign="middle">
+    <Grid
+      textAlign="center"
+      style={({ height: "100vh" }, { margin: "20px" })}
+      verticalAlign="middle"
+    >
       <Grid.Column style={{ maxWidth: 450 }}>
         <Card centered className="profileCard">
           <Card fluid id="usernameHeader">
@@ -110,7 +112,9 @@ export default function PhotoPostCard({
                 </Card.Group>
               ) : null}
               <br />
-              <Icon name={iconName} onClick={changeShow}>&nbsp;{commentsAndUsers.length ? commentsAndUsers.length : ''}</Icon>
+              <Icon name={iconName} onClick={changeShow}>
+                &nbsp;{commentsAndUsers.length ? commentsAndUsers.length : ""}
+              </Icon>
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
               &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;
@@ -126,7 +130,7 @@ export default function PhotoPostCard({
             </Card.Description>
           </Card.Content>
         </Card>
-        {show == true ? (
+        {show === true ? (
           <Card fluid>
             <Form>
               <Form.TextArea
@@ -163,9 +167,9 @@ export default function PhotoPostCard({
                       name="ellipsis horizontal"
                       onClick={toggleDropdown}
                       id={commentsAndUser.comment._id}
-                      className='threeDots'
+                      className="threeDots"
                     >
-                      {dropdown == true ? "" : ""}
+                      {dropdown === true ? "" : ""}
                     </Icon>
                   ) : (
                     ""
@@ -174,35 +178,7 @@ export default function PhotoPostCard({
                   <span className="comment">
                     {commentsAndUser.comment.comment}
                   </span>
-                  <Divider horizontal></Divider>
-                  {/* <CommentIcon /> */}
-
-
-
-
-                  {/* <Icon
-                    name={
-                      commentsAndUser.comment.likes.findIndex(
-                        (like) => like.username === user.username
-                      ) > -1
-                        ? "heart"
-                        : "heart outline"
-                    }
-                    color={
-                      commentsAndUser.comment.likes.findIndex(
-                        (like) => like.username === user.username
-                      ) > -1
-                        ? "red"
-                        : "grey"
-                    }
-                    id={commentsAndUser.comment._id}
-                    onClick={clickHandlerComment}
-                    className='heartOutline'
-                  ></Icon> */}
-
-
-
-                  {menu == true && comment == commentsAndUser.comment._id ? (
+                  {menu === true && comment === commentsAndUser.comment._id ? (
                     <>
                       <Button
                         className="btn"
@@ -219,8 +195,8 @@ export default function PhotoPostCard({
                     ""
                   )}
                 </Message>
-                <div className='heartContainer'>
-                <Icon
+                <div className="heartContainer">
+                  <Icon
                     name={
                       commentsAndUser.comment.likes.findIndex(
                         (like) => like.username === user.username
@@ -237,9 +213,17 @@ export default function PhotoPostCard({
                     }
                     id={commentsAndUser.comment._id}
                     onClick={clickHandlerComment}
-                    className='heartOutline'
-                  > <div className='counterContainer'>&nbsp;{commentsAndUser.comment.likes.length ? commentsAndUser.comment.likes.length : ""}</div></Icon>
-                  </div>
+                    className="heartOutline"
+                  >
+                    {" "}
+                    <div className="counterContainer">
+                      &nbsp;
+                      {commentsAndUser.comment.likes.length
+                        ? commentsAndUser.comment.likes.length
+                        : ""}
+                    </div>
+                  </Icon>
+                </div>
               </>
             );
           })}

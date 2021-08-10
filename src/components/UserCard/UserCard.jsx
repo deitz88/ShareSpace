@@ -10,7 +10,6 @@ export default function UserCard({
   photo,
   handleSignUpOrLogin,
 }) {
-  const [test, setTest] = useState({});
   async function handleDeny(e) {
     e.preventDefault();
     await friendService.denyRequest(username);
@@ -21,7 +20,6 @@ export default function UserCard({
     e.preventDefault();
     await friendService.approveRequest(username);
     await handleSignUpOrLogin();
-    setTest(user);
   }
 
   return (

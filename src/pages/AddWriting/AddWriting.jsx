@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
 import "./AddWriting.css";
 
-export default function AddWriting({ user, handleLogout }) {
+export default function AddWriting({ user }) {
   const history = useHistory();
   const [input, setInput] = useState({
     title: "",
@@ -14,7 +14,7 @@ export default function AddWriting({ user, handleLogout }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const data = await postService.createWriting(input);
+    await postService.createWriting(input);
     history.push(`/${user.username}`);
   }
 

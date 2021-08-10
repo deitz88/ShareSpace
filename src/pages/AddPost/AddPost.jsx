@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Button, Form, Grid, Segment, Card } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
-import NavBar from "../../components/NavBar/NavBar";
 import "./AddPost.css";
 
-export default function AddPost({ user, handleLogout }) {
+export default function AddPost({ user }) {
   const history = useHistory();
   const [selectedFile, setSelectedFile] = useState("");
   const [input, setInput] = useState({
@@ -17,7 +16,7 @@ export default function AddPost({ user, handleLogout }) {
     const formData = new FormData();
     formData.append("photo", selectedFile);
     formData.append("comment", input.comment);
-    const data = await postService.create(formData);
+    await postService.create(formData);
     history.push(`/${user.username}`);
   }
 

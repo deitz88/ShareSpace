@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Button, Form, Grid, Segment, Card, Loader } from "semantic-ui-react";
+import React, { useEffect } from "react";
+import { Button, Form, Grid, Segment, Card } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
 

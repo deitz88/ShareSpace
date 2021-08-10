@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import UserCard from "../../components/UserCard/UserCard";
-import { Card, Grid, Header, Loader } from "semantic-ui-react";
+import { Card, Grid, Header } from "semantic-ui-react";
 import "./Requests.css";
-import friendService from "../../utils/friendService";
 
 export default function Requests({ user, handleSignUpOrLogin }) {
   return (

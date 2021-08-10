@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
-import { Card, Grid, Segment, Icon, Loader } from "semantic-ui-react";
+import { Grid, Loader } from "semantic-ui-react";
 import "./WritingShow.css";
 import WritingCard from "../../components/WritingCard/WritingCard";
 import likesService from "../../utils/likesService";
@@ -76,7 +76,7 @@ export default function WritingShow({ user }) {
   }
   async function addLikeComment(commentId) {
     try {
-      const data = await likesService.addLikeComment(commentId);
+      await likesService.addLikeComment(commentId);
       getWriting(id);
     } catch (err) {
       console.log(err);

@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Card, Image, Icon, Grid, Loader } from "semantic-ui-react";
+import React from "react";
 import "./ProfileCard.css";
 import NonFriendCard from "./NonFriendCard";
 import FriendProfileCard from "./FriendProfileCard";

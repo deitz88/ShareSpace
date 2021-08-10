@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
-import { Card, Grid, Segment, Icon, Loader, MenuMenu } from "semantic-ui-react";
+import { Grid, Loader } from "semantic-ui-react";
 import "./PhotoPostShow.css";
 import PhotoPostCard from "../../components/PhotoPostCard/PhotoPostCard";
 import likesService from "../../utils/likesService";
@@ -72,7 +72,7 @@ export default function PhotoPostShow({ user }) {
 
   async function handleCommentSubmit(e) {
     e.preventDefault();
-    const data = await commentService.addPhotoComment(input);
+    await commentService.addPhotoComment(input);
     await getPost(id);
     setShow(!show)
   }
@@ -84,7 +84,7 @@ export default function PhotoPostShow({ user }) {
   }
   async function addLikeComment(commentId) {
     try {
-      const data = await likesService.addLikeComment(commentId);
+      await likesService.addLikeComment(commentId);
       getPost(id);
     } catch (err) {
       console.log(err);

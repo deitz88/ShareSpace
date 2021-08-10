@@ -20,7 +20,7 @@ export default function Home({ user }) {
     history.push("/signup");
   }
 
-  if (toggle == true) {
+  if (toggle === true) {
     return (
       <Modal
       closeIcon

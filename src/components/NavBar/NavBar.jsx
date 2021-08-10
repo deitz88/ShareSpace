@@ -1,14 +1,11 @@
 import "./NavBar.css";
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
-import { Segment, Header, Icon, Image, Message } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Segment, Header, Icon, Image } from "semantic-ui-react";
 
 export default function NavBar({ user, handleSignUpOrLogin, handleLogout }) {
-  const [postLink, setPostLink] = useState(false)
   const [hover, setHover] = useState('');
-  function postClick(){
-    setPostLink(!postLink)
-  }
+  
  
   return user ? (
     <Segment clearing className='navContainer'>
@@ -82,7 +79,6 @@ export default function NavBar({ user, handleSignUpOrLogin, handleLogout }) {
         :
         ''
         }
-        {/* <Icon name="plus square outline" onClick={postClick}></Icon> */}
         <Link to="/addpost" onMouseEnter={()=>setHover('post')} onMouseLeave={()=>setHover('')}>
           <Icon name="plus square outline" ></Icon>
         </Link>
@@ -141,10 +137,4 @@ export default function NavBar({ user, handleSignUpOrLogin, handleLogout }) {
       </Header>
     </Segment>
   );
-}
-
-{
-  /* <Header as='h2' floated='left'>
-                <Link to='/'><Image src={user.photoUrl ? user.photoUrl : "https://react.semantic-ui.com/images/wireframe/square-image.png"} avatar></Image></Link>          
-            </Header> */
 }

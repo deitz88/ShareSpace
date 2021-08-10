@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
 import {
   Grid,
-  Loader,
   Card,
-  Header,
-  Image,
   Button,
   Segment,
-  Icon,
 } from "semantic-ui-react";
 import "./MainPhoto.css";
 import PhotoPostFeed from "../../components/PhotoPostFeed/PhotoPostFeed";
 import likesService from "../../utils/likesService";
 
-export default function MainPhoto({ user, handleLogout }) {
+export default function MainPhoto({ user }) {
   const [posts, setPosts] = useState([]);
   const [filter, setFilter] = useState(true);
 
@@ -61,7 +56,7 @@ export default function MainPhoto({ user, handleLogout }) {
         <br></br>
         <Card.Group className="headerCard">
           <Card fluid header="Browse Posts:" />
-          <Button className='toggleButton' id='signupButton' onClick={clickToggle}>{filter == true ? 'showing recent' : 'showing oldest'}</Button>
+          <Button className='toggleButton' id='signupButton' onClick={clickToggle}>{filter === true ? 'showing recent' : 'showing oldest'}</Button>
 
         </Card.Group>
         <Segment>
@@ -87,13 +82,13 @@ export default function MainPhoto({ user, handleLogout }) {
               id="signupButton"
               onClick={clickToggle}
             >
-              {filter == true ? "showing recent" : "showing oldest"}
+              {filter === true ? "showing recent" : "showing oldest"}
             </Button>
           </Card.Group>
           <br></br>
           <Card.Group itemsPerRow={2} style={{ height: 'fit-content'}}>
             {/* post.sort({}) */}
-            {filter == true ? (
+            {filter === true ? (
               <>
                 {posts.slice(0).reverse().map((post) => {
                   return (

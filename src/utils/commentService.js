@@ -24,14 +24,14 @@ function addPhotoComment(input) {
   }).then((res) => res.json());
 }
 
-// function deletePostComment(id) {
-//   return fetch(`${BASE_URL}delete/` + id, {
-//     method: "GET",
-//     headers: {
-//       Authorization: "Bearer " + tokenService.getToken(),
-//     },
-//   }).then((res) => res.json());
-// }
+function deletePostComment(id) {
+  return fetch(`${BASE_URL}delete/` + id, {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+  }).then((res) => res.json());
+}
 
 function deleteWritingComment(id) {
   return fetch(`${BASE_URL}delete/` + id, {
@@ -56,4 +56,5 @@ export default {
   deleteWritingComment,
   getComment,
   addPhotoComment,
+  deletePostComment
 };
