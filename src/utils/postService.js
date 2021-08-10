@@ -62,6 +62,7 @@ function deleteWriting(id) {
 }
 
 function updateWriting(writing) {
+  console.log(writing)
   return fetch(BASE_URL + "updatewriting/" + writing.id, {
     method: "POST",
     headers: {
@@ -77,10 +78,28 @@ function updateWriting(writing) {
     .then((data) => data);
 }
 
+function updatePost(photoPost){
+  console.log(photoPost.id)
+  return fetch(BASE_URL + "updatepostphoto/" + photoPost.id, {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      Authorization: "Bearer " + tokenService.getToken(),
+    },
+    body: JSON.stringify(photoPost),
+  })
+    .then((res) => {
+      if (res.ok) return res.json();
+      new Error("Error updating post");
+    })
+    .then((data) => data);
+}
+
 export default {
   create,
   createWriting,
   getAllPhotoPosts,
+  updatePost,
   getPost,
   deleteOne,
   deleteWriting,

@@ -2,37 +2,35 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Grid, Loader } from "semantic-ui-react";
 import postService from "../../utils/postService";
-import "./UpdateWriting.css";
-import UpdateWritingCard from "../../components/UpdateWritingCard/UpdateWritingCard";
+// import "./UpdateWriting.css";
+import UpdatePostCard from "../../components/UpdatePostCard/UpdatePostCard";
 
 export default function UpdateWriting({ user }) {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
-  const [writing, setWriting] = useState({});
+  const [post, setPost] = useState({});
   const [input, setInput] = useState({
-    title: "",
     content: "",
     user: user,
     id: "",
   });
 
-  async function getWriting(id) {
+  async function getPost(id) {
     setLoading(true);
-    const retrievedWriting = await postService.getWriting(id);
-    setWriting(retrievedWriting);
+    const retrievedPost = await postService.getPost(id);
+    setPost(retrievedPost);
     setLoading(false);
   }
 
   function test() {
     setInput({
-      title: writing.writing.title,
-      content: writing.writing.content,
-      id: writing.writing._id,
+      content: post.post.comment,
+      id: post.post._id,
     });
   }
 
   useEffect(() => {
-    getWriting(id);
+    getPost(id);
   }, []);
 
   if (loading) {
@@ -59,6 +57,6 @@ export default function UpdateWriting({ user }) {
   }
 
   return (
-    <UpdateWritingCard handleChange={handleChange} test={test} input={input} />
+    <UpdatePostCard handleChange={handleChange} test={test} input={input} />
   );
 }

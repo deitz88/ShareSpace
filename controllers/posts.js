@@ -20,7 +20,8 @@ module.exports = {
   updateWriting,
   deleteWriting,
   postIndex,
-  writingIndex
+  writingIndex,
+  updatePost
 };
 
 async function show(req, res) {
@@ -53,6 +54,14 @@ async function updateWriting(req, res) {
   });
   return res.status(201).json({ writing });
 }
+
+async function updatePost(req, res) {
+  const post = await Post.findByIdAndUpdate(req.body.id, {
+    comment: req.body.content,
+  });
+  return res.status(201).json({ post });
+}
+
 function create(req, res) {
   try {
     const filePath = `${uuidv4()}/${req.file.originalname}`;

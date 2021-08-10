@@ -19,6 +19,7 @@ import UpdateWriting from "../UpdateWriting/UpdateWriting";
 import MainWriting from "../MainWriting/MainWriting";
 import Home from "../Home/Home";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import UpdatePost from '../UpdatePost/UpdatePost'
 
 function App() {
   const history = useHistory();
@@ -101,6 +102,13 @@ function App() {
               </Route>
               <Route exact path="/updatewriting/:id">
                 <UpdateWriting
+                  user={user}
+                  handleLogout={handleLogout}
+                  handleSignUpOrLogin={handleSignUpOrLogin}
+                />
+              </Route>
+              <Route exact path="/updatepost/:id">
+                <UpdatePost
                   user={user}
                   handleLogout={handleLogout}
                   handleSignUpOrLogin={handleSignUpOrLogin}

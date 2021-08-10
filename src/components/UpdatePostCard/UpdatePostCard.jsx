@@ -15,11 +15,13 @@ export default function UpdateWritingCard({
   }, []);
   
   const history = useHistory();
+
   async function handleSubmit(e) {
     e.preventDefault();
-    await postService.updateWriting(input);
-    history.push(`/writing/${input.id}`);
+    await postService.updatePost(input);
+    history.push(`/show/${input.id}`);
   }
+  
   return (
     <>
       <Grid textAlign="center" verticalAlign="middle">
@@ -29,20 +31,12 @@ export default function UpdateWritingCard({
           </Card>
           <Segment>
             <Form autoComplete="off" onSubmit={handleSubmit}>
-              <Form.Input
-                className="form-control"
-                name="title"
-                value={input.title}
-                placeholder="title for your writing"
-                onChange={handleChange}
-                required
-              />
               <Form.TextArea
                 style={{ minHeight: 100 }}
                 className="form-control"
                 name="content"
                 value={input.content}
-                placeholder="add writing content"
+                placeholder="add post comment"
                 onChange={handleChange}
                 required
               />
@@ -52,7 +46,7 @@ export default function UpdateWritingCard({
                 id="addButton"
                 onClick={handleSubmit}
               >
-                Update Writing
+                Update Post
               </Button>
             </Form>
           </Segment>

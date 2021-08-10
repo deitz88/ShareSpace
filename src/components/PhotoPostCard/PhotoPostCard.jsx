@@ -50,6 +50,10 @@ export default function PhotoPostCard({
     await postService.deleteOne(post.post._id);
     history.push("/" + user.username);
   }
+  async function handleUpdate(e) {
+    e.preventDefault();
+    history.push(`/updatepost/${post.post._id}`);
+  }
 
   function changeShow(e) {
     e.preventDefault();
@@ -104,7 +108,7 @@ export default function PhotoPostCard({
               {user._id === post.postUser._id ? (
                 <Card.Group itemsPerRow={2}>
                   <Card>
-                    <Button>Update</Button>
+                    <Button onClick={handleUpdate}>Update</Button>
                   </Card>
                   <Card>
                     <Button onClick={handleDelete}>Delete</Button>
