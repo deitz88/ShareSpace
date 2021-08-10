@@ -43,9 +43,9 @@ export default function NavBar({ user, handleSignUpOrLogin, handleLogout }) {
         <Link to="/requests">
           <Icon name="wait" onMouseEnter={()=>setHover('requests')} onMouseLeave={()=>setHover('')}>
             <div className="requestNumberContainer">
-              <h5 className="requestNumber">
+              <span className="requestNumber">
                 {user.friendRequests.length ? user.friendRequests.length : ""}
-              </h5>
+              </span>
             </div>
           </Icon>
         </Link>

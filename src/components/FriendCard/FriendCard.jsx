@@ -43,7 +43,7 @@ export default function FriendCard({username, photo, handleSignUpOrLogin}){
             {/* <h3 className='userCardText'>&nbsp;&nbsp;&nbsp;accept or deny buttons here
             </h3> */}
             <br /><br />
-            <div>
+            <div className='buttonCont'>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

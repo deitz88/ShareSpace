@@ -47,7 +47,7 @@ export default function UserCard({
         <Grid.Row>
           <br />
           <br />
-          <div>
+          <div className='buttonCont'>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
             &nbsp;
             <input

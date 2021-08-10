@@ -16,7 +16,7 @@ export default function Friends({ user, handleSignUpOrLogin, handleLogout }) {
           <Card centered className="profileCard">
             <h1 className="requestsHeader">Friends List</h1>
           </Card>
-
+          {user.friends.length ? '' : <Header>No Requests Yet</Header>}
           {user.friends.map((friend) => {
             return (
               <FriendCard

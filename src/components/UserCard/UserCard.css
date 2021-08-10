@@ -1,6 +1,6 @@
 img.ui.avatar.image{
-    height: 75px;
-    width: 75px;
+    height: 50px;
+    width: 50px;
 }
 .userCardText{
     color: red;
@@ -13,7 +13,9 @@ div.content{
     font-size: 20px;
     padding: auto;
 }
-h1{
+.buttonCont{
+    position: relative;
+    bottom: 20px
 }
 
 #acceptButton{
@@ -27,7 +29,7 @@ h1{
     color: white;
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     margin: 0 .25em 0 0;
-    padding: .78571429em 1.7em .78571429em;
+    padding: .6em 1.5em .6em;
     text-transform: none;
     text-shadow: none;
     font-weight: 700;
@@ -60,7 +62,7 @@ h1{
     color: white;
     font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
     margin: 0 .25em 0 0;
-    padding: .78571429em 2.1em .78571429em;
+    padding: .6em 1.5em .6em;
     text-transform: none;
     text-shadow: none;
     font-weight: 700;

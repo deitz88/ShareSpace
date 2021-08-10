@@ -16,7 +16,7 @@ export default function Requests({ user, handleSignUpOrLogin }) {
           <Card centered className="profileCard">
             <h1 className="requestsHeader">Pending Requests</h1>
           </Card>
-
+          {user.friendRequests.length ? '' : <Header>No Requests Yet</Header>}
           {user.friendRequests.map((request) => {
             return (
               <UserCard
