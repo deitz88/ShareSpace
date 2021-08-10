@@ -53,16 +53,23 @@ export default function MainWriting({ user, handleLogout }) {
   if (writings.length < 1) {
     return (
       <Grid
-        textAlign="center"
-        style={{ height: "65vh" }}
-        verticalAlign="middle"
-      >
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Loader size="large" active>
-            Loading
-          </Loader>
+      textAlign="center"
+      style={{ height: "100vh"}, {margin: '20px'}}
+      verticalAlign="middle"
+    >
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <br></br>
+        <br></br>
+        <Card.Group className="headerCard">
+          <Card fluid header="Browse Writings:" />
+          <Button className='toggleButton' id='signupButton' onClick={clickToggle}>{filter == true ? 'showing recent' : 'showing oldest'}</Button>
+
+        </Card.Group>
+        <Segment>
+          No Writings Yet
+        </Segment>
         </Grid.Column>
-      </Grid>
+        </Grid>
     );
   } else {
     return (
