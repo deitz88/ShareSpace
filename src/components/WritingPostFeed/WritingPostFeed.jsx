@@ -20,7 +20,7 @@ export default function WritingPostFeed({
   const likeColor = liked > -1 ? "red" : "grey";
   const likeIcon = liked > -1 ? "heart" : "heart outline";
   return (
-    <Card>
+    <Card style={{ height: 'fit-content'}}>
       <Grid.Column style={{ maxWidth: 450 }}>
         <Card centered className="profileCard">
           <Card fluid id="usernameHeader">

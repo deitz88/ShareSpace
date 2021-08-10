@@ -9,7 +9,7 @@ export default function NavBar({ user, handleSignUpOrLogin, handleLogout }) {
     setPostLink(!postLink)
   }
   return user ? (
-    <Segment clearing>
+    <Segment clearing className='navContainer'>
       <Header as="h2" floated="right">
         <Link to="/mainphoto">
           <Icon name="camera retro"></Icon>
@@ -73,7 +73,7 @@ export default function NavBar({ user, handleSignUpOrLogin, handleLogout }) {
       </Header>
     </Segment>
   ) : (
-    <Segment clearing>
+    <Segment clearing className='navContainer'>
       <Header as="h2" floated="left">
         <Link to="/">
           <Image

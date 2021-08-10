@@ -73,7 +73,7 @@ export default function PhotoPostCard({
 
   const iconName = show == true ? "comment" : "comment outline";
   return (
-    <Grid textAlign="center" style={{ height: "50vh" }} verticalAlign="middle">
+    <Grid textAlign="center"  style={{ height: "100vh"}, {margin: '20px'}} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Card centered className="profileCard">
           <Card fluid id="usernameHeader">

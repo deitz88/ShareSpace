@@ -9,7 +9,7 @@ export default function Friends({ user, handleSignUpOrLogin, handleLogout }) {
     <>
       <Grid
         textAlign="center"
-        style={{ height: "26vh" }}
+        style={({ height: "100vh" }, { margin: "20px" })}
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>

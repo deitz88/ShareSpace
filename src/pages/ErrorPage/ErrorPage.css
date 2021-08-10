@@ -1,0 +1,14 @@
+img.ui.image.error{
+    display: flex;
+    height: 450px;
+    width: 80%;
+}
+.imageContainer{
+    display: flex;
+justify-content: center;
+}
+.messageText {
+    color: rgba(160, 39, 65, 0.822);
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: bold;
+  }

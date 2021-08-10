@@ -43,6 +43,7 @@ export default function ProfilePage({ user, handleSignUpOrLogin }) {
   }, [username]);
 
   if (error) {
+    history.push('/404')
     return (<h1>{error}</h1>);
   }
   if (loading) {
@@ -64,7 +65,7 @@ export default function ProfilePage({ user, handleSignUpOrLogin }) {
       <>
         <Grid
           textAlign="center"
-          style={{ height: "65vh" }}
+          style={{ height: "100vh"}, {margin: '20px'}}
           verticalAlign="middle"
         >
           <Grid.Column style={{ maxWidth: 450 }}>

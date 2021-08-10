@@ -18,6 +18,7 @@ import WritingShow from "../WritingShow/WritingShow";
 import UpdateWriting from "../UpdateWriting/UpdateWriting";
 import MainWriting from "../MainWriting/MainWriting";
 import Home from '../Home/Home'
+import ErrorPage from '../ErrorPage/ErrorPage'
 
 function App() {
   const history = useHistory();
@@ -62,6 +63,9 @@ function App() {
               </Route>
               <Route exact path="/">
                 <Home user={user}/>
+              </Route>
+              <Route exact path='/404'>
+                <ErrorPage />
               </Route>
               <Route exact path="/friends">
                 <Friends

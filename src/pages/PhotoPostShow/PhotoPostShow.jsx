@@ -103,7 +103,7 @@ export default function PhotoPostShow({ user }) {
     return (
       <Grid
         textAlign="center"
-        style={{ height: "65vh" }}
+        style={{ height: "100vh"}, {margin: '20px'}}
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>

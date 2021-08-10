@@ -34,7 +34,11 @@ export default function AddPost({ user, handleLogout }) {
 
   return (
     <>
-      <Grid textAlign="center" verticalAlign="middle">
+      <Grid
+        textAlign="center"
+        style={({ height: "100vh" }, { margin: "20px" })}
+        verticalAlign="middle"
+      >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Card centered className="profileCard">
             <h1 className="requestsHeader">New Photo Post</h1>

@@ -67,7 +67,7 @@ export default function MainPhoto({ user, handleLogout }) {
     return (
       <Grid
         textAlign="center"
-        style={{ height: "65vh" }}
+        style={{ height: "100vh"}, {margin: '20px'}}
         verticalAlign="middle"
       >
         <Grid.Column style={{ maxWidth: 450 }}>
@@ -84,7 +84,7 @@ export default function MainPhoto({ user, handleLogout }) {
             </Button>
           </Card.Group>
           <br></br>
-          <Card.Group itemsPerRow={2}>
+          <Card.Group itemsPerRow={2} style={{ height: 'fit-content'}}>
             {/* post.sort({}) */}
             {filter == true ? (
               <>

@@ -1,69 +1,77 @@
-.headerLogo{
-    border-radius: 5px;
+.headerLogo {
+  border-radius: 5px;
 }
 
-.logoutText{
-    font-size: 20px;
+.logoutText {
+  font-size: 20px;
 }
-#live_message_badge_main_header{
-    padding:2px 3px;
-    top: 10px;
-    left: 47px; 
+#live_message_badge_main_header {
+  padding: 2px 3px;
+  top: 10px;
+  left: 47px;
 }
-i.icon.bell.outline{
-    color: rgba(139, 60, 128, 0.705);
+i.icon.bell.outline {
+  color: rgba(139, 60, 128, 0.705);
 }
-.notificationNumber{
-    font-size: 15px;
-    position: absolute;
-    font-weight: bold;
+.notificationNumber {
+  font-size: 15px;
+  position: absolute;
+  font-weight: bold;
 }
-.notificationNumberContainer{
-    position: relative;
-    left: 10px;
-    bottom: 40px; 
-    margin: auto;
-    padding: auto;
-    color: rgba(202, 2, 2, 0.664)
+.notificationNumberContainer {
+  position: relative;
+  left: 10px;
+  bottom: 40px;
+  margin: auto;
+  padding: auto;
+  color: rgba(202, 2, 2, 0.664);
 }
-.requestNumber{
-    font-size: 15px;
-    position: absolute;
-    font-weight: bold;
+.requestNumber {
+  font-size: 15px;
+  position: absolute;
+  font-weight: bold;
 }
-.requestNumberContainer{
-    position: relative;
-    left: 14px;
-    bottom: 39px; 
-    margin: auto;
-    padding: auto;
-    color: rgba(202, 2, 2, 0.664)
+.requestNumberContainer {
+  position: relative;
+  left: 14px;
+  bottom: 39px;
+  margin: auto;
+  padding: auto;
+  color: rgba(202, 2, 2, 0.664);
 }
-.friendNumber{
-    font-size: 15px;
-    position: absolute;
-    font-weight: bold;
+.friendNumber {
+  font-size: 15px;
+  position: absolute;
+  font-weight: bold;
 }
-.friendNumberContainer{
-    position: relative;
-    left: 17px;
-    bottom: 39px; 
-    margin: auto;
-    padding: auto;
-    color: rgba(202, 2, 2, 0.664)
+.friendNumberContainer {
+  position: relative;
+  left: 17px;
+  bottom: 39px;
+  margin: auto;
+  padding: auto;
+  color: rgba(202, 2, 2, 0.664);
 }
-.writingSymbol{
-    font-size: 15px;
-    position: absolute;
-    font-weight: bolder;
+.writingSymbol {
+  font-size: 15px;
+  position: absolute;
+  font-weight: bolder;
 }
-.writingSymbolContainer{
-    position: relative;
-    right: 13px;
-    bottom: 38px; 
-    margin: auto;
-    padding: auto;
+.writingSymbolContainer {
+  position: relative;
+  right: 13px;
+  bottom: 38px;
+  margin: auto;
+  padding: auto;
 }
 
+div.ui.clearing.segment.navContainer {
+  /* background-color: rgba(190, 190, 190, 0.801); */
+  background-color: black;
 
+  border-radius: 0px;
+}
 
+img.ui.mini.image.headerLogo:hover {
+  opacity: 0.7;
+}

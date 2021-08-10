@@ -5,8 +5,7 @@ const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 const { v4: uuidv4 } = require('uuid');
 const S3 = require('aws-sdk/clients/s3');
-const s3 = new S3(); // initialize the construcotr
-// now s3 can crud on our s3 buckets
+const s3 = new S3(); 
 
 module.exports = {
   signup,
@@ -20,10 +19,10 @@ module.exports = {
 async function profile(req, res){
   try {
     const user = await User.findOne({username: req.params.username})
-    console.log(user)
+    if(!user) return res.status(404).json({message: 'Parameters not found'})
+    console.log('hitting here')
     const posts = await Post.find({user: user._id})
     const writings = await Writing.find({user: user._id})
-    if(!user) return res.status(404).json({message: 'Parameters not found'})
     return res.status(200).json({posts: posts, user: user, writings: writings})
   } catch(err){
     console.log(err)
@@ -37,7 +36,7 @@ function friendList(req, res){
 async function sendRequest(req, res){
   try {
     const user = await User.findOne({username: req.params.username})
-    user.friendRequests.push({username: req.user.username, userId: req.user._id}); //mutating a document
+    user.friendRequests.push({username: req.user.username, userId: req.user._id});
     await user.save()// save it
     res.status(201).json({data: 'like added'})
 } catch(err){
