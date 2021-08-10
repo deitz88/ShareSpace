@@ -16,7 +16,7 @@ export default function ErrorPage() {
     <div className="imageContainer">
       <Image
         className="error"
-        src="/public/app_images/404.png"
+        src="https://i.imgur.com/EV5DyAm.png"
       />
     </div>
   );

@@ -30,7 +30,7 @@ export default function Home({ user }) {
       >
         <Image
           className="logoGif"
-          src='/public/app_images/ShareSpace.gif'
+          src='https://i.imgur.com/S9tbSpK.gif'
         />
         <Segment id="homeText" floating>
           <Header floating>welcome to share space</Header>
