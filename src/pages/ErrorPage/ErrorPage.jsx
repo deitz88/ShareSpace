@@ -16,7 +16,7 @@ export default function ErrorPage() {
     <div className="imageContainer">
       <Image
         className="error"
-        src={process.env.PUBLIC_URL + "app_images/404.png"}
+        src="/public/app_images/404.png"
       />
     </div>
   );

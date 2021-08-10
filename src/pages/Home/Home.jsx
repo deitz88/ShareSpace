@@ -30,7 +30,7 @@ export default function Home({ user }) {
       >
         <Image
           className="logoGif"
-          src={process.env.PUBLIC_URL + "app_images/ShareSpace.gif"}
+          src='/public/app_images/ShareSpace.gif'
         />
         <Segment id="homeText" floating>
           <Header floating>welcome to share space</Header>
