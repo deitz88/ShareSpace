@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Card, Icon, Image } from "semantic-ui-react";
 import "./ProfileCard.css";
 
-export default function FriendProfileCard({ userRequest }) {
+export default function FriendProfileCard({ userRequest, posts, writings }) {
   return (
     <Card centered className="profileCard">
       <Card.Group className="headerCardOther">
@@ -34,6 +34,16 @@ export default function FriendProfileCard({ userRequest }) {
           Friends: &nbsp;&nbsp;
           <Icon name="user" />
           {userRequest.friends.length ? userRequest.friends.length : 0}
+        </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a>
+          Posts: &nbsp;
+          {posts.length ? posts.length : "None"}
+        </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a>
+          Writings: &nbsp;
+          {writings.length ? writings.length : "None"}
         </a>
       </Card.Content>
     </Card>

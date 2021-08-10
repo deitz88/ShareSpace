@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Redirect, Route, Switch, useHistory } from "react-router-dom";
+import { Redirect, Route, Switch, useHistory, useLocation } from "react-router-dom";
 import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
@@ -23,6 +23,8 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 function App() {
   const history = useHistory();
   const [user, setUser] = useState(userService.getUser());
+  const location = useLocation()
+
 
   function handleSignUpOrLogin() {
     setUser(userService.getUser());
@@ -36,12 +38,15 @@ function App() {
   }
 
   return (
+    
     <div className="App">
+      {location.pathname === '/' ? null :
       <NavBar
         user={user}
         handleSignUpOrLogin={handleSignUpOrLogin}
         handleLogout={handleLogout}
       />
+  }
       <Switch>
         <Route exact path="/login">
           <LoginPage handleSignUpOrLogin={handleSignUpOrLogin} />

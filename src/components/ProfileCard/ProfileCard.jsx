@@ -11,6 +11,8 @@ export default function ProfileCard({
   userRequest,
   loggedInUser,
   requestFriend,
+  posts,
+  writings,
 }) {
   let friendArray = [];
   for (let i = 0; i < loggedInUser.friendRequests.length; i++) {
@@ -22,23 +24,38 @@ export default function ProfileCard({
         userRequest={userRequest}
         loggedInUser={loggedInUser}
         requestFriend={requestFriend}
+        posts={posts}
+        writings={writings}
       />
     );
   } else if (
     userRequest.friendRequests.includes(loggedInUser._id) ||
     friendArray.includes(userRequest._id)
   ) {
-    return <RequestPendingCard userRequest={userRequest} />;
+    return (
+      <RequestPendingCard
+        userRequest={userRequest}
+        posts={posts}
+        writings={writings}
+      />
+    );
   } else if (userRequest.friends.includes(loggedInUser._id)) {
     return (
       <FriendProfileCard
         loggedInUser={loggedInUser}
         userRequest={userRequest}
+        posts={posts}
+        writings={writings}
       />
     );
   } else if (!userRequest.friendRequests.includes(loggedInUser._id)) {
     return (
-      <NonFriendCard userRequest={userRequest} requestFriend={requestFriend} />
+      <NonFriendCard
+        userRequest={userRequest}
+        requestFriend={requestFriend}
+        posts={posts}
+        writings={writings}
+      />
     );
   }
 }

@@ -76,6 +76,8 @@ export default function ProfilePage({ user, handleSignUpOrLogin }) {
               userRequest={profileUser}
               loggedInUser={user}
               requestFriend={requestFriend}
+              posts={posts}
+              writings={userWritings}
             />
             <Card centered className="profileCard">
               <PhotoPostContent

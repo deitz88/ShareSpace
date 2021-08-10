@@ -57,6 +57,9 @@ div.iconTextNon{
 .bioHeader{
     text-align: left;
 }
-/* .bioText{
-
-} */
+div#friendsProfileCardIcon.ui.card{
+    outline: none;
+}
+a{
+    outline: none;
+}
