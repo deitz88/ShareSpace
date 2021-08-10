@@ -61,7 +61,6 @@ function App() {
           <ErrorPage />
         </Route>
         {user ? (
-          <>
             <Switch>
               <Route exact path="/update">
                 <UpdateProfile user={user} handleLogout={handleLogout} />
@@ -129,7 +128,6 @@ function App() {
                 />
               </Route>
             </Switch>
-          </>
         ) : (
           <Redirect to="/" />
         )}
