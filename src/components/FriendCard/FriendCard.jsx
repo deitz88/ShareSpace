@@ -16,8 +16,6 @@ export default function FriendCard({username, photo, handleSignUpOrLogin}){
         }, []);
     return(
         <>
-        <br></br>
-        <br></br>
     <Card.Group className='headerCard'>
     &nbsp; &nbsp; &nbsp;
     <Card.Content text='test'>{username}
