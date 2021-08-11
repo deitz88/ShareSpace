@@ -19,7 +19,6 @@ function getProfile(username) {
     if (res.ok) {
       return res.json();
     } else {
-      console.log(res)
       throw new Error("Bad Credentials");
     }
   });

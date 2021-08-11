@@ -49,7 +49,6 @@ export default function UpdateProfile({ user }) {
       [e.target.name]: e.target.value,
     });
   }
-console.log(fileUpload)
   function handleFileUpload(e) {
     setFileUpload(e.target.files[0]);
   }
