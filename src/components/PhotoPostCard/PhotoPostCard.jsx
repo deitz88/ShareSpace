@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import postService from "../../utils/postService";
 import {
@@ -72,7 +72,7 @@ export default function PhotoPostCard({
       addLikeComment(comment.comment._id);
     }
   }
-
+ 
   const iconName = show === true ? "comment" : "comment outline";
   return (
     <Grid
@@ -178,7 +178,7 @@ export default function PhotoPostCard({
                   ) : (
                     ""
                   )}
-                  <Link to="/">{commentsAndUser.user.username}:&nbsp;</Link>
+                  <Link to={`/${commentsAndUser.user.username}`}>{commentsAndUser.user.username}:&nbsp;</Link>
                   <span className="comment">
                     {commentsAndUser.comment.comment}
                   </span>

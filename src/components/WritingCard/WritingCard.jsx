@@ -179,7 +179,7 @@ export default function WritingCard({
                   ) : (
                     ""
                   )}
-                  <Link to="/">{commentsAndUser.user.username}:&nbsp;</Link>
+                  <Link to={`/${commentsAndUser.user.username}`}>{commentsAndUser.user.username}:&nbsp;</Link>
                   <span className="comment">
                     {commentsAndUser.comment.comment}
                   </span>
