@@ -128,7 +128,7 @@ function App() {
                   handleSignUpOrLogin={handleSignUpOrLogin}
                 />
               </Route>
-              <Route exact path="/:username">
+              <Route path="/:username">
                 <ProfilePage
                   user={user}
                   handleLogout={handleLogout}
