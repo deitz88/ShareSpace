@@ -46,7 +46,7 @@ export default function WritingPostFeed({
           >
             <h6 className="writingTitle">
               <span className="title">Title:</span>
-              {"  " + writing.title} here
+              {"  " + writing.title}
             </h6>
           </Card>
 
